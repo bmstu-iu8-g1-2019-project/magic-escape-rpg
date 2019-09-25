@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1153532557977385646}
   m_Layer: 0
   m_Name: Tree_Round
-  m_TagString: Untagged
+  m_TagString: Decorations
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6474607358792989339}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Decorations
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

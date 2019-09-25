@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 864680358168111451}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Decorations
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,7 +153,8 @@ PolygonCollider2D:
       - {x: -0.18494141, y: 0.25035906}
       - {x: -0.30895114, y: 0.19516802}
       - {x: -0.24168575, y: -0.0029702187}
-      - {x: -0.11489153, y: -0.031060696}
-      - {x: 0.05630505, y: -0.030293465}
+      - {x: -0.24065381, y: -0.08574009}
+      - {x: -0.098613024, y: -0.10172796}
+      - {x: 0.1328562, y: -0.112312794}
       - {x: 0.23257816, y: -0.021184444}
       - {x: 0.29073584, y: 0.18150711}

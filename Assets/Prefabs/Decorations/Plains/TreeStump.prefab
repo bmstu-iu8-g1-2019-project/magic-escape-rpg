@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8737381791887998355}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Decorations
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -62,8 +62,8 @@ PolygonCollider2D:
       - {x: -0.36239898, y: 0.15199852}
       - {x: -0.38779032, y: 0.03351307}
       - {x: -0.25448835, y: -0.08962011}
-      - {x: -0.13695931, y: -0.088629246}
-      - {x: 0.13267994, y: -0.07648659}
+      - {x: -0.1697669, y: -0.16518044}
+      - {x: 0.16001964, y: -0.13116574}
       - {x: 0.3069415, y: -0.0005283356}
       - {x: 0.30426526, y: 0.19838142}
 --- !u!1 &1101152319211672063
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 8644261344651983409}
   m_Layer: 0
   m_Name: TreeStump
-  m_TagString: Untagged
+  m_TagString: Decorations
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

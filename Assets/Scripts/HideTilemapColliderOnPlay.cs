@@ -6,11 +6,11 @@ using UnityEngine.Tilemaps;
 public class HideTilemapColliderOnPlay : MonoBehaviour
 {
 
-    private TilemapRenderer tilemapRenderer;
+    private TilemapRenderer TilemapRenderer;
 
     void Start()
     {
-        tilemapRenderer = GetComponent<TilemapRenderer>();
-        tilemapRenderer.enabled = false;
+        TilemapRenderer = GetComponent<TilemapRenderer>();
+        TilemapRenderer.enabled = false;
     }
 }

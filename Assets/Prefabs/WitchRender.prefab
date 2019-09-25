@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2567029094784060578}
   m_Layer: 0
   m_Name: WitchRender
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,8 +153,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0038be263d74d9b95eb7a5862c9f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  move: {x: 0, y: 0, z: 0}
-  movementSpeed: 0
+  CurrentState: 0
+  MovementSpeed: 1
+  Fireball: {fileID: 4704395346699381066, guid: 083e96bb2a980874091c43fc6ca2e662,
+    type: 3}
 --- !u!210 &2567029094784060578
 SortingGroup:
   m_ObjectHideFlags: 0

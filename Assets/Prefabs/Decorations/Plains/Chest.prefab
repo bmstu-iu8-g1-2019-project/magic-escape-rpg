@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7961708476090510910}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Decorations
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 1290741817069395913}
   m_Layer: 0
   m_Name: Chest
-  m_TagString: Untagged
+  m_TagString: Decorations
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

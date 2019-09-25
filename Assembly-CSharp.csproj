@@ -11,7 +11,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{5C0330B3-3C8A-EACA-0BDA-8EE43C347745}</ProjectGuid>
+    <ProjectGuid>{076FB68D-7EC8-F3FB-75B9-6AB9039F2D11}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -62,68 +62,69 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AI_enemy.cs" />
+    <Compile Include="Assets\Scripts\Barbarian.cs" />
     <Compile Include="Assets\Scripts\BasicCameraFollow.cs" />
-    <Compile Include="Assets\Scripts\GameManager.cs" />
+    <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\HideTilemapColliderOnPlay.cs" />
     <Compile Include="Assets\Scripts\LoadNewLevel.cs" />
+    <Compile Include="Assets\Scripts\MagicCast.cs" />
     <Compile Include="Assets\Scripts\PlayerMove.cs" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-weaver.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/com.unity.multiplayer-weaver.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.2D.Tilemap.Editor">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.SpatialTracking">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.SpatialTracking">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.XR.LegacyInputHelpers">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="com.unity.multiplayer-hlapi.Runtime">
-      <HintPath>D:/Magic escape/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/ScriptAssemblies/com.unity.multiplayer-hlapi.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -303,13 +304,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>D:/Magic escape/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>D:/Magic escape/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>D:/Magic escape/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>D:/Magic-escape/Library/PackageCache/com.unity.analytics@3.3.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.5f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
