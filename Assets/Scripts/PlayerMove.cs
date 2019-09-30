@@ -76,6 +76,6 @@ public class PlayerMove : MonoBehaviour
         StartCoroutine(AttackCo());
         Rigidbody2D FireballClone;
         FireballClone = (Rigidbody2D)Instantiate(Fireball, transform.position, Quaternion.Euler(0f, 0f, Angle));
-        FireballClone.AddForce(Buf * 5f, ForceMode2D.Impulse);
+        FireballClone.AddForce(Buf.normalized * 5f, ForceMode2D.Impulse);
     }
 }

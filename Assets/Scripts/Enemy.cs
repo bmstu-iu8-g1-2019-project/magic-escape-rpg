@@ -4,35 +4,56 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int Health;
+    private float Health;
+    private SpriteRenderer Sprite;
+    public FloatValue MaxHealth;
     public string EnemyName;
     public int BaseAttack;
     public float MoveSpeed;
     public Animator Anim;
+    public Transform Target;
 
     private void Start()
     {
+        Sprite = GetComponent<SpriteRenderer>();
+        Target = GameObject.FindWithTag("Player").transform;
         Anim = GetComponent<Animator>();
+        Health = MaxHealth.InitialValue;
     }
     public bool IsDead()
     {
         return Health <= 0;
     }
 
-    public void Hurt(int Attack)
+    public void TakeDamage(float Damage)
     {
-        Health = Health - Attack;
+        StartCoroutine(GetDamage(Damage));
         if (IsDead())
         {
             StartCoroutine(Die());
         }
     }
 
+    public void FlipSprite(bool value)
+    {
+        Sprite.flipX = value;
+    }
     private IEnumerator Die()
     {
         Anim.SetBool("IsDead", true);
         yield return new WaitForSeconds(0.75f);
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
+    }
+
+    private IEnumerator GetDamage(float Damage)
+    {
+        if (!Anim.GetBool("IsGettingDamage"))
+        {
+            Health -= Damage;
+            Anim.SetBool("IsGettingDamage", true);
+            yield return new WaitForSeconds(0.3f);
+            Anim.SetBool("IsGettingDamage", false);
+        }
     }
 
 }

@@ -4,17 +4,10 @@ using UnityEngine;
 
 public class Barbarian : Enemy
 {
-    private Animator Animate;
-    public Transform Target;
     public float ChaseRadius;
     public float AttackRadius;
     public Transform HomePosition;
-    void Start()
-    {
-        Animate = GetComponent<Animator>();
-        Target = GameObject.FindWithTag("Player").transform;
 
-    }
 
     void Update()
     {
@@ -24,15 +17,24 @@ public class Barbarian : Enemy
     void CheckDistance()
     {
         if (Vector3.Distance(Target.position, transform.position) <= ChaseRadius
-            && Vector3.Distance(Target.position, transform.position) >= AttackRadius)
+            && Vector3.Distance(Target.position, transform.position) >= AttackRadius && !IsDead() && !Anim.GetBool("IsGettingDamage"))
         {
-            Animate.SetBool("IsWalking", true);
+            Anim.SetBool("IsWalking", true);
+            if (transform.position.x - Target.position.x > 0)
+            {
+                FlipSprite(true);
+            }
+            else
+            {
+                FlipSprite(false);
+            }
             transform.position = Vector3.MoveTowards(transform.position,
                                 Target.position, MoveSpeed * Time.deltaTime);
+
         }
         else
         {
-            Animate.SetBool("IsWalking", false);
+            Anim.SetBool("IsWalking", false);
         }
     }
 }

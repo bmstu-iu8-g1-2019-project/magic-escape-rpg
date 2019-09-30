@@ -5,18 +5,13 @@ using UnityEngine;
 public class MagicCast : MonoBehaviour
 {
     public float MovementSpeed;
-    public int Damage = 5;
+    private float Damage = 5f;
     private Animator Anim;
     private Rigidbody2D Rig;
     void Start()
     {
         Anim = GetComponent<Animator>();
         Rig = GetComponent<Rigidbody2D>();
-    }
-
-    private void Update()
-    {
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,8 +23,8 @@ public class MagicCast : MonoBehaviour
         }
         if (collision.tag == "Enemy")
         {
-            Barbarian script = collision.GetComponent<Barbarian>();
-            script.Hurt(Damage);
+            Enemy script = collision.GetComponent<Enemy>();
+            script.TakeDamage(Damage);
         }
     }
 
