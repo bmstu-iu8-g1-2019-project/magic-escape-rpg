@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: de0a60a8974ac0d4eb06b0ccc89f5dba
+guid: 8b9a76671564cec4caa81874eee2ed25
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 9101631983606016077
-    second: ezgif-1-418345a7a4b2_0
+      213: 1564688358316481467
+    second: hearts_0
   - first:
-      213: -3852244605603307466
-    second: ezgif-1-418345a7a4b2_1
+      213: 5726080727020278575
+    second: hearts_1
   - first:
-      213: -1468779037286099348
-    second: ezgif-1-418345a7a4b2_2
+      213: 8522625820373494394
+    second: hearts_2
+  - first:
+      213: 7885684081779559860
+    second: hearts_3
+  - first:
+      213: 4537193172801868870
+    second: hearts_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -95,64 +101,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ezgif-1-418345a7a4b2_0
+      name: hearts_0
       rect:
         serializedVersion: 2
-        x: 0
+        x: 9
         y: 0
-        width: 96
-        height: 96
+        width: 42
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40ba58b846ea92c4db064b809e7581e7
-      internalID: 9101631983606016077
+      spriteID: 5b58e3379c15db14ca971135dd588234
+      internalID: 1564688358316481467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif-1-418345a7a4b2_1
+      name: hearts_1
       rect:
         serializedVersion: 2
-        x: 96
+        x: 57
         y: 0
-        width: 96
-        height: 96
+        width: 42
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5532a647fb4347c4cb83f74ef6963ed4
-      internalID: -3852244605603307466
+      spriteID: 445c4a1a2f8062e4fbc1f115146166b5
+      internalID: 5726080727020278575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: ezgif-1-418345a7a4b2_2
+      name: hearts_2
       rect:
         serializedVersion: 2
-        x: 192
+        x: 105
         y: 0
-        width: 96
-        height: 96
+        width: 42
+        height: 39
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6751d7f680743424185b9e3549f483c9
-      internalID: -1468779037286099348
+      spriteID: 0c921f66d7770d945b8eb4c05f3ddadf
+      internalID: 8522625820373494394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hearts_3
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 0
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2049b7337c9ff6a40b63ad5f8902ce40
+      internalID: 7885684081779559860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hearts_4
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 0
+        width: 42
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9cbcb3ced0d6e9439c1129f93287657
+      internalID: 4537193172801868870
       vertices: []
       indices: 
       edges: []

@@ -6,18 +6,21 @@ public class Enemy : MonoBehaviour
 {
     private float Health;
     private SpriteRenderer Sprite;
+    private Rigidbody2D rig;
     public FloatValue MaxHealth;
-    public string EnemyName;
-    public int BaseAttack;
-    public float MoveSpeed;
     public Animator Anim;
-    public Transform Target;
+    public GameObject Target;
+    public float Damage;
+    public float MoveSpeed;
+    public float thrust;
+    public float KnockTime;
 
     private void Start()
     {
         Sprite = GetComponent<SpriteRenderer>();
-        Target = GameObject.FindWithTag("Player").transform;
+        Target = GameObject.FindWithTag("Player");
         Anim = GetComponent<Animator>();
+        rig = GetComponent<Rigidbody2D>();
         Health = MaxHealth.InitialValue;
     }
     public bool IsDead()
@@ -38,6 +41,12 @@ public class Enemy : MonoBehaviour
     {
         Sprite.flipX = value;
     }
+
+    public void Attack(bool IsKnocking)
+    {
+        StartCoroutine(AttackCo(IsKnocking));
+    }
+    
     private IEnumerator Die()
     {
         Anim.SetBool("IsDead", true);
@@ -54,6 +63,27 @@ public class Enemy : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             Anim.SetBool("IsGettingDamage", false);
         }
+    }
+
+    private IEnumerator AttackCo(bool IsKnocking)
+    {
+        if (!Anim.GetBool("IsAttacking"))
+        {
+            Anim.SetBool("IsAttacking", true);
+            yield return new WaitForSeconds(0.2f);
+            KnockBack();
+            yield return new WaitForSeconds(0.3f);
+            Anim.SetBool("IsAttacking", false);
+        }
+    }
+
+    private void KnockBack()
+    {
+        Rigidbody2D player = Target.GetComponent<Rigidbody2D>();
+        Vector2 difference = Target.transform.position - rig.transform.position;
+        difference = difference.normalized * thrust;
+        player.AddForce(difference, ForceMode2D.Impulse);
+        Target.GetComponent<PlayerMove>().Knock(KnockTime, Damage);
     }
 
 }

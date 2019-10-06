@@ -7,7 +7,8 @@ public class Barbarian : Enemy
     public float ChaseRadius;
     public float AttackRadius;
     public Transform HomePosition;
-
+    private bool MoveCondition;
+    private bool AttackCondition;
 
     void Update()
     {
@@ -16,11 +17,19 @@ public class Barbarian : Enemy
 
     void CheckDistance()
     {
-        if (Vector3.Distance(Target.position, transform.position) <= ChaseRadius
-            && Vector3.Distance(Target.position, transform.position) >= AttackRadius && !IsDead() && !Anim.GetBool("IsGettingDamage"))
+        AttackCondition = Vector3.Distance(Target.transform.position, transform.position) < AttackRadius;
+        MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
+            && !AttackCondition && !IsDead()
+                && !Anim.GetBool("IsGettingDamage") && !Anim.GetBool("IsAttacking");
+        if (AttackCondition)
+        {
+            Anim.SetBool("IsWalking", false);
+            Attack(true);
+        }
+        else if (MoveCondition)
         {
             Anim.SetBool("IsWalking", true);
-            if (transform.position.x - Target.position.x > 0)
+            if (transform.position.x - Target.transform.position.x > 0)
             {
                 FlipSprite(true);
             }
@@ -29,7 +38,7 @@ public class Barbarian : Enemy
                 FlipSprite(false);
             }
             transform.position = Vector3.MoveTowards(transform.position,
-                                Target.position, MoveSpeed * Time.deltaTime);
+                                Target.transform.position, MoveSpeed * Time.deltaTime);
 
         }
         else
