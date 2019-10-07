@@ -12,6 +12,10 @@ public class Barbarian : Enemy
 
     void Update()
     {
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
         CheckDistance();
     }
 

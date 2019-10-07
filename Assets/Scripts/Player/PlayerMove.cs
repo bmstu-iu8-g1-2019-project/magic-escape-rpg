@@ -29,6 +29,11 @@ public class PlayerMove : MonoBehaviour
 
     private void Update()
     {
+        if (Time.timeScale == 0f)
+        {
+
+            return;
+        }
         Move = Vector3.zero;
         Move.x = Input.GetAxisRaw("Horizontal");
         Move.y = Input.GetAxisRaw("Vertical");

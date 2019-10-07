@@ -16,6 +16,10 @@ public class MagicCast : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (Time.timeScale == 0f)
+        {
+            return;
+        }
         if (collision.tag != "Player")
         {
             Rig.constraints = RigidbodyConstraints2D.FreezeAll;

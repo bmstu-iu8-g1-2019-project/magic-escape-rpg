@@ -12,7 +12,12 @@ public class DestroyDecoration : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Damage")
+        if (Time.timeScale == 0)
+        {
+            return;
+        }
+
+        if (collision.tag == "Damage")
         {
             StartCoroutine(Destroyable());
         }
