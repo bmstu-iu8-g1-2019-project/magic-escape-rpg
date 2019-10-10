@@ -87,6 +87,7 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(KnockCo(KnockTime));
         } else {
             this.gameObject.SetActive(false);
+            Time.timeScale = 0f;
         }
     }
 

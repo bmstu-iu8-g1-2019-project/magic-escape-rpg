@@ -21,6 +21,7 @@ public class DialogueManager : MonoBehaviour
         {
             DialogueActive = false;
             DialogueBox.SetActive(DialogueActive);
+            GameAwake();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
@@ -38,13 +39,14 @@ public class DialogueManager : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            this.GetComponent<BoxCollider2D>().enabled = false;
             if (!DialogueActive)
             {
                 DialogueActive = true;
                 DialogueBox.SetActive(DialogueActive);
                 GamePause();
             }
-            DialogueText.text = "Try not to suck";
+            DialogueText.text = "Now, try to find the chest. Be cautious, locals are very agressive. (The game is paused to go on playing push Esc or 'E')";
             GamePause();
         }
     }
@@ -53,7 +55,6 @@ public class DialogueManager : MonoBehaviour
     {
         if (!GamePaused)
         {
-            Debug.Log("+");
             Time.timeScale = 0f;
             GamePaused = true;
         }

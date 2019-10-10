@@ -1,19 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+public enum EnemyState
+{
+    walk,
+    attack,
+    stagger,
+    die
+}
 public class Enemy : MonoBehaviour
 {
-    private float Health;
+    private float CurrentHealth;
     private SpriteRenderer Sprite;
     private Rigidbody2D rig;
     public FloatValue MaxHealth;
     public Animator Anim;
     public GameObject Target;
-    public float Damage;
     public float MoveSpeed;
-    public float thrust;
-    public float KnockTime;
+    public EnemyState CurrentState;
 
     private void Start()
     {
@@ -21,20 +25,13 @@ public class Enemy : MonoBehaviour
         Target = GameObject.FindWithTag("Player");
         Anim = GetComponent<Animator>();
         rig = GetComponent<Rigidbody2D>();
-        Health = MaxHealth.InitialValue;
-    }
-    public bool IsDead()
-    {
-        return Health <= 0;
+        CurrentHealth = MaxHealth.InitialValue;
+        CurrentState = EnemyState.walk;
     }
 
-    public void TakeDamage(float Damage)
+    public bool IsDead()
     {
-        StartCoroutine(GetDamage(Damage));
-        if (IsDead())
-        {
-            StartCoroutine(Die());
-        }
+        return CurrentHealth <= 0;
     }
 
     public void FlipSprite(bool value)
@@ -42,9 +39,9 @@ public class Enemy : MonoBehaviour
         Sprite.flipX = value;
     }
 
-    public void Attack(bool IsKnocking)
+    public void Attack()
     {
-        StartCoroutine(AttackCo(IsKnocking));
+        StartCoroutine(AttackCo());
     }
     
     private IEnumerator Die()
@@ -54,37 +51,49 @@ public class Enemy : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    private IEnumerator GetDamage(float Damage)
+    private IEnumerator GetDamage()
     {
-        if (!Anim.GetBool("IsGettingDamage"))
+        if (CurrentState != EnemyState.stagger)
         {
-            Health -= Damage;
             Anim.SetBool("IsGettingDamage", true);
             yield return new WaitForSeconds(0.3f);
             Anim.SetBool("IsGettingDamage", false);
         }
     }
 
-    private IEnumerator AttackCo(bool IsKnocking)
+    private IEnumerator AttackCo()
     {
-        if (!Anim.GetBool("IsAttacking"))
+        if (CurrentState != EnemyState.attack)
         {
+            CurrentState = EnemyState.attack;
             Anim.SetBool("IsAttacking", true);
-            yield return new WaitForSeconds(0.2f);
-            KnockBack();
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.5f);
             Anim.SetBool("IsAttacking", false);
+            CurrentState = EnemyState.walk;
         }
     }
 
-    private void KnockBack()
+    public void Knock(float KnockTime, float Damage)
     {
-        Rigidbody2D player = Target.GetComponent<Rigidbody2D>();
-        Vector2 difference = Target.transform.position - rig.transform.position;
-        difference = difference.normalized * thrust;
-        player.AddForce(difference, ForceMode2D.Impulse);
-        Target.GetComponent<PlayerMove>().Knock(KnockTime, Damage);
+        CurrentHealth -= Damage;
+        if (!IsDead())
+        { 
+            StartCoroutine(GetDamage());
+            StartCoroutine(KnockCo(KnockTime));
+        }
+        else
+        {
+            CurrentState = EnemyState.die;
+            StartCoroutine(Die());
+        }
     }
 
+    private IEnumerator KnockCo(float KnockTime)
+    {
+        CurrentState = EnemyState.stagger;
+        yield return new WaitForSeconds(KnockTime);
+        rig.velocity = Vector2.zero;
+        CurrentState = EnemyState.walk;
+    }
 }
 

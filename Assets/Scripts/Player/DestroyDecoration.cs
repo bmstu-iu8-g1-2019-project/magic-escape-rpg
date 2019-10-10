@@ -16,8 +16,7 @@ public class DestroyDecoration : MonoBehaviour
         {
             return;
         }
-
-        if (collision.tag == "Damage")
+        if (collision.tag == "PlayerDamage")
         {
             StartCoroutine(Destroyable());
         }

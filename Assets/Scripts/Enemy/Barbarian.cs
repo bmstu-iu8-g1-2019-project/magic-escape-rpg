@@ -10,6 +10,7 @@ public class Barbarian : Enemy
     private bool MoveCondition;
     private bool AttackCondition;
 
+
     void Update()
     {
         if (Time.timeScale == 0)
@@ -23,12 +24,11 @@ public class Barbarian : Enemy
     {
         AttackCondition = Vector3.Distance(Target.transform.position, transform.position) < AttackRadius;
         MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
-            && !AttackCondition && !IsDead()
-                && !Anim.GetBool("IsGettingDamage") && !Anim.GetBool("IsAttacking");
+            && CurrentState == EnemyState.walk;
         if (AttackCondition)
         {
             Anim.SetBool("IsWalking", false);
-            Attack(true);
+            Attack();
         }
         else if (MoveCondition)
         {

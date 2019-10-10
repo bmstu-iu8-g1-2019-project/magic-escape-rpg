@@ -5,7 +5,8 @@ using UnityEngine;
 public class MagicCast : MonoBehaviour
 {
     public float MovementSpeed;
-    private float Damage = 5f;
+    public FloatValue Damage;
+    public float WaitTime;
     private Animator Anim;
     private Rigidbody2D Rig;
     void Start()
@@ -25,17 +26,12 @@ public class MagicCast : MonoBehaviour
             Rig.constraints = RigidbodyConstraints2D.FreezeAll;
             StartCoroutine(AttackCo());
         }
-        if (collision.tag == "Enemy")
-        {
-            Enemy script = collision.GetComponent<Enemy>();
-            script.TakeDamage(Damage);
-        }
     }
 
     private IEnumerator AttackCo()
     {
         Anim.SetBool("IsTriggered", true);
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(WaitTime);
         Destroy(this.gameObject);
     }
 }
