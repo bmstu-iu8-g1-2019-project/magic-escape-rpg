@@ -6,7 +6,8 @@ using UnityEngine.SceneManagement;
 public enum PlayerState
 {
     walk,
-    attack
+    attack, 
+    stagger
 }
 public class PlayerMove : MonoBehaviour
 {
@@ -37,20 +38,21 @@ public class PlayerMove : MonoBehaviour
         Move = Vector3.zero;
         Move.x = Input.GetAxisRaw("Horizontal");
         Move.y = Input.GetAxisRaw("Vertical");
-        if (Move != Vector3.zero)
-        {
-            Buf = Move;
-        }
-        if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack)
+        if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack
+            && CurrentState != PlayerState.stagger)
         {
             Attack();
-        }
+        } 
         else if (Move != Vector3.zero)
         {
-            MovePlayer();
-        }
-        else
-        {
+            Buf = Move;
+            if (CurrentState == PlayerState.walk)
+            {
+                MovePlayer();
+            } else {
+                Animator.SetBool("IsMove", false);
+            }
+        } else {
             Animator.SetBool("IsMove", false);
         }
     }
@@ -78,6 +80,12 @@ public class PlayerMove : MonoBehaviour
         FireballClone.AddForce(Buf.normalized * 5f, ForceMode2D.Impulse);
     }
 
+    private IEnumerator AttackCo()
+    {
+        yield return new WaitForSeconds(0.5f);
+        CurrentState = PlayerState.walk;
+    }
+
     public void Knock(float KnockTime, float Damage)
     {
         CurrentHealth.RuntimeValue -= Damage;
@@ -93,13 +101,13 @@ public class PlayerMove : MonoBehaviour
 
     private IEnumerator KnockCo(float KnockTime)
     {
-        yield return new WaitForSeconds(KnockTime);
-        Body.velocity = Vector2.zero;
-    }
-
-    private IEnumerator AttackCo()
-    {
-        yield return new WaitForSeconds(0.5f);
-        CurrentState = PlayerState.walk;
+        if (Body != null)
+        {
+            yield return new WaitForSeconds(KnockTime);
+            Body.velocity = Vector2.zero;
+            yield return new WaitForSeconds(0.1f);
+            CurrentState = PlayerState.walk;
+            Body.velocity = Vector2.zero; // Prevent unstopable impulse
+        }
     }
 }

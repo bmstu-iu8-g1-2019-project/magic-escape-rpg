@@ -12,11 +12,12 @@ public class Enemy : MonoBehaviour
 {
     private float CurrentHealth;
     private SpriteRenderer Sprite;
-    private Rigidbody2D rig;
+    private Rigidbody2D Body;
     public FloatValue MaxHealth;
     public Animator Anim;
     public GameObject Target;
     public float MoveSpeed;
+    public float AttackKD;
     public EnemyState CurrentState;
 
     private void Start()
@@ -24,7 +25,7 @@ public class Enemy : MonoBehaviour
         Sprite = GetComponent<SpriteRenderer>();
         Target = GameObject.FindWithTag("Player");
         Anim = GetComponent<Animator>();
-        rig = GetComponent<Rigidbody2D>();
+        Body = GetComponent<Rigidbody2D>();
         CurrentHealth = MaxHealth.InitialValue;
         CurrentState = EnemyState.walk;
     }
@@ -90,10 +91,13 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator KnockCo(float KnockTime)
     {
-        CurrentState = EnemyState.stagger;
-        yield return new WaitForSeconds(KnockTime);
-        rig.velocity = Vector2.zero;
-        CurrentState = EnemyState.walk;
-    }
+        if (Body != null)
+        {
+            yield return new WaitForSeconds(KnockTime);
+            Body.velocity = Vector2.zero;
+            CurrentState = EnemyState.walk;
+            Body.velocity = Vector2.zero; // Prevent unstopable impulse
+        }
+    } 
 }
 
