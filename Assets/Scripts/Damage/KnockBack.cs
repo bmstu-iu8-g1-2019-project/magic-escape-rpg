@@ -9,29 +9,40 @@ public class KnockBack : MonoBehaviour
     public FloatValue DamageInit;
     private float Damage;
 
-
+    private void Start()
+    {
+        Damage = DamageInit.RuntimeValue;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Player"))
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Player")))
         {
             Rigidbody2D hit = collision.GetComponent<Rigidbody2D>();
             if (hit != null)
             {
-                Vector2 difference = hit.transform.position - transform.position;
-                difference = difference.normalized * thrust;
-                hit.AddForce(difference, ForceMode2D.Impulse);
-                if (collision.gameObject.CompareTag("Enemy"))
+                if (collision.CompareTag("Enemy") && collision.isTrigger)
                 {
+                    Debug.Log("poof");
+                    AddForce(hit);
                     hit.GetComponent<Enemy>().CurrentState = EnemyState.stagger;
                     collision.GetComponent<Enemy>().Knock(KnockTime, Damage);
                 }
-                if (collision.gameObject.CompareTag("Player") && !this.CompareTag("PlayerDamage")) // Prevent dealing damage to yourself
+                if (collision.gameObject.CompareTag("Player") 
+                    && !this.CompareTag("PlayerDamage")) // Prevent dealing damage to yourself
                 {
+                    AddForce(hit);
                     hit.GetComponent<PlayerMove>().CurrentState = PlayerState.stagger;
                     collision.GetComponent<PlayerMove>().Knock(KnockTime, Damage);
                 }
             }
         }
+    }
+
+    private void AddForce(Rigidbody2D hit)
+    {
+        Vector2 difference = hit.transform.position - transform.position;
+        difference = difference.normalized * thrust;
+        hit.AddForce(difference, ForceMode2D.Impulse);
     }
 
 }

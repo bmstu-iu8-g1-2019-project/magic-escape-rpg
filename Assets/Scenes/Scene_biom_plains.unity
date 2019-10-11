@@ -28803,12 +28803,12 @@ PrefabInstance:
     - target: {fileID: 2316330905732199212, guid: c4d6d5d1857f8e54493835637408a47f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.59
+      value: 2.25
       objectReference: {fileID: 0}
     - target: {fileID: 2316330905732199212, guid: c4d6d5d1857f8e54493835637408a47f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.94
+      value: -0.99
       objectReference: {fileID: 0}
     - target: {fileID: 2316330905732199212, guid: c4d6d5d1857f8e54493835637408a47f,
         type: 3}
@@ -28864,6 +28864,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Damage
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2316330905732199202, guid: c4d6d5d1857f8e54493835637408a47f,
+        type: 3}
+      propertyPath: AttackKD
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2316330905732199213, guid: c4d6d5d1857f8e54493835637408a47f,
         type: 3}

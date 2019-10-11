@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private float CurrentHealth;
     private SpriteRenderer Sprite;
     private Rigidbody2D Body;
+    public float TimeKd;
     public FloatValue MaxHealth;
     public Animator Anim;
     public GameObject Target;
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
         Body = GetComponent<Rigidbody2D>();
         CurrentHealth = MaxHealth.InitialValue;
         CurrentState = EnemyState.walk;
+        TimeKd = AttackKD;
     }
 
     public bool IsDead()
@@ -42,7 +44,13 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        StartCoroutine(AttackCo());
+        if (CurrentState != EnemyState.stagger && TimeKd >= AttackKD)
+        {
+            TimeKd = 0;
+            StartCoroutine(AttackCo());
+        } else {
+            TimeKd += Time.deltaTime;
+        }
     }
     
     private IEnumerator Die()
@@ -54,12 +62,9 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator GetDamage()
     {
-        if (CurrentState != EnemyState.stagger)
-        {
-            Anim.SetBool("IsGettingDamage", true);
-            yield return new WaitForSeconds(0.3f);
-            Anim.SetBool("IsGettingDamage", false);
-        }
+        Anim.SetBool("IsGettingDamage", true);
+        yield return new WaitForSeconds(0.3f);
+        Anim.SetBool("IsGettingDamage", false);
     }
 
     private IEnumerator AttackCo()
@@ -85,6 +90,7 @@ public class Enemy : MonoBehaviour
         else
         {
             CurrentState = EnemyState.die;
+            Body.constraints = RigidbodyConstraints2D.FreezeAll;
             StartCoroutine(Die());
         }
     }

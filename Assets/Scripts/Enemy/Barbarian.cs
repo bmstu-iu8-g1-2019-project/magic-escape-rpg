@@ -32,6 +32,7 @@ public class Barbarian : Enemy
         }
         else if (MoveCondition)
         {
+            TimeKd = AttackKD;
             Anim.SetBool("IsWalking", true);
             if (transform.position.x - Target.transform.position.x > 0)
             {
@@ -44,9 +45,7 @@ public class Barbarian : Enemy
             transform.position = Vector3.MoveTowards(transform.position,
                                 Target.transform.position, MoveSpeed * Time.deltaTime);
 
-        }
-        else
-        {
+        } else {
             Anim.SetBool("IsWalking", false);
         }
     }
