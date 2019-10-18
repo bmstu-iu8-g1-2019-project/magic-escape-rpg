@@ -10,16 +10,26 @@ public enum EnemyState
 }
 public class Enemy : MonoBehaviour
 {
-    private float CurrentHealth;
-    private SpriteRenderer Sprite;
+    public EnemyState CurrentState;
+
+    [Header("GameOhects")]
+    public SpriteRenderer Sprite;
     private Rigidbody2D Body;
-    public float TimeKd;
-    public FloatValue MaxHealth;
     public Animator Anim;
     public GameObject Target;
+
+    [Header("Movement and attack variables")]
+    public float TimeKd;
     public float MoveSpeed;
     public float AttackKD;
-    public EnemyState CurrentState;
+
+    [Header("Health variables")]
+    public FloatValue MaxHealth;
+    private float CurrentHealth;
+
+    [Header("Interaction variables")]
+    public GameObject LootPanel;
+
 
     private void Start()
     {
@@ -37,11 +47,6 @@ public class Enemy : MonoBehaviour
         return CurrentHealth <= 0;
     }
 
-    public void FlipSprite(bool value)
-    {
-        Sprite.flipX = value;
-    }
-
     public void Attack()
     {
         if (CurrentState != EnemyState.stagger && TimeKd >= AttackKD)
@@ -57,7 +62,8 @@ public class Enemy : MonoBehaviour
     {
         Anim.SetBool("IsDead", true);
         yield return new WaitForSeconds(0.75f);
-        this.gameObject.SetActive(false);
+        CurrentState = EnemyState.die;
+        Anim.enabled = false;
     }
 
     private IEnumerator GetDamage()
@@ -104,6 +110,15 @@ public class Enemy : MonoBehaviour
             CurrentState = EnemyState.walk;
             Body.velocity = Vector2.zero; // Prevent unstopable impulse
         }
-    } 
+    }
+
+    private void OnMouseDown()
+    {
+        if (IsDead())
+        {
+            LootPanel.SetActive(true);
+            this.gameObject.SetActive(false);
+        }
+    }
 }
 

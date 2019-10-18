@@ -150,9 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ebccc31137a979448912ae4c16c0538, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 1
-  Damage: {fileID: 0}
-  WaitTime: 0.35
+  ThisDamage: {fileID: 0}
 --- !u!58 &3248653774822646963
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -181,6 +179,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9900b46c651bb645856a151ad8156bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 3
-  KnockTime: 0.2
-  DamageInit: {fileID: 11400000, guid: dd0fc2d9797a50c459cfba03da6a5c8e, type: 2}
+  ThisKnockParams: {fileID: 11400000, guid: 068e156c94d7c384b984609b356e216f, type: 2}

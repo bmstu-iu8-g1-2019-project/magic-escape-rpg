@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class KnockBack : MonoBehaviour
 {
-    public float thrust;
-    public float KnockTime;
-    public FloatValue DamageInit;
-    private float Damage;
+    public DefaultKnock ThisKnockParams;
 
-    private void Start()
-    {
-        Damage = DamageInit.RuntimeValue;
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if ((collision.CompareTag("Enemy") || collision.CompareTag("Player")))
@@ -22,17 +15,16 @@ public class KnockBack : MonoBehaviour
             {
                 if (collision.CompareTag("Enemy") && collision.isTrigger)
                 {
-                    Debug.Log("poof");
                     AddForce(hit);
                     hit.GetComponent<Enemy>().CurrentState = EnemyState.stagger;
-                    collision.GetComponent<Enemy>().Knock(KnockTime, Damage);
+                    collision.GetComponent<Enemy>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
                 }
                 if (collision.gameObject.CompareTag("Player") 
                     && !this.CompareTag("PlayerDamage")) // Prevent dealing damage to yourself
                 {
                     AddForce(hit);
-                    hit.GetComponent<PlayerMove>().CurrentState = PlayerState.stagger;
-                    collision.GetComponent<PlayerMove>().Knock(KnockTime, Damage);
+                    hit.GetComponent<PlayerManager>().CurrentState = PlayerState.stagger;
+                    collision.GetComponent<PlayerManager>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
                 }
             }
         }
@@ -41,7 +33,7 @@ public class KnockBack : MonoBehaviour
     private void AddForce(Rigidbody2D hit)
     {
         Vector2 difference = hit.transform.position - transform.position;
-        difference = difference.normalized * thrust;
+        difference = difference.normalized * ThisKnockParams.Thrust;
         hit.AddForce(difference, ForceMode2D.Impulse);
     }
 

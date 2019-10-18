@@ -9,21 +9,30 @@ public enum PlayerState
     attack, 
     stagger
 }
-public class PlayerMove : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
-    private Animator Animator;
-    private Rigidbody2D Body;
+    [Header("Move and attack variables")]
+    public float MovementSpeed;
+    public Rigidbody2D Fireball;
     private Vector3 Move;
     private float Angle;
     private Vector3 Ideal = new Vector3(1f, 0f, 0f);
     private Vector3 Buf = new Vector3(0f, 1f, 0f);
+
+    [Header("Interaction variables")]
     public FloatValue CurrentHealth;
     public PlayerState CurrentState;
-    public float MovementSpeed;
-    public Rigidbody2D Fireball;
     public Signal PlayerHealthSignal;
+    public Signal EquipmentChangeSignal;
+    public PlayerEquipment Equipment;
+
+    [Header("GameComponents")]
+    private Animator Animator;
+    private Rigidbody2D Body;
+
     private void Start()
     {
+        Equipment.RangeDamageItem = Fireball.GetComponent<MagicCast>().ThisDamage;
         Body = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
     }
@@ -34,6 +43,10 @@ public class PlayerMove : MonoBehaviour
         {
 
             return;
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            EquipmentChangeSignal.Raise();
         }
         Move = Vector3.zero;
         Move.x = Input.GetAxisRaw("Horizontal");
@@ -82,7 +95,7 @@ public class PlayerMove : MonoBehaviour
 
     private IEnumerator AttackCo()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         CurrentState = PlayerState.walk;
     }
 

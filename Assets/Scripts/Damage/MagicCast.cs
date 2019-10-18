@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MagicCast : MonoBehaviour
 {
-    public float MovementSpeed;
-    public FloatValue Damage;
-    public float WaitTime;
+    public RangeDamage ThisDamage;
     private Animator Anim;
     private Rigidbody2D Rig;
     void Start()
@@ -31,7 +29,7 @@ public class MagicCast : MonoBehaviour
     private IEnumerator AttackCo()
     {
         Anim.SetBool("IsTriggered", true);
-        yield return new WaitForSeconds(WaitTime);
+        yield return new WaitForSeconds(ThisDamage.WaitTime);
         Destroy(this.gameObject);
     }
 }

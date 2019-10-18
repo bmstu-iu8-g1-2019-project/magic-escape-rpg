@@ -9,8 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 017bee62fe83d194299da1fd50c01335, type: 3}
-  m_Name: BarbarianDamage
+  m_Script: {fileID: 11500000, guid: 24ee89f22cd35e34691a8cc42dc0e79a, type: 3}
+  m_Name: Magic spell
   m_EditorClassIdentifier: 
-  InitialValue: 1
-  RuntimeValue: 1
+  ItemName: MyName
+  ItemDescription: Suck it
+  ItemImage: {fileID: -7585660988095454295, guid: 98a7b72a416cb694fa83bb6468660a99,
+    type: 3}
+  NumberHeld: 3
+  Usable: 0
+  Unique: 0

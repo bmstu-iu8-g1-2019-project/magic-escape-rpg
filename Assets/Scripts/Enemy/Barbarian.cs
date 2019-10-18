@@ -20,6 +20,10 @@ public class Barbarian : Enemy
         CheckDistance();
     }
 
+    public void FlipSprite(bool value)
+    {
+        Sprite.flipX = value;
+    }
     void CheckDistance()
     {
         AttackCondition = Vector3.Distance(Target.transform.position, transform.position) < AttackRadius;
