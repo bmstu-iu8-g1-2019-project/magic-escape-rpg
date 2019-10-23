@@ -10,7 +10,6 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     [Header("UI to change")]
     [SerializeField] private TextMeshProUGUI ItemNumberText;
     [SerializeField] private Image ItemImage;
-    private GameObject DescriptionPanel;
     private GameObject ItemDescription;
 
 
@@ -20,8 +19,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 
     private void Start()
     {
-        DescriptionPanel = GameObject.Find("Canvas/Inventory Panel/Description Panel");
-        ItemDescription = GameObject.Find("Canvas/Inventory Panel/Description Panel/Item Description");
+        ItemDescription = GameObject.Find("UI Canvas/Inventory Panel/Description Panel/Item Description");
     }
     public void Setup(InventoryItem NewItem, InventoryManager NewManager)
     {

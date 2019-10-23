@@ -19,7 +19,7 @@ public class MagicCast : MonoBehaviour
         {
             return;
         }
-        if (collision.tag != "Player")
+        if (!collision.CompareTag("Player") && !collision.CompareTag("Spawner"))
         {
             Rig.constraints = RigidbodyConstraints2D.FreezeAll;
             StartCoroutine(AttackCo());

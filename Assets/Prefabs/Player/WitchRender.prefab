@@ -155,8 +155,9 @@ MonoBehaviour:
   MovementSpeed: 3
   Fireball: {fileID: 4704395346699381066, guid: 083e96bb2a980874091c43fc6ca2e662,
     type: 3}
-  CurrentHealth: {fileID: 0}
+  CurrentHealth: {fileID: 11400000, guid: 4185fb3aa4c96164d993f2e5da3bcd2c, type: 2}
   CurrentState: 0
-  PlayerHealthSignal: {fileID: 0}
-  EquipmentChangeSignal: {fileID: 0}
-  Equipment: {fileID: 0}
+  PlayerHealthSignal: {fileID: 11400000, guid: cf2150bb3f2ae71468558ab00ab45004, type: 2}
+  EquipmentChangeSignal: {fileID: 11400000, guid: f30d652b7f749f3488c2885b85dcd3f9,
+    type: 2}
+  Equipment: {fileID: 11400000, guid: 0d70abaf6084d08479ef247861583c9c, type: 2}
