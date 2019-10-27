@@ -13,7 +13,7 @@ public class KnockBack : MonoBehaviour
             Rigidbody2D hit = collision.GetComponent<Rigidbody2D>();
             if (hit != null)
             {
-                if (collision.CompareTag("Enemy") && collision.isTrigger)
+                if (collision.CompareTag("Enemy") && collision.isTrigger && !this.CompareTag("Damage"))
                 {
                     AddForce(hit);
                     hit.GetComponent<Enemy>().CurrentState = EnemyState.stagger;

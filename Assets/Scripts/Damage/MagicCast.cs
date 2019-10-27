@@ -19,16 +19,24 @@ public class MagicCast : MonoBehaviour
         {
             return;
         }
-        if (!collision.CompareTag("Player") && !collision.CompareTag("Spawner"))
+        if (!collision.CompareTag("Player") && !collision.CompareTag("Spawner") 
+            && !collision.CompareTag("Scaner")
+            && !collision.CompareTag("PlayerDamage"))
         {
-            Rig.constraints = RigidbodyConstraints2D.FreezeAll;
+            if (Rig)
+            {
+                Rig.constraints = RigidbodyConstraints2D.FreezeAll;
+            }
             StartCoroutine(AttackCo());
         }
     }
 
     private IEnumerator AttackCo()
     {
-        Anim.SetBool("IsTriggered", true);
+        if (Anim)
+        {
+            Anim.SetBool("IsTriggered", true);
+        }
         yield return new WaitForSeconds(ThisDamage.WaitTime);
         Destroy(this.gameObject);
     }
