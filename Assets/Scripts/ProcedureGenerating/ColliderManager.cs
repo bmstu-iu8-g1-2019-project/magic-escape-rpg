@@ -5,7 +5,7 @@ using UnityEngine;
 public class ColliderManager : MonoBehaviour
 {
     [SerializeField] private bool IsEnetered = false;
-
+    [SerializeField] private GameObject[] Gates;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !IsEnetered)
@@ -15,18 +15,16 @@ public class ColliderManager : MonoBehaviour
         }
     }
 
-    public void LetMeOut()
+    public void OpenGates()
     {
-
+        gameObject.SetActive(false);
     }
 
     public void CloseGates()
     {
-        PolygonCollider2D[] arr = this.GetComponents<PolygonCollider2D>();
-        for (int i = 0; i < arr.Length; i++)
+        for (int i = 0; i < Gates.Length; i++)
         {
-            arr[i].isTrigger = false;
+            Instantiate(Gates[i], transform.position, Quaternion.identity).transform.SetParent(transform);
         }
-        
     }
 }

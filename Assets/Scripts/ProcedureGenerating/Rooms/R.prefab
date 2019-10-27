@@ -61,6 +61,7 @@ GameObject:
   - component: {fileID: 368316241185536501}
   - component: {fileID: 8462255939444474994}
   - component: {fileID: 7137622835312096587}
+  - component: {fileID: 3068275365372882119}
   m_Layer: 0
   m_Name: Colliders
   m_TagString: Untagged
@@ -76,7 +77,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2019505869608301498}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6, y: 3.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6433565343773124037}
@@ -95,6 +96,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsEnetered: 0
+  Gates:
+  - {fileID: 6649891613849003187, guid: c9b7c0d65d8b0fd419663feda0ad23cf, type: 3}
 --- !u!60 &7137622835312096587
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -108,7 +111,7 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 6, y: 3.5}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -125,6 +128,33 @@ PolygonCollider2D:
       - {x: -0.98497677, y: -0.014607906}
       - {x: 1.505269, y: -1.242724}
       - {x: 1.9901171, y: -0.9949639}
+--- !u!114 &3068275365372882119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2019505869608301498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a757c6f004fea3f47acfbf9df888e9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Signal: {fileID: 11400000, guid: 62e5ff533459c5542a1b736c0b3df986, type: 2}
+  SignalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8462255939444474994}
+        m_MethodName: OpenGates
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3092601352251992629
 GameObject:
   m_ObjectHideFlags: 0

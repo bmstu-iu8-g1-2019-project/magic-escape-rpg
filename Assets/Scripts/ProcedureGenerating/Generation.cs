@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Generation : MonoBehaviour
 {
-    public Rooms RoomsList;
-    public GameObject BlockedRoom;
+    [SerializeField] private Rooms RoomsList;
+    [SerializeField] private GameObject BlockedRoom;
     private GameObject Spawned;
     private GameObject Grid;
     private bool IsDrawn = false;

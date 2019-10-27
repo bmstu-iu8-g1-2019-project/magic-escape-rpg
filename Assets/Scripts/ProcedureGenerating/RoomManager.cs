@@ -6,18 +6,6 @@ public class RoomManager : MonoBehaviour
 {
     public int EnemiesNum;
     public Signal OpenGates;
-
-
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
-
     public void EnemyBorn()
     {
         EnemiesNum++;
@@ -29,6 +17,7 @@ public class RoomManager : MonoBehaviour
         if (EnemiesNum <= 0)
         {
             OpenGates.Raise();
+            Debug.Log("Raised");
         }
     }
 }

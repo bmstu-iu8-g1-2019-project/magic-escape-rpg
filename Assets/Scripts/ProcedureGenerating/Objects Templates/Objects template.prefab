@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 2316330905732199208, guid: c4d6d5d1857f8e54493835637408a47f, type: 3}
-  - {fileID: 2172273573293554771, guid: 74c409ee6dc04b24ca391db3a02d3958, type: 3}
+  - {fileID: 1992836415184059143, guid: a4aba78882f9b5543b221dc10ac3410f, type: 3}
 --- !u!1 &1927205582461834662
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 2316330905732199208, guid: c4d6d5d1857f8e54493835637408a47f, type: 3}
-  - {fileID: 2172273573293554771, guid: 74c409ee6dc04b24ca391db3a02d3958, type: 3}
+  - {fileID: 1992836415184059143, guid: a4aba78882f9b5543b221dc10ac3410f, type: 3}
 --- !u!1 &2536315834553106632
 GameObject:
   m_ObjectHideFlags: 0
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 2316330905732199208, guid: c4d6d5d1857f8e54493835637408a47f, type: 3}
-  - {fileID: 2172273573293554771, guid: 74c409ee6dc04b24ca391db3a02d3958, type: 3}
+  - {fileID: 1992836415184059143, guid: a4aba78882f9b5543b221dc10ac3410f, type: 3}
 --- !u!1 &5142111853276325148
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,6 +147,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 186562139699995023}
+  - component: {fileID: 8751155415692864494}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -172,6 +173,20 @@ Transform:
   m_Father: {fileID: 6904203458105892977}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8751155415692864494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5142111853276325148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff1697b9ce260ef4aabb2245dc361ba1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemiesNum: 0
+  OpenGates: {fileID: 11400000, guid: 62e5ff533459c5542a1b736c0b3df986, type: 2}
 --- !u!1 &6904203457823472492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,4 +1093,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Objects:
   - {fileID: 2316330905732199208, guid: c4d6d5d1857f8e54493835637408a47f, type: 3}
-  - {fileID: 2172273573293554771, guid: 74c409ee6dc04b24ca391db3a02d3958, type: 3}
+  - {fileID: 1992836415184059143, guid: a4aba78882f9b5543b221dc10ac3410f, type: 3}
