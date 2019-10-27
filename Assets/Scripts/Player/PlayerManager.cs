@@ -13,6 +13,7 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Move and attack variables")]
     public float MovementSpeed;
+    public GameObject Target;
     public Rigidbody2D Fireball;
     private Vector3 Move;
     private float Angle;
@@ -37,7 +38,7 @@ public class PlayerManager : MonoBehaviour
         Animator = GetComponent<Animator>();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (Time.timeScale == 0f)
         {
@@ -59,7 +60,7 @@ public class PlayerManager : MonoBehaviour
         else if (Move != Vector3.zero)
         {
             Buf = Move;
-            if (CurrentState == PlayerState.walk)
+            if (CurrentState != PlayerState.stagger)
             {
                 MovePlayer();
             } else {
@@ -82,15 +83,29 @@ public class PlayerManager : MonoBehaviour
     private void Attack()
     {
         CurrentState = PlayerState.attack;
-        Angle = Vector3.Angle(Ideal, Buf);
-        if (Buf.y < 0)
+        if (Target)
+        {
+            if (!Target.GetComponent<Enemy>().IsDead())
+            {
+                Vector3 dif = Target.transform.position - transform.position;
+                Spawn(dif);
+                return;
+            }
+        }
+        Spawn(Buf);
+    }
+
+    private void Spawn(Vector3 Vec)
+    {
+        Angle = Vector3.Angle(Ideal, Vec);
+        if (Vec.y < 0)
         {
             Angle *= -1f;
         }
         StartCoroutine(AttackCo());
         Rigidbody2D FireballClone;
         FireballClone = (Rigidbody2D)Instantiate(Fireball, transform.position, Quaternion.Euler(0f, 0f, Angle));
-        FireballClone.AddForce(Buf.normalized * 5f, ForceMode2D.Impulse);
+        FireballClone.AddForce(Vec.normalized * 5f, ForceMode2D.Impulse);
     }
 
     private IEnumerator AttackCo()
