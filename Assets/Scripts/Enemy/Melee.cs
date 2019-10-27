@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Barbarian : Enemy
+public class Melee : Enemy
 {
     public float ChaseRadius;
     public float AttackRadius;
@@ -13,18 +13,14 @@ public class Barbarian : Enemy
 
     void Update()
     {
-        if (Time.timeScale == 0)
+        if (Time.timeScale == 0 || IsDead())
         {
             return;
         }
-        CheckDistance();
+        Action();
     }
 
-    public void FlipSprite(bool value)
-    {
-        Sprite.flipX = value;
-    }
-    void CheckDistance()
+    virtual public void Action()
     {
         AttackCondition = Vector3.Distance(Target.transform.position, transform.position) < AttackRadius;
         MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
@@ -37,18 +33,8 @@ public class Barbarian : Enemy
         else if (MoveCondition)
         {
             TimeKd = AttackKD;
-            Anim.SetBool("IsWalking", true);
-            if (transform.position.x - Target.transform.position.x > 0)
-            {
-                FlipSprite(true);
-            }
-            else
-            {
-                FlipSprite(false);
-            }
-            transform.position = Vector3.MoveTowards(transform.position,
-                                Target.transform.position, MoveSpeed * Time.deltaTime);
-
+            WalkToTarget(Vector3.MoveTowards(transform.position,
+                            Target.transform.position, MoveSpeed * Time.deltaTime));
         } else {
             Anim.SetBool("IsWalking", false);
         }
