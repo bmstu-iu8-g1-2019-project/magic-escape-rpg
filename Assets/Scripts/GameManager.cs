@@ -40,18 +40,16 @@ public class GameManager : MonoBehaviour
             }
 
         }
-        if (Time.timeScale == 0f)
+        if (!GamePaused)
         {
-
-            return;
-        }
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            InventoryPanel.SetActive(!InventoryPanel.activeSelf);
-        }
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            EquipmentPanel.SetActive(!EquipmentPanel.activeSelf);
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                InventoryPanel.SetActive(!InventoryPanel.activeSelf);
+            }
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                EquipmentPanel.SetActive(!EquipmentPanel.activeSelf);
+            }
         }
     }
 
