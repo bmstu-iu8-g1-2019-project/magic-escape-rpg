@@ -41,7 +41,8 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     {
         if (ThisItem)
         {
-
+            ThisItem.Use();
+            ItemDescription.GetComponent<TextMeshProUGUI>().text = "";
             Destroy(this.gameObject);
         }
     }

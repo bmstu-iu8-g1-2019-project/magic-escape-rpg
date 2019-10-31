@@ -17,7 +17,6 @@ public class RoomManager : MonoBehaviour
         if (EnemiesNum <= 0)
         {
             OpenGates.Raise();
-            Debug.Log("Raised");
         }
     }
 }

@@ -10,7 +10,11 @@ public class InventoryManager : MonoBehaviour
     public PlayerInventory playerInventory;
     [SerializeField] private GameObject BlankInventorySlot;
     [SerializeField] private GameObject InventoryPanel;
-    // [SerializeField] private TextMeshProUGUI DescriptionText;
+
+    void Start()
+    {
+        MakeInventorySlot();
+    }
 
     public void MakeInventorySlot()
     {
@@ -31,9 +35,5 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
-    
-    void Start()
-    {
-        MakeInventorySlot();
-    }
+
 }

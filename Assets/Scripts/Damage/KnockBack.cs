@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class KnockBack : MonoBehaviour
 {
-    public DefaultKnock ThisKnockParams;
+    public DefaultKnock ThisKnockParams; //Scriptable object with parametrs on KnockBack
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.CompareTag("Enemy") || collision.CompareTag("Player")))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Player") && collision.isTrigger)
         {
             Rigidbody2D hit = collision.GetComponent<Rigidbody2D>();
             if (hit != null)
             {
-                if (collision.CompareTag("Enemy") && collision.isTrigger && !this.CompareTag("Damage"))
+                if (collision.CompareTag("Enemy") && !this.CompareTag("Damage"))
                 {
                     AddForce(hit);
                     hit.GetComponent<Enemy>().CurrentState = EnemyState.stagger;

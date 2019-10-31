@@ -8,17 +8,11 @@ public class GameManager : MonoBehaviour
     public GameObject InventoryPanel;
     public GameObject EquipmentPanel;
     public GameObject PausePanel;
+    public GameObject AnnouncementPanel;
 
     [Header("Game Pause")]
     private bool GamePaused;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
 
@@ -38,7 +32,7 @@ public class GameManager : MonoBehaviour
             {
                 GamePause();
             }
-
+            PausePanel.SetActive(!PausePanel.activeSelf);
         }
         if (!GamePaused)
         {
@@ -71,4 +65,14 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void HideAnnouncememt()
+    {
+        StartCoroutine(HideCo());
+    }
+
+    private IEnumerator HideCo()
+    {
+        yield return new WaitForSeconds(1f);
+        AnnouncementPanel.SetActive(false);
+    }
 }

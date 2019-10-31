@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Melee : Enemy
 {
+    [Header("Melee enemy parametrs")]
     public float ChaseRadius;
     public float AttackRadius;
-    public Transform HomePosition;
+    // public Transform HomePosition; planning to introduce it later
     private bool MoveCondition;
     private bool AttackCondition;
 
 
-    void Update()
+    private void Update()
     {
         if (Time.timeScale == 0 || IsDead())
         {
@@ -20,7 +21,7 @@ public class Melee : Enemy
         Action();
     }
 
-    virtual public void Action()
+    private void Action()
     {
         AttackCondition = Vector3.Distance(Target.transform.position, transform.position) < AttackRadius;
         MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
@@ -37,6 +38,26 @@ public class Melee : Enemy
                             Target.transform.position, MoveSpeed * Time.deltaTime));
         } else {
             Anim.SetBool("IsWalking", false);
+        }
+    }
+
+    override public void Knock(float KnockTime, float Damage)
+    {
+        if (!IsDead())
+        {
+            CurrentHealth -= Damage;
+            if (!IsDead())
+            {
+                ChaseRadius = 15f; // After getting Damage melee will chase
+                CurrentState = EnemyState.stagger;
+                StartCoroutine(GetDamage());
+                StartCoroutine(KnockCo(KnockTime));
+            }
+            else
+            {
+                Body.constraints = RigidbodyConstraints2D.FreezeAll;
+                Die();
+            }
         }
     }
 }

@@ -10,15 +10,22 @@ public class Range : Enemy
     private float Angle;
     private bool AttackCondition;
     private bool MoveCondition;
+
     void Update()
     {
         if (Time.timeScale == 0 || IsDead())
         {
             return;
         }
-        AttackCondition = Vector3.Distance(Target.transform.position, transform.position) <= AttackRadius  && CurrentState == EnemyState.walk;
-        MoveCondition = Vector3.Distance(Target.transform.position, transform.position) > AttackRadius 
-            && Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius 
+        FlipSprite(transform.position.x > Target.transform.position.x);
+        Action();
+    }
+
+    private void Action()
+    {
+        AttackCondition = Vector3.Distance(Target.transform.position, transform.position) <= AttackRadius && CurrentState == EnemyState.walk;
+        MoveCondition = Vector3.Distance(Target.transform.position, transform.position) > AttackRadius
+            && Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
             && CurrentState == EnemyState.walk;
         if (AttackCondition)
         {
@@ -26,15 +33,7 @@ public class Range : Enemy
             if (TimeKd >= AttackKD)
             {
                 Attack();
-                Rigidbody2D ArrowClone;
-                Vector3 Buf = (Target.transform.position - transform.position);
-                Angle = Vector3.Angle(new Vector3(1f, 0f, 0f), Buf);
-                if (Buf.y < 0)
-                {
-                    Angle *= -1f;
-                }
-                ArrowClone = (Rigidbody2D)Instantiate(Arrow, transform.position, Quaternion.Euler(0f, 0f, Angle));
-                ArrowClone.AddForce(Buf.normalized * 5f, ForceMode2D.Impulse);
+                SpawntProjectTile();
             }
             else
             {
@@ -51,5 +50,18 @@ public class Range : Enemy
         {
             Anim.SetBool("IsWalking", false);
         }
+    }
+
+    private void SpawntProjectTile()
+    {
+        Rigidbody2D ArrowClone;
+        Vector3 Buf = (Target.transform.position - transform.position);
+        Angle = Vector3.Angle(new Vector3(1f, 0f, 0f), Buf);
+        if (Buf.y < 0)
+        {
+            Angle *= -1f;
+        }
+        ArrowClone = (Rigidbody2D)Instantiate(Arrow, transform.position, Quaternion.Euler(0f, 0f, Angle));
+        ArrowClone.AddForce(Buf.normalized * 5f, ForceMode2D.Impulse);
     }
 }

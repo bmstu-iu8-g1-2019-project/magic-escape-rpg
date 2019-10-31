@@ -19,28 +19,21 @@ public class Enemy : MonoBehaviour
     [Header("Health variables")]
     public FloatValue MaxHealth;
     public float DeadAnimTime;
-    private float CurrentHealth;
+    [HideInInspector] public float CurrentHealth;
+    [HideInInspector] public float TimeKd;
+    [HideInInspector] public SpriteRenderer Sprite;
+    [HideInInspector] public Rigidbody2D Body;
+    [HideInInspector] public Animator Anim;
+    [HideInInspector] public GameObject Target;
+    [HideInInspector] public GameObject Parent;
 
-    [Header("Interaction variables")]
-    private GameObject LootPanel;
-
-    [Header("Work fields")]
-    public float TimeKd;
-
-    [Header("GameObjects")]
-    public SpriteRenderer Sprite;
-    public Rigidbody2D Body;
-    public Animator Anim;
-    public GameObject Target;
-
-    [Header("Dungeon signal. May be unnecessary")]
-    public GameObject Parent;
-
-
+    GameObject GetParent(GameObject obj)
+    {
+        return obj.transform.parent.gameObject;
+    }
 
     private void Start()
     {
-        LootPanel = GameObject.FindGameObjectWithTag("Loot");
         Sprite = GetComponent<SpriteRenderer>();
         Target = GameObject.FindWithTag("Player");
         Anim = GetComponent<Animator>();
@@ -48,8 +41,8 @@ public class Enemy : MonoBehaviour
         CurrentHealth = MaxHealth.InitialValue;
         CurrentState = EnemyState.walk;
         TimeKd = AttackKD;
-        Parent = transform.parent.gameObject;
-        Parent = Parent.transform.parent.gameObject;
+        Parent = GetParent(GetParent(gameObject));
+        Parent.GetComponent<RoomManager>().EnemyBorn();
     }
 
     public bool IsDead()
@@ -68,30 +61,6 @@ public class Enemy : MonoBehaviour
         }
     }
     
-    private IEnumerator Die()
-    {
-        Anim.SetBool("IsDead", true);
-        yield return new WaitForSeconds(DeadAnimTime);
-        if (IsDead())
-        {
-            Parent.GetComponent<RoomManager>().EnemyDied();
-        }
-        CurrentState = EnemyState.die;
-        BoxCollider2D[] temp = gameObject.GetComponents<BoxCollider2D>();
-        for (int i = 0; i < temp.Length; i++)
-        {
-            temp[i].enabled = false;
-        }
-        Anim.enabled = false;
-    }
-
-    private IEnumerator GetDamage()
-    {
-        Anim.SetBool("IsGettingDamage", true);
-        yield return new WaitForSeconds(0.3f);
-        Anim.SetBool("IsGettingDamage", false);
-    }
-
     private IEnumerator AttackCo()
     {
         if (CurrentState != EnemyState.attack)
@@ -104,7 +73,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Knock(float KnockTime, float Damage)
+    virtual public void Knock(float KnockTime, float Damage)
     {
         if (!IsDead())
         {
@@ -117,13 +86,19 @@ public class Enemy : MonoBehaviour
             }
             else
             {
-                Body.constraints = RigidbodyConstraints2D.FreezeAll;
-                StartCoroutine(Die());
+                Die();
             }
         }
     }
 
-    private IEnumerator KnockCo(float KnockTime)
+    public IEnumerator GetDamage()
+    {
+        Anim.SetBool("IsGettingDamage", true);
+        yield return new WaitForSeconds(0.3f);
+        Anim.SetBool("IsGettingDamage", false);
+    }
+
+    public IEnumerator KnockCo(float KnockTime)
     {
         if (Body != null)
         {
@@ -134,12 +109,30 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        Body.constraints = RigidbodyConstraints2D.FreezeAll;
+        StartCoroutine(DieCo());
+        Parent.GetComponent<RoomManager>().EnemyDied();
+        BoxCollider2D[] temp = gameObject.GetComponents<BoxCollider2D>();
+        for (int i = 0; i < temp.Length; i++)
+        {
+            temp[i].enabled = false;
+        }
+    }
+    public IEnumerator DieCo()
+    {
+        Anim.SetBool("IsDead", true);
+        yield return new WaitForSeconds(DeadAnimTime);
+        Anim.enabled = false;
+        CurrentState = EnemyState.die;
+    }
+
     private void OnMouseDown()
     {
         if (IsDead())
         {
-            LootPanel.SetActive(true);
-            this.gameObject.SetActive(false);
+            this.gameObject.SetActive(false); // Will introduce loot panel
         }
     }
 
@@ -151,7 +144,7 @@ public class Enemy : MonoBehaviour
     public void WalkToTarget(Vector3 newPos)
     {
         Anim.SetBool("IsWalking", true);
-        if (transform.position.x - Target.transform.position.x > 0)
+        if (transform.position.x > Target.transform.position.x)
         {
             FlipSprite(true);
         }
@@ -162,4 +155,3 @@ public class Enemy : MonoBehaviour
         transform.position = newPos;
     }
 }
-

@@ -6,18 +6,22 @@ public class ColliderManager : MonoBehaviour
 {
     [SerializeField] private bool IsEnetered = false;
     [SerializeField] private GameObject[] Gates;
-    private void OnTriggerEnter2D(Collider2D collision)
+
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && !IsEnetered)
+        if (collision.CompareTag("Player") && !IsEnetered && collision.transform && !collision.isTrigger)
         {
-            Invoke("CloseGates", 0.3f);
+            Invoke("CloseGates", 0.1f);
             IsEnetered = true;
         }
     }
 
     public void OpenGates()
     {
-        gameObject.SetActive(false);
+        foreach (Transform child in transform)
+        {
+            child.gameObject.SetActive(false);
+        }
     }
 
     public void CloseGates()

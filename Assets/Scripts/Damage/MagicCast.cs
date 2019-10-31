@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class MagicCast : MonoBehaviour
 {
-    public RangeDamage ThisDamage;
-    private Animator Anim;
-    private Rigidbody2D Rig;
+    public WeaponItem ThisItem; // Scriptable object
+    public float Speed; // Used in Player Manager
+    public GameObject muzzlePrefab;
+    public GameObject hitPrefab;
+
     void Start()
     {
-        Anim = GetComponent<Animator>();
-        Rig = GetComponent<Rigidbody2D>();
+        if (muzzlePrefab)
+        {
+            var muzzleVFX = Instantiate(muzzlePrefab, transform.position, Quaternion.identity);
+            muzzleVFX.transform.forward = gameObject.transform.forward;
+            var ps = muzzleVFX.GetComponent<ParticleSystem>();
+            if (ps != null)
+                Destroy(muzzleVFX, ps.main.duration);
+            else
+            {
+                var psChild = muzzleVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                Destroy(muzzleVFX, psChild.main.duration);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -21,23 +34,29 @@ public class MagicCast : MonoBehaviour
         }
         if (!collision.CompareTag("Player") && !collision.CompareTag("Spawner") 
             && !collision.CompareTag("Scaner")
-            && !collision.CompareTag("PlayerDamage"))
+            && !collision.CompareTag("PlayerDamage") && !collision.CompareTag("Damage"))
         {
-            if (Rig)
-            {
-                Rig.constraints = RigidbodyConstraints2D.FreezeAll;
+            Vector3 contact = transform.position;
+            Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normalized);
+            if (hitPrefab) {
+                var hitVFX = Instantiate(hitPrefab, contact, rot);
+                var ps = hitVFX.GetComponent<ParticleSystem>();
+                if (!ps)
+                {
+                    var psChild = hitVFX.transform.GetChild(0).GetComponent<ParticleSystem>();
+                    Destroy(hitVFX, psChild.main.duration);
+                }
+                else
+                    Destroy(hitVFX, ps.main.duration);
             }
+            gameObject.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezeAll;
             StartCoroutine(AttackCo());
         }
     }
 
     private IEnumerator AttackCo()
     {
-        if (Anim)
-        {
-            Anim.SetBool("IsTriggered", true);
-        }
-        yield return new WaitForSeconds(ThisDamage.WaitTime);
+        yield return new WaitForSeconds(ThisItem.KnockParams.WaitTime);
         Destroy(this.gameObject);
     }
 }
