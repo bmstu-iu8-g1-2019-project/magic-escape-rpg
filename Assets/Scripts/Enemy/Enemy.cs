@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
     [Header("Movement and attack variables")]
     public float MoveSpeed;
     public float AttackKD;
+    [SerializeField] private float AttackAnimTime;
 
     [Header("Health variables")]
     public FloatValue MaxHealth;
@@ -27,6 +28,13 @@ public class Enemy : MonoBehaviour
     [HideInInspector] public GameObject Target;
     [HideInInspector] public GameObject Parent;
 
+    [Header("Items")]
+    [SerializeField] private GameObject GoldenCoin;
+
+    [Space]
+    [SerializeField] private Signal EnemyBorn;
+    [SerializeField] private Signal EnemyDied;
+
     GameObject GetParent(GameObject obj)
     {
         return obj.transform.parent.gameObject;
@@ -35,14 +43,20 @@ public class Enemy : MonoBehaviour
     private void Start()
     {
         Sprite = GetComponent<SpriteRenderer>();
-        Target = GameObject.FindWithTag("Player");
         Anim = GetComponent<Animator>();
         Body = GetComponent<Rigidbody2D>();
         CurrentHealth = MaxHealth.InitialValue;
         CurrentState = EnemyState.walk;
         TimeKd = AttackKD;
         Parent = GetParent(GetParent(gameObject));
-        Parent.GetComponent<RoomManager>().EnemyBorn();
+        if (Parent.GetComponent<RoomManager>())
+        {
+            Parent.GetComponent<RoomManager>().EnemyBorn();
+        }
+        if (EnemyBorn)
+        {
+            EnemyBorn.Raise();
+        }
     }
 
     public bool IsDead()
@@ -67,7 +81,7 @@ public class Enemy : MonoBehaviour
         {
             CurrentState = EnemyState.attack;
             Anim.SetBool("IsAttacking", true);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(AttackAnimTime);
             Anim.SetBool("IsAttacking", false);
             CurrentState = EnemyState.walk;
         }
@@ -112,12 +126,40 @@ public class Enemy : MonoBehaviour
     public void Die()
     {
         Body.constraints = RigidbodyConstraints2D.FreezeAll;
+        SpawnCoins();
         StartCoroutine(DieCo());
-        Parent.GetComponent<RoomManager>().EnemyDied();
+        if (Parent.GetComponent<RoomManager>())
+        {
+            Parent.GetComponent<RoomManager>().EnemyDied();
+        }
         BoxCollider2D[] temp = gameObject.GetComponents<BoxCollider2D>();
         for (int i = 0; i < temp.Length; i++)
         {
             temp[i].enabled = false;
+        }
+        if (EnemyDied)
+        {
+            EnemyDied.Raise();
+        }
+    }
+
+    public virtual void SpawnCoins()
+    {
+        int rand = Random.Range(1, 13);
+        for (int i = 0; i < rand; i++)
+        {
+            Rigidbody2D temp = Instantiate(GoldenCoin, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            temp.AddForce(new Vector2(Mathf.Sin(i), Mathf.Cos(i)) * i, ForceMode2D.Impulse);
+            StartCoroutine(CoinSpawnCo(temp));
+        }
+    }
+
+    IEnumerator CoinSpawnCo(Rigidbody2D rig)
+    {
+        yield return new WaitForSeconds(0.2f);
+        if (rig)
+        {
+            rig.constraints = RigidbodyConstraints2D.FreezeAll;
         }
     }
     public IEnumerator DieCo()

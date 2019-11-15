@@ -13,7 +13,7 @@ public class WeaponItem : InventoryItem
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         if (Player)
         {
-            Player.GetComponent<PlayerManager>().Weapons.Add(ThisItem.GetComponent<Rigidbody2D>());
+            Player.GetComponent<PlayerManager>().Weapons.thisList.Add(ThisItem.GetComponent<Rigidbody2D>());
             Player.GetComponent<PlayerManager>().ChangeCurrentItem();  
         }
     }

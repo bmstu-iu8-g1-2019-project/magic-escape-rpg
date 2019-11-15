@@ -17,6 +17,9 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     public InventoryItem ThisItem;
     public InventoryManager ThisManager;
 
+    [Space]
+    public PlayerInventory Inventory;
+
     private void Start()
     {
         ItemDescription = GameObject.Find("UI Canvas/Inventory Panel/Description Panel/Item Description");
@@ -28,7 +31,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         if (ThisItem)
         {
             ItemImage.sprite = ThisItem.ItemImage;
-            ItemNumberText.text = "" + ThisItem.NumberHeld; // Convertion int to string
+            if (!ThisItem.Unique)
+            {
+                ItemNumberText.text = "" + ThisItem.NumberHeld; // Convertion int to string
+            }
         }
     }
     
@@ -43,7 +49,22 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         {
             ThisItem.Use();
             ItemDescription.GetComponent<TextMeshProUGUI>().text = "";
-            Destroy(this.gameObject);
+            if (ThisItem.NumberHeld == 1 || ThisItem.Unique)
+            {
+                Destroy(this.gameObject);
+                for (int i = 0; i < Inventory.MyInventory.Count; i++)
+                {
+                    if (ThisItem.name == Inventory.MyInventory[i].name)
+                    {
+                        Inventory.MyInventory.Remove(Inventory.MyInventory[i]);
+                    }
+                }
+            }
+            else
+            {
+                ThisItem.NumberHeld--;
+                ItemNumberText.text = "" + ThisItem.NumberHeld;
+            }
         }
     }
 }

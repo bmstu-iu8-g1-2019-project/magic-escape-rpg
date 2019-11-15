@@ -17,8 +17,11 @@ public class Range : Enemy
         {
             return;
         }
-        FlipSprite(transform.position.x > Target.transform.position.x);
-        Action();
+        if (Target)
+        {
+            FlipSprite(transform.position.x > Target.transform.position.x);
+            Action();
+        }
     }
 
     private void Action()

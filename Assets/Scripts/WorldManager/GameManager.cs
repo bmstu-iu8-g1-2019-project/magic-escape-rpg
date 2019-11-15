@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
             {
                 GamePause();
             }
-            PausePanel.SetActive(!PausePanel.activeSelf);
         }
         if (!GamePaused)
         {
@@ -52,6 +51,7 @@ public class GameManager : MonoBehaviour
         if (!GamePaused)
         {
             Time.timeScale = 0f;
+            PausePanel.SetActive(true);
             GamePaused = true;
         }
     }
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         if (GamePaused)
         {
             Time.timeScale = 1f;
+            PausePanel.SetActive(false);
             GamePaused = false;
         }
     }

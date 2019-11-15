@@ -16,7 +16,7 @@ public class DestroyDecoration : MonoBehaviour
         {
             return;
         }
-        if (collision.tag == "PlayerDamage")
+        if (collision.CompareTag("PlayerDamage") || collision.CompareTag("Damage"))
         {
             StartCoroutine(Destroyable());
         }

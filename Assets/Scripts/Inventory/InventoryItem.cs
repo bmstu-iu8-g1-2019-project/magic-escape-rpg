@@ -13,6 +13,8 @@ public class InventoryItem : ScriptableObject
     public int NumberHeld;
     public bool Usable;
     public bool Unique;
+    public int id;
+
 
     public void Use()
     {

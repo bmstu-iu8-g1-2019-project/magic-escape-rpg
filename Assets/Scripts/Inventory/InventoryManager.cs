@@ -22,17 +22,22 @@ public class InventoryManager : MonoBehaviour
         {
             for (int i = 0; i < playerInventory.MyInventory.Count; i++)
             {
-                GameObject temp =
+                AddItem(playerInventory.MyInventory[i]); 
+            }
+        }
+    }
+
+    public void AddItem(InventoryItem item)
+    {
+        GameObject temp =
                     Instantiate(BlankInventorySlot,
                     InventoryPanel.transform.position, Quaternion.identity);
-                temp.transform.SetParent(InventoryPanel.transform);
-                temp.transform.localScale = new Vector3(1, 1, 1);
-                InventorySlot newSlot = temp.GetComponent<InventorySlot>();
-                if (newSlot)
-                {
-                    newSlot.Setup(playerInventory.MyInventory[i], this);
-                }
-            }
+        temp.transform.SetParent(InventoryPanel.transform);
+        temp.transform.localScale = new Vector3(1, 1, 1);
+        InventorySlot newSlot = temp.GetComponent<InventorySlot>();
+        if (newSlot)
+        {
+            newSlot.Setup(item, this);
         }
     }
 

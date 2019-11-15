@@ -12,10 +12,11 @@ public class LoadNewLevel : MonoBehaviour
 
     private void Awake()
     {
+        GameObject temp = gameObject;
         if (FadeInPanel != null)
         {
             GameObject Panel = Instantiate(FadeInPanel, Vector3.zero, Quaternion.identity);
-            Destroy(Panel, 1);
+            Destroy(Panel, 0.333f);
         }
     }
 

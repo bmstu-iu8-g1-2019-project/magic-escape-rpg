@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ColliderManager : MonoBehaviour
 {
-    [SerializeField] private bool IsEnetered = false;
+    public bool IsEnetered = false;
     [SerializeField] private GameObject[] Gates;
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player") && !IsEnetered && collision.transform && !collision.isTrigger)
         {

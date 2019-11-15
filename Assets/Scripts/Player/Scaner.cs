@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Scaner : MonoBehaviour
 {
-    private GameObject Player;
-    private CircleCollider2D Collider;
+    private GameObject Character;
+    [HideInInspector] public CircleCollider2D Collider;
     [SerializeField] private float deltaR;
     [SerializeField] private float MaxR;
 
-    void Start()
+    public virtual void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("Player");
+        Character = GameObject.FindGameObjectWithTag("Player");
         Collider = gameObject.GetComponent<CircleCollider2D>();
     }
 
@@ -20,14 +20,24 @@ public class Scaner : MonoBehaviour
         if (Collider.radius < MaxR)
         {
             Collider.radius += deltaR * Time.deltaTime;
-        }         
+        }
+        else
+        {
+            AssignTarget(null);
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public virtual void AssignTarget(GameObject target)
+    {
+        Character.GetComponent<PlayerManager>().Target = target;
+    }
+        
+
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy") && !collision.GetComponent<Enemy>().IsDead())
         {
-            Player.GetComponent<PlayerManager>().Target = collision.gameObject; 
+            AssignTarget(collision.gameObject);
             Collider.radius = 0;
         }
     }

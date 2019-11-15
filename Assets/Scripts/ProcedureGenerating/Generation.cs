@@ -23,13 +23,9 @@ public class Generation : MonoBehaviour
     {
         if (collision.CompareTag("Spawner") && transform.position != Vector3.zero)
         {
-            if (collision.gameObject.GetComponent<Generation>().IsDrawn == false && IsDrawn == false)
-            {
-
-                /*if (BlockedRoom && Grid)
-                {
-                    Instantiate(BlockedRoom, transform.position, Quaternion.identity).transform.SetParent(Grid.transform);
-                }*/
+            if (collision.gameObject.GetComponent<Generation>())
+            if (!collision.gameObject.GetComponent<Generation>().IsDrawn && !IsDrawn)
+            { 
                 for (int i = 0; i < CornerRooms.Room.Count; i++)
                 {
                     List<string> RoomsWays = CornerRooms.Room[i].GetComponent<RoomWays>().Ways;

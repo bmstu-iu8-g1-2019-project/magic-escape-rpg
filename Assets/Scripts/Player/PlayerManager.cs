@@ -15,7 +15,8 @@ public class PlayerManager : MonoBehaviour
     [Header("Move and attack variables")]
     public float MovementSpeed;
     public GameObject Target;
-    public List<Rigidbody2D> Weapons;
+    public RigidBodyList Weapons;
+    private Vector3 RevertedMove;
     private Vector3 Move;
     private int WeaponIndex;
     private float Angle;
@@ -25,6 +26,7 @@ public class PlayerManager : MonoBehaviour
     [Header("Interaction variables")]
     public FloatValue CurrentHealth;
     public PlayerState CurrentState;
+    public GameObject HurtPanel;
     public Signal PlayerHealthSignal;
     public Signal EquipmentChangeSignal;
     public Image CurrentWeapon;
@@ -33,13 +35,45 @@ public class PlayerManager : MonoBehaviour
     [Header("GameComponents")]
     private Animator Animator;
     private Rigidbody2D Body;
+    private float ChangeWeaponKD = 0.2f;
+    private float WeaponCurrentKD = 0.2f;
+    [HideInInspector] public int Coins;
 
+    [Header("Settings values")]
+    private bool isHelpAim = true;
+    private bool isWalkRotated = true;
+
+
+    public void AimHelpChange()
+    {
+        isHelpAim = !isHelpAim;
+    }
+
+    public void WalkWayChange()
+    {
+        isWalkRotated = !isWalkRotated;
+    }
+
+    public bool IsExists(InventoryItem item)
+    {
+        foreach (var weapon in Weapons.thisList)
+        {
+            if (weapon.GetComponent<MagicCast>().ThisItem.id == item.id)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     private void Start()
     {
         WeaponIndex = 0;
-        if (Weapons.Count > 0)
+        if (Weapons.thisList.Count > 0)
         {
-            CurrentWeapon.sprite = Weapons[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
+            CurrentWeapon.sprite = Weapons.thisList[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
+            Vector4 temp = CurrentWeapon.color;
+            temp.w += 1;
+            CurrentWeapon.color = temp;
             IsInitialized = true;
         }
         Body = GetComponent<Rigidbody2D>();
@@ -52,19 +86,33 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
-        if (Input.GetKeyDown(KeyCode.Q) && Weapons.Count > 0)
+        if (Input.GetKeyDown(KeyCode.Q) && Weapons.thisList.Count > 0 && ChangeWeaponKD <= WeaponCurrentKD)
         {
+            WeaponCurrentKD = 0;
             ChangeCurrentItem();
         }
-        Move = Vector3.zero;
-        Move.x = Input.GetAxisRaw("Horizontal");
+        else
+        {
+            WeaponCurrentKD += Time.deltaTime;
+        }
+        Move.x = Input.GetAxisRaw("Horizontal") ;
         Move.y = Input.GetAxisRaw("Vertical");
         if (Move != Vector3.zero)
-        {
-            Buf = Move;
+        { 
+
             if (CurrentState != PlayerState.stagger)
             {
-                MovePlayer();
+                if (isWalkRotated)
+                {
+                    RevertedMove = Revert();
+                    Buf = RevertedMove;
+                    MovePlayer(RevertedMove);
+                }
+                else
+                {
+                    Buf = Move;
+                    MovePlayer(Move);
+                }  
             }
             else
             {
@@ -73,17 +121,37 @@ public class PlayerManager : MonoBehaviour
         } else{
             Animator.SetBool("IsMove", false);
         }
-        if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack
-            && CurrentState != PlayerState.stagger && Weapons.Count > 0)
+        if (Weapons.thisList.Count > 0)
         {
-            Attack();
-        } 
+            if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack
+                && CurrentState != PlayerState.stagger)
+            {
+                Attack();
+            }
+        }
+
+    }
+
+    private Vector3 Revert()
+    {
+        Vector3 way = Vector3.zero;
+        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1)
+        {
+            way.x += Move.x * Mathf.Sin(3.14f / 2.85f);
+            way.y += Move.x * Mathf.Cos(3.14f / 2.85f);
+        }
+        if (Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+        {
+            way.x += Move.y * Mathf.Cos(3.14f / 2.85f + 1.57f);
+            way.y += Move.y * Mathf.Sin(3.14f / 2.85f + 1.57f);
+        }
+        return way;
     }
 
     public void ChangeCurrentItem()
     {
-        WeaponIndex = (WeaponIndex + 1) % Weapons.Count;
-        CurrentWeapon.sprite = Weapons[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
+        WeaponIndex = (WeaponIndex + 1) % Weapons.thisList.Count;
+        CurrentWeapon.sprite = Weapons.thisList[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
         if (!IsInitialized)
         {
             Vector4 temp = CurrentWeapon.color;
@@ -92,18 +160,18 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    private void MovePlayer()
+    private void MovePlayer(Vector3 Way)
     {
         Animator.SetFloat("MoveX", Move.x);
         Animator.SetFloat("MoveY", Move.y); 
         Animator.SetBool("IsMove", true);
-        Body.MovePosition(transform.position + Move.normalized * Time.deltaTime * MovementSpeed);
+        Body.MovePosition(transform.position + Way.normalized * MovementSpeed * Time.deltaTime);
     }
 
     private void Attack()
     {
         CurrentState = PlayerState.attack;
-        if (Target)
+        if (Target && isHelpAim)
         {
             if (!Target.GetComponent<Enemy>().IsDead())
             {
@@ -119,14 +187,14 @@ public class PlayerManager : MonoBehaviour
     private void Spawn(Vector3 Vec)
     {
         Angle = Vector3.Angle(Ideal, Vec);
-        Angle += Weapons[WeaponIndex].gameObject.GetComponent<ParticleSystem>().startRotation;
+        Angle += Weapons.thisList[WeaponIndex].gameObject.GetComponent<ParticleSystem>().startRotation;
         if (Vec.y > 0)
         {
             Angle *= -1f;
         }
-        Angle *= Mathf.Sign(Weapons[WeaponIndex].gameObject.GetComponent<ParticleSystem>().startRotation);
+        Angle *= Mathf.Sign(Weapons.thisList[WeaponIndex].gameObject.GetComponent<ParticleSystem>().startRotation);
         StartCoroutine(AttackCo());
-        Rigidbody2D ProjectTileClone = Instantiate(Weapons[WeaponIndex], transform.position, Quaternion.Euler(0f, 0f, Angle));
+        Rigidbody2D ProjectTileClone = Instantiate(Weapons.thisList[WeaponIndex], transform.position, Quaternion.Euler(0f, 0f, Angle));
         ProjectTileClone.AddForce(Vec.normalized * ProjectTileClone.GetComponent<MagicCast>().Speed, ForceMode2D.Impulse);
     }
 
@@ -142,13 +210,19 @@ public class PlayerManager : MonoBehaviour
         PlayerHealthSignal.Raise();
         if (CurrentHealth.RuntimeValue > 0)
         {
+            StartCoroutine(RaisePanelCo());
             StartCoroutine(KnockCo(KnockTime));
         } else {
             this.gameObject.SetActive(false);
             Time.timeScale = 0f;
         }
     }
-
+    private IEnumerator RaisePanelCo()
+    {
+        HurtPanel.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+        HurtPanel.SetActive(false);
+    }
     private IEnumerator KnockCo(float KnockTime)
     {
         if (Body != null)

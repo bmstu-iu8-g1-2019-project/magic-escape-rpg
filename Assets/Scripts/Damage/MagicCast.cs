@@ -32,9 +32,7 @@ public class MagicCast : MonoBehaviour
         {
             return;
         }
-        if (!collision.CompareTag("Player") && !collision.CompareTag("Spawner") 
-            && !collision.CompareTag("Scaner")
-            && !collision.CompareTag("PlayerDamage") && !collision.CompareTag("Damage"))
+        if (CollideCondition(collision))
         {
             Vector3 contact = transform.position;
             Quaternion rot = Quaternion.FromToRotation(Vector3.up, contact.normalized);
@@ -54,6 +52,12 @@ public class MagicCast : MonoBehaviour
         }
     }
 
+    public virtual bool CollideCondition(Collider2D collision)
+    {
+        return !collision.CompareTag("Player") && !collision.CompareTag("Spawner")
+            && !collision.CompareTag("Scaner")
+            && !collision.CompareTag("PlayerDamage") && !collision.CompareTag("Damage");
+    }
     private IEnumerator AttackCo()
     {
         yield return new WaitForSeconds(ThisItem.KnockParams.WaitTime);

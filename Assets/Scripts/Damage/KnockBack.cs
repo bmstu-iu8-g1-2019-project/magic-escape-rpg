@@ -20,7 +20,7 @@ public class KnockBack : MonoBehaviour
                     collision.GetComponent<Enemy>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
                 }
                 if (collision.gameObject.CompareTag("Player") 
-                    && !this.CompareTag("PlayerDamage")) // Prevent dealing damage to yourself
+                    && !this.CompareTag("PlayerDamage") && !this.CompareTag("GameController")) // Prevent dealing damage to yourself
                 {
                     AddForce(hit);
                     hit.GetComponent<PlayerManager>().CurrentState = PlayerState.stagger;

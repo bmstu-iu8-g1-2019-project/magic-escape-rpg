@@ -14,7 +14,7 @@ public class BasicCameraFollow : MonoBehaviour
         startingPosition = transform.position;
     }
 
-    void LateUpdate()
+    void Update()
     {
         if (followTarget != null)
         {

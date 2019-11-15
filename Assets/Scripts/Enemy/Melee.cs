@@ -18,7 +18,10 @@ public class Melee : Enemy
         {
             return;
         }
-        Action();
+        if (Target)
+        {
+            Action();
+        }
     }
 
     private void Action()
