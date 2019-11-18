@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f299d0b135a5962479e5174858d68b05, type: 3}
   m_Name: Player Equipment
   m_EditorClassIdentifier: 
-  RangeDamageItem: {fileID: 0}
+  Armor: {fileID: 11400000, guid: 65fb0a4a840da9d418d5462aacf53986, type: 2}

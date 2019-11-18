@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24ee89f22cd35e34691a8cc42dc0e79a, type: 3}
+  m_Name: Health potion
+  m_EditorClassIdentifier: 
+  ThisEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 792050477382671487, guid: b9a51ca3601ce134abf3e8b77a22b30d,
+          type: 3}
+        m_MethodName: RestoreHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: RestoreHealth
+          m_BoolArgument: 0
+        m_CallState: 2
+  ItemName: Health potion
+  ItemDescription: Restores 1 heart
+  ItemImage: {fileID: -2453289629197179864, guid: c239221d9306a9c46a236f1369cfdcbf,
+    type: 3}
+  NumberHeld: 1
+  Usable: 1
+  Unique: 0
+  id: 0
+  ThisItem: {fileID: 0}

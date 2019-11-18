@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8331193229252701926}
   - component: {fileID: 3852353460700915862}
   - component: {fileID: 3559119778806989515}
+  - component: {fileID: 8327254848504393675}
   m_Layer: 0
   m_Name: WitchRender
   m_TagString: Player
@@ -153,11 +154,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MovementSpeed: 3
-  Fireball: {fileID: 4704395346699381066, guid: 083e96bb2a980874091c43fc6ca2e662,
-    type: 3}
+  Target: {fileID: 0}
+  Weapons: {fileID: 11400000, guid: 4ee54c1ed345c214b9d1e211ee77940d, type: 2}
   CurrentHealth: {fileID: 11400000, guid: 4185fb3aa4c96164d993f2e5da3bcd2c, type: 2}
+  Armor: {fileID: 11400000, guid: 9e163d02e91544a4f8ce6b2a15eb14ab, type: 2}
   CurrentState: 0
+  HurtPanel: {fileID: 0}
+  CurrentWeapon: {fileID: 0}
   PlayerHealthSignal: {fileID: 11400000, guid: cf2150bb3f2ae71468558ab00ab45004, type: 2}
   EquipmentChangeSignal: {fileID: 11400000, guid: f30d652b7f749f3488c2885b85dcd3f9,
     type: 2}
-  Equipment: {fileID: 11400000, guid: 0d70abaf6084d08479ef247861583c9c, type: 2}
+  PlayerDeadSignal: {fileID: 11400000, guid: 75a65cb71bf9d0c4b814c640d44679be, type: 2}
+  UpdateArmor: {fileID: 11400000, guid: b10b998a1f3c3f341b754b9c0ab784c6, type: 2}
+  Coins: 0
+  sys: {fileID: 0}
+--- !u!61 &8327254848504393675
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3608269983093072069}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.004718989, y: -0.13449001}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.671875, y: 1.09375}
+    newSize: {x: 0.43, y: 0.7}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.36042434, y: 0.5605092}
+  m_EdgeRadius: 0

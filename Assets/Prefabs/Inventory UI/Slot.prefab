@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 50, y: 50}
+  m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6125465195681672661
 CanvasRenderer:
@@ -119,7 +119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14.4, y: -14}
+  m_AnchoredPosition: {x: 20.7, y: -15.4}
   m_SizeDelta: {x: 18, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6125465196417074150
@@ -148,7 +148,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 00
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 2e498d1c8094910479dc3e1b768306a4, type: 2}
@@ -217,13 +217,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 6125465196417074151}
-    characterCount: 2
+    characterCount: 0
     spriteCount: 0
     spaceCount: 0
-    wordCount: 1
+    wordCount: 0
     linkCount: 0
-    lineCount: 1
-    pageCount: 1
+    lineCount: 0
+    pageCount: 0
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -331,9 +331,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemNumberText: {fileID: 6125465196417074151}
   ItemImage: {fileID: 6125465195681672666}
-  ItemDescription: {fileID: 0}
   ThisItem: {fileID: 0}
   ThisManager: {fileID: 0}
+  Inventory: {fileID: 11400000, guid: 9dcdd2f21d942dd4991f7ee2657772e4, type: 2}
 --- !u!114 &10591329579056609
 MonoBehaviour:
   m_ObjectHideFlags: 0

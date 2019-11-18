@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2203930675503106887}
   m_Layer: 0
   m_Name: Jar_Small
-  m_TagString: Untagged
+  m_TagString: Destroyable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,10 +121,10 @@ PolygonCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.26}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5682992, y: 0.37422952}
+    pivot: {x: 0.57811755, y: 0.59677905}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -133,13 +133,14 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.11892313, y: 0.13055849}
-      - {x: -0.2152501, y: 0.04584241}
-      - {x: -0.18735853, y: -0.08703756}
-      - {x: 0.1159727, y: -0.10253203}
-      - {x: 0.22560507, y: -0.05889082}
-      - {x: 0.21940881, y: 0.036412954}
-      - {x: 0.1255309, y: 0.12745547}
+    - - {x: 0.102461934, y: 0.108183265}
+      - {x: -0.09113777, y: 0.105883}
+      - {x: -0.22622001, y: 0.03578031}
+      - {x: -0.17413032, y: -0.08038294}
+      - {x: -0.00012481213, y: -0.09698641}
+      - {x: 0.1248008, y: -0.09556353}
+      - {x: 0.20906937, y: -0.047622323}
+      - {x: 0.21483338, y: 0.009214759}
 --- !u!95 &2203930675503106887
 Animator:
   serializedVersion: 3
@@ -171,7 +172,7 @@ GameObject:
   - component: {fileID: 3726477285461762142}
   m_Layer: 0
   m_Name: Collider
-  m_TagString: Untagged
+  m_TagString: Destroyable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,7 +204,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.26}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
