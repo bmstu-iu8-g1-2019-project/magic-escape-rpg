@@ -5,7 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Item", menuName = "Inventory/Weapon")]
 public class WeaponItem : InventoryItem
 {
-    public GameObject ThisItem;
     public DefaultKnock KnockParams;
 
     public void OnUse()

@@ -14,6 +14,7 @@ public class InventoryItem : ScriptableObject
     public bool Usable;
     public bool Unique;
     public int id;
+    public GameObject ThisItem;
 
 
     public void Use()

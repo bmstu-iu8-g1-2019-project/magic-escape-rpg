@@ -5,8 +5,8 @@ using UnityEngine;
 public class Melee : Enemy
 {
     [Header("Melee enemy parametrs")]
-    public float ChaseRadius;
-    public float AttackRadius;
+    [SerializeField] private float ChaseRadius;
+    [SerializeField] private float AttackRadius;
     // public Transform HomePosition; planning to introduce it later
     private bool MoveCondition;
     private bool AttackCondition;

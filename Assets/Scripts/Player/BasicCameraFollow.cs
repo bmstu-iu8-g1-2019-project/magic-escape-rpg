@@ -3,17 +3,9 @@ using System.Collections;
 
 public class BasicCameraFollow : MonoBehaviour
 {
-
-    private Vector3 startingPosition;
-    public Transform followTarget;
+    [SerializeField] private Transform followTarget;
     private Vector3 targetPos;
-    public float moveSpeed;
-
-    void Start()
-    {
-        startingPosition = transform.position;
-    }
-
+    [SerializeField] private float moveSpeed;
     void Update()
     {
         if (followTarget != null)

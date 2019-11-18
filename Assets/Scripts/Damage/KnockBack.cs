@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class KnockBack : MonoBehaviour
 {
-    public DefaultKnock ThisKnockParams; //Scriptable object with parametrs on KnockBack
+    [SerializeField] private DefaultKnock ThisKnockParams; //Scriptable object with parametrs on KnockBack
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

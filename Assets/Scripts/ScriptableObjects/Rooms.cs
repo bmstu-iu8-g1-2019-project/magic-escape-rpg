@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu]
 public class Rooms : ScriptableObject
 {
-    public List<GameObject> Room;
+    public List<GameObject> Room = new List<GameObject>();
 }

@@ -10,6 +10,7 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private Transform UI;
     [SerializeField] private GameObject MessageBox;
     [SerializeField] private TextMeshProUGUI Message;
+    [SerializeField] private GameObject Portal;
     private int EnemyNum = 0;
     private bool isMoved;
     private bool isAllowed = true;
@@ -49,5 +50,10 @@ public class DungeonManager : MonoBehaviour
         Instantiate(GoWhite).transform.SetParent(UI);
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         Player.transform.position = SpawnPoint.transform.position;
+    }
+
+    public void SpawnPortal()
+    {
+        Instantiate(Portal, transform.position, Quaternion.identity);
     }
 }

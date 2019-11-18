@@ -5,12 +5,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
-    public static void SavePlayer(PlayerManager Player, PlayerInventory Inv)
+    public static void SavePlayer(PlayerManager Player, PlayerInventory Inv, PlayerEquipment Equipment)
     {
         BinaryFormatter Formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.data";
         FileStream stream = new FileStream(path, FileMode.Create);
-        PlayerData data = new PlayerData(Player, Inv);
+        PlayerData data = new PlayerData(Player, Inv, Equipment);
         Formatter.Serialize(stream, data);
         stream.Close();
     }

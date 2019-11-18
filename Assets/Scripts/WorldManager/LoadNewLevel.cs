@@ -5,14 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class LoadNewLevel : MonoBehaviour
 {
-    public string SceneName;
-    public GameObject FadeInPanel;
-    public GameObject FadeOutPanel;
-    public float FadeWait;
+    [SerializeField] private string SceneName;
+    [SerializeField] private GameObject FadeInPanel;
+    [SerializeField] private GameObject FadeOutPanel;
+    [SerializeField] private float FadeWait;
+    private SaveLoadActions sys;
 
     private void Awake()
     {
-        GameObject temp = gameObject;
+        sys = GameObject.FindGameObjectWithTag("GameController").GetComponent<SaveLoadActions>();
         if (FadeInPanel != null)
         {
             GameObject Panel = Instantiate(FadeInPanel, Vector3.zero, Quaternion.identity);
@@ -29,8 +30,18 @@ public class LoadNewLevel : MonoBehaviour
 
         if (collision.tag == "Player")
         {
-            StartCoroutine(FadeCo());
+            LoadLevel();
         }
+    }
+
+    public void LoadLevel()
+    {
+        if (!sys)
+        {
+            sys = GameObject.FindGameObjectWithTag("GameController").GetComponent<SaveLoadActions>();
+        }
+        sys.SavePlayer();
+        StartCoroutine(FadeCo());
     }
     
     public IEnumerator FadeCo()
@@ -45,5 +56,5 @@ public class LoadNewLevel : MonoBehaviour
         {
             yield return null;
         }
-    }
+    } 
 }

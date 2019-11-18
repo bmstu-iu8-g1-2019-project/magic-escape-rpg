@@ -13,6 +13,7 @@ public class InventoryManager : MonoBehaviour
 
     void Start()
     {
+        ClearInventory();
         MakeInventorySlot();
     }
 
@@ -24,6 +25,13 @@ public class InventoryManager : MonoBehaviour
             {
                 AddItem(playerInventory.MyInventory[i]); 
             }
+        }
+    }
+    public void ClearInventory()
+    {
+        foreach (Transform child in InventoryPanel.transform)
+        {
+            Destroy(child.gameObject);
         }
     }
 

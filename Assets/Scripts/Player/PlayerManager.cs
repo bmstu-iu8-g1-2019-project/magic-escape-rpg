@@ -14,34 +14,45 @@ public class PlayerManager : MonoBehaviour
 {
     [Header("Move and attack variables")]
     public float MovementSpeed;
-    public GameObject Target;
+    [HideInInspector] public GameObject Target;
     public RigidBodyList Weapons;
     private Vector3 RevertedMove;
     private Vector3 Move;
-    private int WeaponIndex;
     private float Angle;
     private Vector3 Ideal = new Vector3(1f, 0f, 0f);
     private Vector3 Buf = new Vector3(0f, 1f, 0f);
 
     [Header("Interaction variables")]
     public FloatValue CurrentHealth;
+    public FloatValue Armor;
     public PlayerState CurrentState;
+
+    [Header("UI")]
     public GameObject HurtPanel;
+    public Image CurrentWeapon;
+    private int WeaponIndex;
+    private bool IsInitialized; // Weapon
+
+
+    [Header("Signals")]
     public Signal PlayerHealthSignal;
     public Signal EquipmentChangeSignal;
-    public Image CurrentWeapon;
-    private bool IsInitialized;
+    public Signal PlayerDeadSignal;
+    public Signal UpdateArmor;
 
     [Header("GameComponents")]
     private Animator Animator;
     private Rigidbody2D Body;
-    private float ChangeWeaponKD = 0.2f;
-    private float WeaponCurrentKD = 0.2f;
+    private float ChangeWeaponKD = 0.1f;
+    private float WeaponCurrentKD = 0.1f;
     [HideInInspector] public int Coins;
 
     [Header("Settings values")]
     private bool isHelpAim = true;
     private bool isWalkRotated = true;
+
+    [Space]
+    [SerializeField] private SaveLoadActions sys;
 
 
     public void AimHelpChange()
@@ -54,19 +65,9 @@ public class PlayerManager : MonoBehaviour
         isWalkRotated = !isWalkRotated;
     }
 
-    public bool IsExists(InventoryItem item)
-    {
-        foreach (var weapon in Weapons.thisList)
-        {
-            if (weapon.GetComponent<MagicCast>().ThisItem.id == item.id)
-            {
-                return true;
-            }
-        }
-        return false;
-    }
     private void Start()
     {
+        sys.LoadPlayer();
         WeaponIndex = 0;
         if (Weapons.thisList.Count > 0)
         {
@@ -78,6 +79,8 @@ public class PlayerManager : MonoBehaviour
         }
         Body = GetComponent<Rigidbody2D>();
         Animator = GetComponent<Animator>();
+        CurrentHealth.RuntimeValue = CurrentHealth.InitialValue;
+        PlayerHealthSignal.Raise();
     }
 
     private void FixedUpdate()
@@ -91,7 +94,7 @@ public class PlayerManager : MonoBehaviour
             WeaponCurrentKD = 0;
             ChangeCurrentItem();
         }
-        else
+        else if (ChangeWeaponKD > WeaponCurrentKD)
         {
             WeaponCurrentKD += Time.deltaTime;
         }
@@ -154,10 +157,15 @@ public class PlayerManager : MonoBehaviour
         CurrentWeapon.sprite = Weapons.thisList[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
         if (!IsInitialized)
         {
-            Vector4 temp = CurrentWeapon.color;
-            temp.w += 1;
-            CurrentWeapon.color = temp;
+            SetWeaponAlpha(1);
         }
+    }
+
+    public void SetWeaponAlpha(int value)
+    {
+        Vector4 temp = CurrentWeapon.color;
+        temp.w = value;
+        CurrentWeapon.color = temp;
     }
 
     private void MovePlayer(Vector3 Way)
@@ -206,15 +214,14 @@ public class PlayerManager : MonoBehaviour
 
     public void Knock(float KnockTime, float Damage)
     {
-        CurrentHealth.RuntimeValue -= Damage;
+        CurrentHealth.RuntimeValue -= Damage * (1 - ( Armor.InitialValue / 10));
         PlayerHealthSignal.Raise();
         if (CurrentHealth.RuntimeValue > 0)
         {
             StartCoroutine(RaisePanelCo());
             StartCoroutine(KnockCo(KnockTime));
         } else {
-            this.gameObject.SetActive(false);
-            Time.timeScale = 0f;
+            PlayerDeadSignal.Raise();
         }
     }
     private IEnumerator RaisePanelCo()

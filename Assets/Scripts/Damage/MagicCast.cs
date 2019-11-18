@@ -6,10 +6,10 @@ public class MagicCast : MonoBehaviour
 {
     public WeaponItem ThisItem; // Scriptable object
     public float Speed; // Used in Player Manager
-    public GameObject muzzlePrefab;
-    public GameObject hitPrefab;
+    [SerializeField] private GameObject muzzlePrefab;
+    [SerializeField] private GameObject hitPrefab;
 
-    void Start()
+    private void Start()
     {
         if (muzzlePrefab)
         {

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Range : Enemy
 {
-    public float AttackRadius;
-    public float ChaseRadius;
-    public Rigidbody2D Arrow;
+    [SerializeField] private float AttackRadius;
+    [SerializeField] private float ChaseRadius;
+    [SerializeField] private Rigidbody2D Arrow;
     private float Angle;
     private bool AttackCondition;
     private bool MoveCondition;

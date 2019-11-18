@@ -5,5 +5,5 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RigidBodyList : ScriptableObject
 {
-    public List<Rigidbody2D> thisList;
+    public List<Rigidbody2D> thisList = new List<Rigidbody2D>();
 }

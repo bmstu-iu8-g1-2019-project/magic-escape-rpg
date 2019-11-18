@@ -28,6 +28,17 @@ public class GameManager : MonoBehaviour
             {
                 GameAwake();
             }
+            else if (InventoryPanel.activeSelf || EquipmentPanel.activeSelf)
+            {
+                if (InventoryPanel.activeSelf)
+                {
+                    InventoryPanel.SetActive(!InventoryPanel.activeSelf);
+                }
+                if (EquipmentPanel.activeSelf)
+                {
+                    EquipmentPanel.SetActive(!EquipmentPanel.activeSelf);
+                }
+            }
             else
             {
                 GamePause();
