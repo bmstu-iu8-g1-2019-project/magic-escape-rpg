@@ -83,7 +83,7 @@ public class PlayerManager : MonoBehaviour
         PlayerHealthSignal.Raise();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Time.timeScale == 0f)
         {

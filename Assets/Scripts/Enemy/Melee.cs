@@ -27,15 +27,18 @@ public class Melee : Enemy
     private void Action()
     {
         AttackCondition = Vector3.Distance(Target.transform.position, transform.position) < AttackRadius;
-        MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
-            && CurrentState == EnemyState.walk;
+        MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius && CurrentState == EnemyState.walk;
         if (AttackCondition)
         {
             Anim.SetBool("IsWalking", false);
             Attack();
         }
-        else if (MoveCondition)
+        if (MoveCondition)
         {
+            if (Target)
+            {
+                MoveSpeed = Target.GetComponent<PlayerManager>().MovementSpeed - 0.7f;
+            }
             TimeKd = AttackKD;
             WalkToTarget(Vector3.MoveTowards(transform.position,
                             Target.transform.position, MoveSpeed * Time.deltaTime));

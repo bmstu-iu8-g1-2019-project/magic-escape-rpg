@@ -13,7 +13,7 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private GameObject Portal;
     private int EnemyNum = 0;
     private bool isMoved;
-    private bool isAllowed = true;
+    private bool isAllowed = false;
 
     private void Update()
     {
