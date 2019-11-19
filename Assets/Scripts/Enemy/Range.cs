@@ -10,6 +10,8 @@ public class Range : Enemy
     private float Angle;
     private bool AttackCondition;
     private bool MoveCondition;
+    private Vector3 way;
+    private Vector3 AdditionalWay;
 
     void Update()
     {
@@ -30,22 +32,42 @@ public class Range : Enemy
         MoveCondition = Vector3.Distance(Target.transform.position, transform.position) > AttackRadius
             && Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
             && CurrentState == EnemyState.walk;
+        way = Target.transform.position - transform.position;
         if (AttackCondition)
         {
             Anim.SetBool("IsWalking", false);
             if (TimeKd >= AttackKD)
             {
-                Attack();
-                SpawntProjectTile();
+                WalkToTarget(Vector3.MoveTowards(transform.position, AdditionalWay, MoveSpeed * Time.deltaTime));
+                MoveCondition = false;
+                RaycastHit2D hit = Physics2D.Raycast(transform.position, way, AttackRadius);
+                if (hit)
+                {
+                    
+                    if (hit.collider.gameObject == Target)
+                    {
+
+                        Debug.DrawRay(transform.position, way * AttackRadius);
+                        Attack();
+                        SpawntProjectTile(way);
+                        AdditionalWay = Vector3.Cross(way, new Vector3(0f, 0f, 1f));
+                    }
+                    else
+                    {
+                        Debug.DrawRay(transform.position, AdditionalWay * AttackRadius);
+                        WalkToTarget(Vector3.MoveTowards(transform.position, AdditionalWay, MoveSpeed * Time.deltaTime));
+                        MoveCondition = false;
+                    }
+                }
             }
             else
             {
                 TimeKd += Time.deltaTime;
             }
+
         }
         if (MoveCondition)
         {
-            Anim.SetBool("IsWalking", true);
             WalkToTarget(Vector3.MoveTowards(transform.position,
                  Target.transform.position, MoveSpeed * Time.deltaTime));
         }
@@ -55,10 +77,9 @@ public class Range : Enemy
         }
     }
 
-    private void SpawntProjectTile()
+    private void SpawntProjectTile(Vector3 Buf)
     {
         Rigidbody2D ArrowClone;
-        Vector3 Buf = (Target.transform.position - transform.position);
         Angle = Vector3.Angle(new Vector3(1f, 0f, 0f), Buf);
         if (Buf.y < 0)
         {
