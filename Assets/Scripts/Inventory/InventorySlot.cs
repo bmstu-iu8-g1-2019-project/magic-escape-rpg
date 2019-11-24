@@ -10,7 +10,7 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     [Header("UI to change")]
     [SerializeField] private TextMeshProUGUI ItemNumberText;
     [SerializeField] private Image ItemImage;
-    private GameObject ItemDescription;
+    public GameObject ItemDescription;
 
 
     [Header("Variables from the Item")]
@@ -20,10 +20,11 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     [Space]
     public PlayerInventory Inventory;
 
-    private void Start()
+    public virtual void Start()
     {
         ItemDescription = GameObject.Find("UI Canvas/Inventory Panel/Description Panel/Item Description");
     }
+
     public void Setup(InventoryItem NewItem, InventoryManager NewManager)
     {
         ThisItem = NewItem;
@@ -31,19 +32,23 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         if (ThisItem)
         {
             ItemImage.sprite = ThisItem.ItemImage;
-            if (!ThisItem.Unique)
+            if (!ThisItem.Unique && ItemNumberText)
             {
                 ItemNumberText.text = "" + ThisItem.NumberHeld; // Convertion int to string
             }
         }
     }
     
-    public void OnPointerEnter(PointerEventData eventdata)
+    public virtual void OnPointerEnter(PointerEventData eventdata)
     {
+        if (!ItemDescription)
+        {
+            ItemDescription = GameObject.Find("UI Canvas/Inventory/Inventory Panel/Description Panel/Item Description");
+        }
         ItemDescription.GetComponent<TextMeshProUGUI>().text = ThisItem.ItemDescription;
     }
 
-    public void OnCLick()
+    public virtual void OnCLick()
     {
         if (ThisItem)
         {

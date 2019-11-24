@@ -67,9 +67,12 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        sys.LoadPlayer();
+        if (sys)
+        {
+            sys.LoadPlayer();
+        }
         WeaponIndex = 0;
-        if (Weapons.thisList.Count > 0)
+        if (Weapons.thisList.Count > 0 && CurrentWeapon)
         {
             CurrentWeapon.sprite = Weapons.thisList[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
             Vector4 temp = CurrentWeapon.color;
@@ -83,7 +86,7 @@ public class PlayerManager : MonoBehaviour
         PlayerHealthSignal.Raise();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Time.timeScale == 0f)
         {
@@ -153,7 +156,10 @@ public class PlayerManager : MonoBehaviour
 
     public void ChangeCurrentItem()
     {
-        WeaponIndex = (WeaponIndex + 1) % Weapons.thisList.Count;
+        if (CurrentWeapon)
+        {
+            WeaponIndex = (WeaponIndex + 1) % Weapons.thisList.Count;
+        }
         CurrentWeapon.sprite = Weapons.thisList[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
         if (!IsInitialized)
         {
@@ -163,9 +169,12 @@ public class PlayerManager : MonoBehaviour
 
     public void SetWeaponAlpha(int value)
     {
-        Vector4 temp = CurrentWeapon.color;
-        temp.w = value;
-        CurrentWeapon.color = temp;
+        if (CurrentWeapon)
+        {
+            Vector4 temp = CurrentWeapon.color;
+            temp.w = value;
+            CurrentWeapon.color = temp;
+        }
     }
 
     private void MovePlayer(Vector3 Way)
@@ -173,7 +182,9 @@ public class PlayerManager : MonoBehaviour
         Animator.SetFloat("MoveX", Move.x);
         Animator.SetFloat("MoveY", Move.y); 
         Animator.SetBool("IsMove", true);
-        Body.MovePosition(transform.position + Way.normalized * MovementSpeed * Time.deltaTime);
+        // transform.position += Way.normalized * MovementSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, transform.position + Way.normalized, Time.deltaTime * MovementSpeed);
+        // Body.MovePosition(transform.position + Way.normalized * Time.deltaTime * MovementSpeed);
     }
 
     private void Attack()

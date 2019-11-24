@@ -9,6 +9,7 @@ public class LoadNewLevel : MonoBehaviour
     [SerializeField] private GameObject FadeInPanel;
     [SerializeField] private GameObject FadeOutPanel;
     [SerializeField] private float FadeWait;
+    [SerializeField] private bool isSaving;
     private SaveLoadActions sys;
 
     private void Awake()

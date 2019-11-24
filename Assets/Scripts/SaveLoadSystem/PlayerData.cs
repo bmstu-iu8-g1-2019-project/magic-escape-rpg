@@ -10,8 +10,9 @@ public class PlayerData
     public int armorId;
     public List<int> weaponsId = new List<int>();
     public List<int> itemsId = new List<int>();
+    public List<int> shopId = new List<int>();
 
-    public PlayerData(PlayerManager Player, PlayerInventory Inv, PlayerEquipment equipment)
+    public PlayerData(PlayerManager Player, PlayerInventory Inv, PlayerEquipment equipment, PlayerInventory Shop)
     {
 
         CurrentHealth = Player.CurrentHealth.RuntimeValue;
@@ -22,6 +23,10 @@ public class PlayerData
         foreach (var item in Inv.MyInventory)
         {
             itemsId.Add(item.id);
+        }
+        foreach (var item in Shop.MyInventory)
+        {
+            shopId.Add(item.id);
         }
         foreach (var item in Player.Weapons.thisList)
         {

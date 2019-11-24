@@ -9,38 +9,22 @@ public class GameManager : MonoBehaviour
     public GameObject EquipmentPanel;
     public GameObject PausePanel;
     public GameObject AnnouncementPanel;
+    public GameObject ShopPanel;
 
     [Header("Game Pause")]
     private bool GamePaused;
 
     void Update()
     {
-
-        /* if (Input.GetKeyDown(KeyCode.E))
-        {
-            DialogueActive = false;
-            DialogueBox.SetActive(DialogueActive);
-            GameAwake();
-        }*/
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GamePaused)
             {
                 GameAwake();
             }
-            else if (InventoryPanel.activeSelf || EquipmentPanel.activeSelf)
-            {
-                if (InventoryPanel.activeSelf)
-                {
-                    InventoryPanel.SetActive(!InventoryPanel.activeSelf);
-                }
-                if (EquipmentPanel.activeSelf)
-                {
-                    EquipmentPanel.SetActive(!EquipmentPanel.activeSelf);
-                }
-            }
             else
             {
+                HideEverything();
                 GamePause();
             }
         }
@@ -48,12 +32,44 @@ public class GameManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
+                if (EquipmentPanel.activeSelf)
+                {
+                    EquipmentPanel.SetActive(!EquipmentPanel.activeSelf);
+                }
+                if (ShopPanel.activeSelf)
+                {
+                    ShopPanel.SetActive(!ShopPanel.activeSelf);
+                }
                 InventoryPanel.SetActive(!InventoryPanel.activeSelf);
             }
             if (Input.GetKeyDown(KeyCode.C))
             {
+                if (InventoryPanel.activeSelf)
+                {
+                    InventoryPanel.SetActive(!InventoryPanel.activeSelf);
+                }
+                if (ShopPanel.activeSelf)
+                {
+                    ShopPanel.SetActive(!ShopPanel.activeSelf);
+                }
                 EquipmentPanel.SetActive(!EquipmentPanel.activeSelf);
             }
+        }
+    }
+
+    public void HideEverything()
+    {
+        if (InventoryPanel.activeSelf)
+        {
+            InventoryPanel.SetActive(!InventoryPanel.activeSelf);
+        }
+        if (EquipmentPanel.activeSelf)
+        {
+            EquipmentPanel.SetActive(!EquipmentPanel.activeSelf);
+        }
+        if (ShopPanel.activeSelf)
+        {
+            ShopPanel.SetActive(!ShopPanel.activeSelf);
         }
     }
 

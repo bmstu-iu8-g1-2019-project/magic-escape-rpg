@@ -9,17 +9,25 @@ public class SaveLoadActions : MonoBehaviour
     [SerializeField] private PlayerInventory Inv;
     [SerializeField] private PlayerInventory Items;
     [SerializeField] private PlayerEquipment Equipment;
+    [SerializeField] private PlayerInventory Shop;
     [Space]
     [SerializeField] private InventoryManager invMgr;
-
-    void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-    }
+    [SerializeField] private InventoryManager shopMgr;
+    [Header("Default items/values")]
+    [SerializeField] private ArmorItem defArmor;
+    [SerializeField] private PlayerInventory defShop;
+    [SerializeField] private PlayerInventory defInv;
+    [Header("Signals")]
+    [SerializeField] private Signal UpdateInv;
+    [SerializeField] private Signal UpdateShop;
 
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(Player, Inv, Equipment);
+        if (!Player)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        }
+        SaveSystem.SavePlayer(Player, Inv, Equipment, Shop);
     }
 
     public void LoadPlayer()
@@ -36,13 +44,26 @@ public class SaveLoadActions : MonoBehaviour
         Equipment.Armor = (ArmorItem)Items.MyInventory[data.armorId];
         Player.UpdateArmor.Raise();
         Player.PlayerHealthSignal.Raise();
-        Inv.MyInventory.Clear();
-        invMgr.ClearInventory();
-        for (int i = 0; i < data.itemsId.Count; i++)
+        if (invMgr)
         {
-            InventoryItem item = Items.MyInventory[data.itemsId[i]];
-            Inv.MyInventory.Add(item);
-            invMgr.AddItem(item);
+            Inv.MyInventory.Clear();
+            invMgr.ClearInventory();
+            for (int i = 0; i < data.itemsId.Count; i++)
+            {
+                InventoryItem item = Items.MyInventory[data.itemsId[i]];
+                Inv.MyInventory.Add(item);
+                invMgr.AddItem(item);
+            }
+        }
+        if (shopMgr)
+        {
+            Shop.MyInventory.Clear();
+            shopMgr.ClearInventory();
+            for (int i = 0; i < data.shopId.Count; i++)
+            {
+                InventoryItem item = Items.MyInventory[data.shopId[i]];
+                Shop.MyInventory.Add(item);
+            }
         }
         Player.Weapons.thisList.Clear();
         Player.SetWeaponAlpha(0);
@@ -53,5 +74,32 @@ public class SaveLoadActions : MonoBehaviour
             Player.Weapons.thisList.Add(temp);
             Player.ChangeCurrentItem();
         }
+        UpdateInv.Raise();
+        UpdateShop.Raise();
+    }
+
+    public void ResetDefaults()
+    {
+        if (!Player)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        }
+        Player.Coins = 1000;
+        Player.CurrentHealth.InitialValue = 6;
+        Player.CurrentHealth.RuntimeValue = Player.CurrentHealth.InitialValue;
+        Equipment.Armor = new ArmorItem();
+        Equipment.Armor = defArmor;
+        Player.UpdateArmor.Raise();
+        Shop = defShop;
+        UpdateShop.Raise();
+        Inv = defInv;
+        foreach (var item in Inv.MyInventory)
+        {
+            item.NumberHeld = 1;
+        }
+        UpdateInv.Raise();
+        Player.Weapons.thisList.Clear();
+        SavePlayer();
+        LoadPlayer();
     }
 }
