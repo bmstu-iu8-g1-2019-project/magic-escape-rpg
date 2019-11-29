@@ -10,13 +10,17 @@ public class ShopSlot : InventorySlot
     [SerializeField] private PlayerInventory Shop;
     [SerializeField] private Signal UpdateInventory;
     [SerializeField] private Signal UpdateCoins;
-    private int price;
+    [SerializeField] private TextMeshProUGUI Price;
 
     override public void Start()
     {
         ItemDescription = GameObject.Find("UI Canvas/Shop Panel/Description Panel/Item Description");
     }
 
+    public override void SetupText()
+    {
+        Price.text = "" + ThisItem.price;
+    }
 
     public override void OnPointerEnter(PointerEventData eventdata)
     {
@@ -25,6 +29,11 @@ public class ShopSlot : InventorySlot
             ItemDescription = GameObject.FindGameObjectWithTag("Description");
         }
         ItemDescription.GetComponent<TextMeshProUGUI>().text = ThisItem.ItemDescription;
+        PlayerManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        if (player.Level < ThisItem.necessaryLevel)
+        {
+            ItemDescription.GetComponent<TextMeshProUGUI>().text += "\nThis item will be unlocked on the " + ThisItem.necessaryLevel + " level";
+        }
     }
 
     public override void OnCLick()

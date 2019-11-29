@@ -13,6 +13,8 @@ public class KnockBack : MonoBehaviour
             Rigidbody2D hit = collision.GetComponent<Rigidbody2D>();
             if (hit != null)
             {
+                int playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().Level;
+                ThisKnockParams.Damage *= playerLevel;
                 if (collision.CompareTag("Enemy") && !this.CompareTag("Damage"))
                 {
                     AddForce(hit);

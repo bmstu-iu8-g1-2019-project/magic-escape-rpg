@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour
             if (player.Stars >= levels_grades[player.Level])
             {
                 player.Stars -= levels_grades[player.Level];
-                player.Level++;
+                LevelUp(player);
             }
             if (player.Level < levels_grades.Count)
             {
@@ -128,5 +128,15 @@ public class GameManager : MonoBehaviour
                 levelSlider.value = 1f;
             }
         }
+    }
+
+    private void LevelUp(PlayerManager player)
+    {
+        HeartManager mgr = GameObject.FindGameObjectWithTag("HeartContainer").GetComponent<HeartManager>();
+        player.Level++;
+        player.CurrentHealth.InitialValue += 2;
+        mgr.HeartContainers.InitialValue++;
+        mgr.InitHearts();
+        mgr.UpdateHearts();
     }
 }

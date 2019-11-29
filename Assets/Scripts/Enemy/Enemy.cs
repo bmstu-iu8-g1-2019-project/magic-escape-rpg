@@ -57,6 +57,7 @@ public class Enemy : MonoBehaviour
         {
             EnemyBorn.Raise();
         }
+        CurrentHealth *= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().Level;
     }
 
     public bool IsDead()

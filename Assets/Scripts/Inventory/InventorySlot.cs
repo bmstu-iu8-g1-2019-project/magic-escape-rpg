@@ -25,18 +25,32 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
         ItemDescription = GameObject.Find("UI Canvas/Inventory Panel/Description Panel/Item Description");
     }
 
-    public void Setup(InventoryItem NewItem, InventoryManager NewManager)
+    public virtual void Setup(InventoryItem NewItem, InventoryManager NewManager)
     {
         ThisItem = NewItem;
         ThisManager = NewManager;
         if (ThisItem)
         {
-            ItemImage.sprite = ThisItem.ItemImage;
-            if (!ThisItem.Unique && ItemNumberText)
-            {
-                ItemNumberText.text = "" + ThisItem.NumberHeld; // Convertion int to string
-            }
+            SetupText();
+            SetupImage();
         }
+    }
+
+    private void SetupImage()
+    {
+        ItemImage.sprite = ThisItem.ItemImage;
+        PlayerManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        if (ThisItem.necessaryLevel > player.Level)
+        {
+            ItemImage.color = new Vector4(255f, 0f, 0f, 1f);
+            Button but = GetComponent<Button>();
+            but.enabled = false;
+        }
+    }
+
+    public virtual void SetupText()
+    {
+        ItemNumberText.text = "" + ThisItem.NumberHeld;
     }
     
     public virtual void OnPointerEnter(PointerEventData eventdata)

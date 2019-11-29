@@ -15,6 +15,7 @@ public class InventoryItem : ScriptableObject
     public bool Unique;
     public int id;
     public int price;
+    public int necessaryLevel;
     public GameObject ThisItem;
 
 

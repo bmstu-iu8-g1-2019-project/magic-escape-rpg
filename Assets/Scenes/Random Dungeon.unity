@@ -511,7 +511,7 @@ PrefabInstance:
     - target: {fileID: 3559119778806989515, guid: 9ac1a43e736a30c4f94bb1c8b03054c5,
         type: 3}
       propertyPath: MovementSpeed
-      value: 20
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ac1a43e736a30c4f94bb1c8b03054c5, type: 3}
@@ -909,16 +909,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 8828508378414585672, guid: ee7495940eccd5a4c8077be138d59b27,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8828508379024168598, guid: ee7495940eccd5a4c8077be138d59b27,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8828508379459672239, guid: ee7495940eccd5a4c8077be138d59b27,
         type: 3}
       propertyPath: m_IsActive
@@ -1027,6 +1017,21 @@ PrefabInstance:
     - target: {fileID: 8828508378227182147, guid: ee7495940eccd5a4c8077be138d59b27,
         type: 3}
       propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7479859822762445587, guid: ee7495940eccd5a4c8077be138d59b27,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828508378414585672, guid: ee7495940eccd5a4c8077be138d59b27,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8828508379024168598, guid: ee7495940eccd5a4c8077be138d59b27,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2373756944261729330, guid: ee7495940eccd5a4c8077be138d59b27,
@@ -1262,11 +1267,6 @@ PrefabInstance:
     - target: {fileID: 8828508379370139825, guid: ee7495940eccd5a4c8077be138d59b27,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7479859822762445587, guid: ee7495940eccd5a4c8077be138d59b27,
-        type: 3}
-      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5774605525725267524, guid: ee7495940eccd5a4c8077be138d59b27,

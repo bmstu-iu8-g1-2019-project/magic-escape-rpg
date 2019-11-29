@@ -9,7 +9,7 @@ public class HeartManager : MonoBehaviour
     [SerializeField] private Sprite FullHeart;
     [SerializeField] private Sprite HalfFullHeart;
     [SerializeField] private Sprite EmptyHeart;
-    [SerializeField] private FloatValue HeartContainers;
+    public FloatValue HeartContainers;
     [SerializeField] private FloatValue PlayerCurrentHealth;
     private bool isInitialized;
 
@@ -22,6 +22,7 @@ public class HeartManager : MonoBehaviour
 
     public void InitHearts()
     {
+        HeartContainers.InitialValue = PlayerCurrentHealth.InitialValue / 2; 
         for (int i = 0; i < HeartContainers.InitialValue; i++)
         {
             Hearts[i].gameObject.SetActive(true);
