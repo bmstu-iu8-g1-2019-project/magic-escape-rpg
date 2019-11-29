@@ -15,11 +15,6 @@ public class LoadNewLevel : MonoBehaviour
     private void Awake()
     {
         sys = GameObject.FindGameObjectWithTag("GameController").GetComponent<SaveLoadActions>();
-        if (FadeInPanel != null)
-        {
-            GameObject Panel = Instantiate(FadeInPanel, Vector3.zero, Quaternion.identity);
-            Destroy(Panel, 0.333f);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

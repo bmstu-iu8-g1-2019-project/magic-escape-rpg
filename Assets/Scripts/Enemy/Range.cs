@@ -46,7 +46,6 @@ public class Range : Enemy
                     
                     if (hit.collider.gameObject == Target)
                     {
-
                         Debug.DrawRay(transform.position, way * AttackRadius);
                         Attack();
                         SpawntProjectTile(way);

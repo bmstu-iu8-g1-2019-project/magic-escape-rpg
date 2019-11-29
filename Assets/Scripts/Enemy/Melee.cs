@@ -37,7 +37,8 @@ public class Melee : Enemy
         {
             if (Target)
             {
-                MoveSpeed = Target.GetComponent<PlayerManager>().MovementSpeed - 0.7f;
+                MoveSpeed = Target.GetComponent<PlayerManager>().MovementSpeed / 10 - 0.7f; 
+                // Some lags with build, really need this division
             }
             TimeKd = AttackKD;
             WalkToTarget(Vector3.MoveTowards(transform.position,

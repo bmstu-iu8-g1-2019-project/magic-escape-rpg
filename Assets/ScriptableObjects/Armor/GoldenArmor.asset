@@ -34,5 +34,6 @@ MonoBehaviour:
   Usable: 1
   Unique: 1
   id: 5
+  price: 3000
   ThisItem: {fileID: 0}
   armorValue: 10

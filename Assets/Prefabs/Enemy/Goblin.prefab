@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6958512483500458597}
   - component: {fileID: 3134475070937487273}
   - component: {fileID: 2641331486462210981}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Scaner
   m_TagString: Scaner
   m_Icon: {fileID: 0}
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 1992836415184059151}
   - component: {fileID: 9210004993121774203}
   - component: {fileID: 2599145156449020860}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Goblin
   m_TagString: Enemy
   m_Icon: {fileID: 0}

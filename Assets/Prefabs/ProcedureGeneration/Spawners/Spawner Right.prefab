@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2252463759166359916}
   - component: {fileID: 4120282143062921419}
   - component: {fileID: 5534126823167320035}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawner Right
   m_TagString: Spawner
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -48,6 +48,7 @@ MonoBehaviour:
   RoomsList: {fileID: 11400000, guid: 95c7344fb18bc784b904c4b34794f2e6, type: 2}
   BlockedRoom: {fileID: 1083964803436912670, guid: a0878dc8610bb2b43985ccabe99d9332,
     type: 3}
+  RoomSpawned: {fileID: 11400000, guid: 3d0f2def0639a3445b47d970ce9209c5, type: 2}
   Way: Left
   CornerRooms: {fileID: 11400000, guid: c8cdc461d631d814489094a8eb599d61, type: 2}
 --- !u!50 &4120282143062921419

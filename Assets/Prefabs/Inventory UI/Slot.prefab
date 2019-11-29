@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -4.8, y: 3.9}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6125465195681672661
@@ -119,7 +119,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 20.7, y: -15.4}
+  m_AnchoredPosition: {x: 12.6, y: -14.6}
   m_SizeDelta: {x: 18, y: 14}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6125465196417074150
@@ -331,6 +331,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemNumberText: {fileID: 6125465196417074151}
   ItemImage: {fileID: 6125465195681672666}
+  ItemDescription: {fileID: 0}
   ThisItem: {fileID: 0}
   ThisManager: {fileID: 0}
   Inventory: {fileID: 11400000, guid: 9dcdd2f21d942dd4991f7ee2657772e4, type: 2}

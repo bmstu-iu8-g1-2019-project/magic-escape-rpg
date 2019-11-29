@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8536157025394619129}
   - component: {fileID: 2112043500011163247}
   - component: {fileID: 929219449089226806}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: vfx_Projectile_ArrowBlue
   m_TagString: PlayerDamage
   m_Icon: {fileID: 0}
@@ -4945,7 +4945,7 @@ GameObject:
   - component: {fileID: 4148685472755828}
   - component: {fileID: 198891850615860660}
   - component: {fileID: 199087776913714618}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Triangles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9698,7 +9698,7 @@ GameObject:
   - component: {fileID: 4496230700166270}
   - component: {fileID: 198852193744838518}
   - component: {fileID: 199968709438726574}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14451,7 +14451,7 @@ GameObject:
   - component: {fileID: 4743457721073874}
   - component: {fileID: 198903050378625366}
   - component: {fileID: 199797455780701384}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ArrowAB
   m_TagString: Untagged
   m_Icon: {fileID: 0}

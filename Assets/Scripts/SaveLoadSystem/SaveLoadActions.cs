@@ -20,7 +20,9 @@ public class SaveLoadActions : MonoBehaviour
     [Header("Signals")]
     [SerializeField] private Signal UpdateInv;
     [SerializeField] private Signal UpdateShop;
-
+    [SerializeField] private Signal UpdateCoins;
+    [SerializeField] private Signal UpdatePlayerLevel;
+ 
     public void SavePlayer()
     {
         if (!Player)
@@ -32,12 +34,20 @@ public class SaveLoadActions : MonoBehaviour
 
     public void LoadPlayer()
     {
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
         PlayerData data = SaveSystem.LoadPLayer();
         if (!Player)
         {
             Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         }
+        Player.Level = data.Level;
+        Player.Stars = data.Stars;
+        UpdatePlayerLevel.Raise();
         Player.Coins = data.Coins;
+        UpdateCoins.Raise();
         Player.CurrentHealth.RuntimeValue = data.CurrentHealth;
         Player.CurrentHealth.InitialValue = data.MaxHealth;
         Equipment.Armor = new ArmorItem();
@@ -84,6 +94,8 @@ public class SaveLoadActions : MonoBehaviour
         {
             Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         }
+        Player.Stars = 0;
+        Player.Level = 1;
         Player.Coins = 1000;
         Player.CurrentHealth.InitialValue = 6;
         Player.CurrentHealth.RuntimeValue = Player.CurrentHealth.InitialValue;

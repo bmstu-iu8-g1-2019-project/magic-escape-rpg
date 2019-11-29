@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class GameManager : MonoBehaviour
     public GameObject PausePanel;
     public GameObject AnnouncementPanel;
     public GameObject ShopPanel;
+
+    [Header("Level variables")]
+    public Slider levelSlider;
+    public List<int> levels_grades;
 
     [Header("Game Pause")]
     private bool GamePaused;
@@ -102,5 +107,26 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         AnnouncementPanel.SetActive(false);
+    }
+
+    public void UpdateLevelSlider()
+    {
+        PlayerManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        if (player.Level < levels_grades.Count)
+        {
+            if (player.Stars >= levels_grades[player.Level])
+            {
+                player.Stars -= levels_grades[player.Level];
+                player.Level++;
+            }
+            if (player.Level < levels_grades.Count)
+            {
+                levelSlider.value = (float)(player.Stars) / (float)(levels_grades[player.Level]);
+            }
+            else
+            {
+                levelSlider.value = 1f;
+            }
+        }
     }
 }

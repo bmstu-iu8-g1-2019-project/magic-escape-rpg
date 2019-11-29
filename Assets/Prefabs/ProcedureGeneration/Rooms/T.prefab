@@ -1362,7 +1362,7 @@ GameObject:
   - component: {fileID: 4595566940730818425}
   - component: {fileID: 6625512020996525469}
   - component: {fileID: 7495928203454249650}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Destroyer
   m_TagString: Spawner
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}

@@ -6,6 +6,7 @@ public class Generation : MonoBehaviour
 {
     [SerializeField] private Rooms RoomsList;
     [SerializeField] private GameObject BlockedRoom;
+    [SerializeField] private Signal RoomSpawned;
     private GameObject Spawned;
     private GameObject Grid;
     public string Way;
@@ -32,8 +33,8 @@ public class Generation : MonoBehaviour
                     if ((RoomsWays[0] == Way || RoomsWays[0] == collision.GetComponent<Generation>().Way) 
                         && (RoomsWays[0] == Way || RoomsWays[0] == collision.GetComponent<Generation>().Way))
                     {
-                        Instantiate(CornerRooms.Room[i], transform.position, Quaternion.identity).transform.SetParent(Grid.transform);
                         Spawned = CornerRooms.Room[i];
+                        Spawn();
                         break;
                     }
                 }
@@ -48,7 +49,8 @@ public class Generation : MonoBehaviour
     private void Spawn()
     {
         if (!IsDrawn)
-        { 
+        {
+            RoomSpawned.Raise();
             Instantiate(Spawned, this.transform.position, Quaternion.identity).transform.SetParent(Grid.transform);
             IsDrawn = true;
         }

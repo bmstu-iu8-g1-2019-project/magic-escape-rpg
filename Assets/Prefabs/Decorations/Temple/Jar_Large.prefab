@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1414411816322856733}
   - component: {fileID: 5930903384491197342}
   - component: {fileID: 6908569632253920536}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Jar_Large
   m_TagString: Destroyable
   m_Icon: {fileID: 0}
@@ -171,7 +171,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1832850223880586714}
   - component: {fileID: 3402623229712919975}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Destroyable
   m_Icon: {fileID: 0}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class DungeonManager : MonoBehaviour
 {
@@ -11,6 +12,9 @@ public class DungeonManager : MonoBehaviour
     [SerializeField] private GameObject MessageBox;
     [SerializeField] private TextMeshProUGUI Message;
     [SerializeField] private GameObject Portal;
+    [SerializeField] private Slider levelSlider;
+    [SerializeField] private Signal UpdateLevel;
+    private int Stars;
     private int EnemyNum = 0;
     private bool isMoved;
     private bool isAllowed = false;
@@ -55,5 +59,17 @@ public class DungeonManager : MonoBehaviour
     public void SpawnPortal()
     {
         Instantiate(Portal, transform.position, Quaternion.identity);
+    }
+
+    public void AddStars()
+    {
+        Stars++;
+    }
+
+    public void GiveStars()
+    {
+        PlayerManager Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        Player.Stars += Stars;
+        UpdateLevel.Raise();
     }
 }

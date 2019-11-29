@@ -5,17 +5,20 @@ public class PlayerData
 {
     public float CurrentHealth;
     public float MaxHealth;
+    public int Stars;
     public int Coins;
     public float Armor;
     public int armorId;
+    public int Level;
     public List<int> weaponsId = new List<int>();
     public List<int> itemsId = new List<int>();
     public List<int> shopId = new List<int>();
 
     public PlayerData(PlayerManager Player, PlayerInventory Inv, PlayerEquipment equipment, PlayerInventory Shop)
     {
-
+        Level = Player.Level;
         CurrentHealth = Player.CurrentHealth.RuntimeValue;
+        Stars = Player.Stars;
         MaxHealth = Player.CurrentHealth.InitialValue;
         Armor = Player.Armor.InitialValue;
         armorId = equipment.Armor.id;

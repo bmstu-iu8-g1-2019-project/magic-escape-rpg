@@ -9,6 +9,7 @@ public class ShopSlot : InventorySlot
 {
     [SerializeField] private PlayerInventory Shop;
     [SerializeField] private Signal UpdateInventory;
+    [SerializeField] private Signal UpdateCoins;
     private int price;
 
     override public void Start()
@@ -35,6 +36,7 @@ public class ShopSlot : InventorySlot
             if (player.Coins - ThisItem.price >= 0)
             {
                 player.Coins -= ThisItem.price;
+                UpdateCoins.Raise();
                 Debug.Log(player.Coins);
                 AddItem();
                 UpdateInventory.Raise();

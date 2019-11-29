@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
 {
     private bool IsTriggered;
     private GameObject Player;
+    [SerializeField] private Signal UpdateCoins;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class Coin : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Player.GetComponent<PlayerManager>().Coins++;
-            Debug.Log(Player.GetComponent<PlayerManager>().Coins);
+            UpdateCoins.Raise();
             Destroy(gameObject);
         }
     }

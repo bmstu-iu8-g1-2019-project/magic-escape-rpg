@@ -31,8 +31,9 @@ MonoBehaviour:
   ItemDescription: Restores 1 heart
   ItemImage: {fileID: -2453289629197179864, guid: c239221d9306a9c46a236f1369cfdcbf,
     type: 3}
-  NumberHeld: 1
+  NumberHeld: 5
   Usable: 1
   Unique: 0
   id: 0
+  price: 250
   ThisItem: {fileID: 0}

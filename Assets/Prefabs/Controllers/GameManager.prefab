@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 363167767600889534}
   - component: {fileID: 363167767600889532}
   - component: {fileID: 7541770590412814137}
+  - component: {fileID: 217825373702641466}
+  - component: {fileID: 8179806957139928298}
+  - component: {fileID: 7937042844153369176}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: GameController
@@ -49,6 +52,9 @@ MonoBehaviour:
   EquipmentPanel: {fileID: 0}
   PausePanel: {fileID: 0}
   AnnouncementPanel: {fileID: 0}
+  ShopPanel: {fileID: 0}
+  levelSlider: {fileID: 0}
+  levels_grades: 000000000a0000001e0000003c00000064000000
 --- !u!114 &363167767600889532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65,7 +71,7 @@ MonoBehaviour:
   SignalEvent:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 363167767600889534}
         m_MethodName: SetActive
         m_Mode: 6
         m_Arguments:
@@ -99,6 +105,89 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa48b4d0d5777af4d97e3473e5f3b44e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inv: {fileID: 0}
-  Items: {fileID: 0}
+  Inv: {fileID: 11400000, guid: 9dcdd2f21d942dd4991f7ee2657772e4, type: 2}
+  Items: {fileID: 11400000, guid: 91385865a0ff91a41bb4ca1340e48788, type: 2}
+  Equipment: {fileID: 11400000, guid: 0d70abaf6084d08479ef247861583c9c, type: 2}
+  Shop: {fileID: 11400000, guid: a3edfb98fbfdc0f4f8ece073985b49d4, type: 2}
   invMgr: {fileID: 0}
+  shopMgr: {fileID: 0}
+  defArmor: {fileID: 11400000, guid: 65fb0a4a840da9d418d5462aacf53986, type: 2}
+  defShop: {fileID: 11400000, guid: 52db9ea96235c1140817687abd664763, type: 2}
+  defInv: {fileID: 11400000, guid: 4c127458fd40b7c4eaa5816d0ea9f47a, type: 2}
+  UpdateInv: {fileID: 11400000, guid: 085406e4314312043a0e4a48d9854c76, type: 2}
+  UpdateShop: {fileID: 11400000, guid: 3562354b202e49541b9bfad31c9aa246, type: 2}
+  UpdateCoins: {fileID: 11400000, guid: e9626e7c7e659f84a818494bc2f30746, type: 2}
+  UpdatePlayerLevel: {fileID: 11400000, guid: 3f2b18e20e4365547b9070a4eb2dfbc3, type: 2}
+--- !u!114 &217825373702641466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363167767600889535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d3ac4a124dca249bcac0961a14c8c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: MainMenu
+  FadeInPanel: {fileID: 434879900700437451, guid: 5c67550a900a4b4429e2ae9dd2d4f605,
+    type: 3}
+  FadeOutPanel: {fileID: 4273690795000368743, guid: fab7071ac5c2e8a4fbf8c6d5ad24e122,
+    type: 3}
+  FadeWait: 0
+  isSaving: 0
+--- !u!114 &8179806957139928298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363167767600889535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a757c6f004fea3f47acfbf9df888e9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Signal: {fileID: 11400000, guid: 3f2b18e20e4365547b9070a4eb2dfbc3, type: 2}
+  SignalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 363167767600889534}
+        m_MethodName: UpdateLevelSlider
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7937042844153369176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363167767600889535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a757c6f004fea3f47acfbf9df888e9a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Signal: {fileID: 11400000, guid: 75a65cb71bf9d0c4b814c640d44679be, type: 2}
+  SignalEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 217825373702641466}
+        m_MethodName: LoadLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

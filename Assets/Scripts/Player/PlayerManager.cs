@@ -43,9 +43,11 @@ public class PlayerManager : MonoBehaviour
     [Header("GameComponents")]
     private Animator Animator;
     private Rigidbody2D Body;
-    private float ChangeWeaponKD = 0.1f;
+    private float ChangeWeaponKD = 0.01f;
     private float WeaponCurrentKD = 0.1f;
     [HideInInspector] public int Coins;
+    public int Stars;
+    public int Level = 1;
 
     [Header("Settings values")]
     private bool isHelpAim = true;
@@ -94,10 +96,10 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q) && Weapons.thisList.Count > 0 && ChangeWeaponKD <= WeaponCurrentKD)
         {
-            WeaponCurrentKD = 0;
+            WeaponCurrentKD = 0f;
             ChangeCurrentItem();
         }
-        else if (ChangeWeaponKD > WeaponCurrentKD)
+        else if (ChangeWeaponKD >= WeaponCurrentKD)
         {
             WeaponCurrentKD += Time.deltaTime;
         }
@@ -182,9 +184,10 @@ public class PlayerManager : MonoBehaviour
         Animator.SetFloat("MoveX", Move.x);
         Animator.SetFloat("MoveY", Move.y); 
         Animator.SetBool("IsMove", true);
-        // transform.position += Way.normalized * MovementSpeed * Time.deltaTime;
-        transform.position = Vector3.MoveTowards(transform.position, transform.position + Way.normalized, Time.deltaTime * MovementSpeed);
-        // Body.MovePosition(transform.position + Way.normalized * Time.deltaTime * MovementSpeed);
+        Vector2 inputVector = Vector2.ClampMagnitude(Way, 1f);
+        Vector2 move = inputVector * MovementSpeed;
+        Vector2 newPos = Body.position + move * Time.deltaTime;
+        Body.MovePosition(newPos);
     }
 
     private void Attack()

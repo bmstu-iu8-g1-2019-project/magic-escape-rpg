@@ -68,6 +68,7 @@ MonoBehaviour:
   Inventory: {fileID: 11400000, guid: 9dcdd2f21d942dd4991f7ee2657772e4, type: 2}
   Shop: {fileID: 11400000, guid: a3edfb98fbfdc0f4f8ece073985b49d4, type: 2}
   UpdateInventory: {fileID: 11400000, guid: 085406e4314312043a0e4a48d9854c76, type: 2}
+  UpdateCoins: {fileID: 11400000, guid: e9626e7c7e659f84a818494bc2f30746, type: 2}
 --- !u!114 &8211115932445878360
 MonoBehaviour:
   m_ObjectHideFlags: 0
