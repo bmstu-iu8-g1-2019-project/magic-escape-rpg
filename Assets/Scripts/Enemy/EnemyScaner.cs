@@ -24,6 +24,7 @@ public class EnemyScaner : Scaner
         {
             if (collision.gameObject.GetComponent<ColliderManager>() && !collision.gameObject.GetComponent<ColliderManager>().IsEnetered)
             {
+                AssignTarget(null);
                 return;
             }
         }

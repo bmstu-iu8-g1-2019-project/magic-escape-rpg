@@ -55,7 +55,7 @@ public class Wizard : Enemy
                         AdditionalWay *= 0.8f;
                         RaycastHit2D tryHit = Physics2D.Raycast(transform.position,
                             AdditionalWay, Vector3.Distance(transform.position, AdditionalWay));
-                        if (!tryHit)
+                        if (!tryHit && AdditionalWay != Vector3.zero)
                         {
                             TimeKd = AttackKD;
                             transform.position = AdditionalWay;

@@ -508,11 +508,6 @@ PrefabInstance:
       propertyPath: sys
       value: 
       objectReference: {fileID: 1512063287}
-    - target: {fileID: 3559119778806989515, guid: 9ac1a43e736a30c4f94bb1c8b03054c5,
-        type: 3}
-      propertyPath: MovementSpeed
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9ac1a43e736a30c4f94bb1c8b03054c5, type: 3}
 --- !u!4 &221605384 stripped
@@ -3543,6 +3538,36 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
+    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: InventoryPanel
+      value: 
+      objectReference: {fileID: 804254981}
+    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: EquipmentPanel
+      value: 
+      objectReference: {fileID: 2019964081}
+    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: PausePanel
+      value: 
+      objectReference: {fileID: 789883019}
+    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: AnnouncementPanel
+      value: 
+      objectReference: {fileID: 1548157777}
+    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: ShopPanel
+      value: 
+      objectReference: {fileID: 1861307401}
+    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: levelSlider
+      value: 
+      objectReference: {fileID: 239215788}
     - target: {fileID: 7541770590412814137, guid: 167c638ac41b46f4f9136297d64e4d78,
         type: 3}
       propertyPath: invMgr
@@ -3644,36 +3669,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
-        type: 3}
-      propertyPath: InventoryPanel
-      value: 
-      objectReference: {fileID: 804254981}
-    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
-        type: 3}
-      propertyPath: EquipmentPanel
-      value: 
-      objectReference: {fileID: 2019964081}
-    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
-        type: 3}
-      propertyPath: PausePanel
-      value: 
-      objectReference: {fileID: 789883019}
-    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
-        type: 3}
-      propertyPath: AnnouncementPanel
-      value: 
-      objectReference: {fileID: 1548157777}
-    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
-        type: 3}
-      propertyPath: ShopPanel
-      value: 
-      objectReference: {fileID: 1861307401}
-    - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
-        type: 3}
-      propertyPath: levelSlider
-      value: 
-      objectReference: {fileID: 239215788}
     - target: {fileID: 363167767600889532, guid: 167c638ac41b46f4f9136297d64e4d78,
         type: 3}
       propertyPath: SignalEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Target
