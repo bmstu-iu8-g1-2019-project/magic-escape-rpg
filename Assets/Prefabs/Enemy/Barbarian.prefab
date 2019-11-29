@@ -137,9 +137,9 @@ GameObject:
   - component: {fileID: 2316330905732199214}
   - component: {fileID: 2316330905732199203}
   - component: {fileID: 2316330905732199201}
-  - component: {fileID: 2316330905732199202}
   - component: {fileID: 2316330905732199215}
   - component: {fileID: 2316330905732199200}
+  - component: {fileID: 6760508563923391241}
   m_Layer: 0
   m_Name: Barbarian
   m_TagString: Enemy
@@ -270,37 +270,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.39349988, y: 0.38948232}
   m_EdgeRadius: 0
---- !u!114 &2316330905732199202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2316330905732199208}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2cd152849ac41b47a08c649b963de91, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentState: 0
-  MoveSpeed: 1.6
-  AttackKD: 0
-  AttackAnimTime: 0.517
-  MaxHealth: {fileID: 11400000, guid: 7e5f66dbd0a1696428decae1cc231467, type: 2}
-  DeadAnimTime: 0.75
-  CurrentHealth: 0
-  TimeKd: 0
-  Sprite: {fileID: 2316330905732199213}
-  Body: {fileID: 0}
-  Anim: {fileID: 2316330905732199215}
-  Target: {fileID: 0}
-  Parent: {fileID: 0}
-  GoldenCoin: {fileID: 1163990717234091431, guid: b4a6653647bb1304d95cc3fa104c0b54,
-    type: 3}
-  EnemyBorn: {fileID: 11400000, guid: e6b9e7cf82e9d3248ac68d405595b692, type: 2}
-  EnemyDied: {fileID: 11400000, guid: 8b242f9ee6ff41843bad27ac1b3e7a77, type: 2}
-  ChaseRadius: 3
-  AttackRadius: 0.4
 --- !u!95 &2316330905732199215
 Animator:
   serializedVersion: 3
@@ -346,3 +315,34 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.39429843, y: 0.75110924}
   m_EdgeRadius: 0
+--- !u!114 &6760508563923391241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2316330905732199208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2cd152849ac41b47a08c649b963de91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState: 0
+  MoveSpeed: 4
+  AttackKD: 0
+  AttackAnimTime: 0.517
+  MaxHealth: {fileID: 11400000, guid: 7e5f66dbd0a1696428decae1cc231467, type: 2}
+  DeadAnimTime: 0.767
+  CurrentHealth: 0
+  TimeKd: 0
+  Sprite: {fileID: 0}
+  Body: {fileID: 0}
+  Anim: {fileID: 0}
+  Target: {fileID: 0}
+  Parent: {fileID: 0}
+  GoldenCoin: {fileID: 1163990717234091431, guid: b4a6653647bb1304d95cc3fa104c0b54,
+    type: 3}
+  EnemyBorn: {fileID: 11400000, guid: e6b9e7cf82e9d3248ac68d405595b692, type: 2}
+  EnemyDied: {fileID: 11400000, guid: 8b242f9ee6ff41843bad27ac1b3e7a77, type: 2}
+  ChaseRadius: 4
+  AttackRadius: 0.6

@@ -99,9 +99,26 @@ public class PlayerManager : MonoBehaviour
             WeaponCurrentKD = 0f;
             ChangeCurrentItem();
         }
+        if (Weapons.thisList.Count > 0)
+        {
+            if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack
+                && CurrentState != PlayerState.stagger)
+            {
+                Attack();
+            }
+        }
+    }
+
+    private void FixedUpdate()
+    {
+        if (Time.timeScale == 0f)
+        {
+            return;
+        }
+       
         else if (ChangeWeaponKD >= WeaponCurrentKD)
         {
-            WeaponCurrentKD += Time.deltaTime;
+            WeaponCurrentKD += Time.fixedDeltaTime;
         }
         Move.x = Input.GetAxisRaw("Horizontal") ;
         Move.y = Input.GetAxisRaw("Vertical");
@@ -129,15 +146,6 @@ public class PlayerManager : MonoBehaviour
         } else{
             Animator.SetBool("IsMove", false);
         }
-        if (Weapons.thisList.Count > 0)
-        {
-            if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack
-                && CurrentState != PlayerState.stagger)
-            {
-                Attack();
-            }
-        }
-
     }
 
     private Vector3 Revert()
@@ -186,7 +194,7 @@ public class PlayerManager : MonoBehaviour
         Animator.SetBool("IsMove", true);
         Vector2 inputVector = Vector2.ClampMagnitude(Way, 1f);
         Vector2 move = inputVector * MovementSpeed;
-        Vector2 newPos = Body.position + move * Time.deltaTime;
+        Vector2 newPos = Body.position + move * Time.fixedDeltaTime;
         Body.MovePosition(newPos);
     }
 

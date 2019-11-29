@@ -207,7 +207,7 @@ MonoBehaviour:
   AttackKD: 0.5
   AttackAnimTime: 0.517
   MaxHealth: {fileID: 11400000, guid: 6a4c6f4f59a64c34ebf81c88949aa81a, type: 2}
-  DeadAnimTime: 0.567
+  DeadAnimTime: 0.767
   CurrentHealth: 0
   TimeKd: 0
   Sprite: {fileID: 0}
