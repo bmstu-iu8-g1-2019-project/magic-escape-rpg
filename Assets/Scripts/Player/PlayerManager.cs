@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour
     [HideInInspector] public GameObject Target;
     public RigidBodyList Weapons;
     private Vector3 RevertedMove;
-    private Vector3 Move;
+    private Vector2 Move;
     private float Angle;
     private Vector3 Ideal = new Vector3(1f, 0f, 0f);
     private Vector3 Buf = new Vector3(0f, 1f, 0f);
@@ -25,11 +25,11 @@ public class PlayerManager : MonoBehaviour
     [Header("Interaction variables")]
     public FloatValue CurrentHealth;
     public FloatValue Armor;
-    public PlayerState CurrentState;
+    [HideInInspector]public PlayerState CurrentState;
 
     [Header("UI")]
     public GameObject HurtPanel;
-    public Image CurrentWeapon;
+    [HideInInspector]public Image CurrentWeapon;
     private int WeaponIndex;
     private bool IsInitialized; // Weapon
 
@@ -46,8 +46,8 @@ public class PlayerManager : MonoBehaviour
     private float ChangeWeaponKD = 0.01f;
     private float WeaponCurrentKD = 0.1f;
     [HideInInspector] public int Coins;
-    public int Stars;
-    public int Level = 1;
+    [HideInInspector]public int Stars;
+    [HideInInspector]public int Level = 1;
 
     [Header("Settings values")]
     private bool isHelpAim = true;
@@ -120,9 +120,9 @@ public class PlayerManager : MonoBehaviour
         {
             WeaponCurrentKD += Time.fixedDeltaTime;
         }
-        Move.x = Input.GetAxisRaw("Horizontal") ;
+        Move.x = Input.GetAxisRaw("Horizontal");
         Move.y = Input.GetAxisRaw("Vertical");
-        if (Move != Vector3.zero)
+        if (Move != Vector2.zero)
         { 
 
             if (CurrentState != PlayerState.stagger)

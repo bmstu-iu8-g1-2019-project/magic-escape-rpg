@@ -10,7 +10,7 @@ public enum EnemyState
 }
 public class Enemy : MonoBehaviour
 {
-    public EnemyState CurrentState;
+    [HideInInspector]public EnemyState CurrentState;
 
     [Header("Movement and attack variables")]
     public float MoveSpeed;
@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Items")]
     [SerializeField] private GameObject GoldenCoin;
+    [SerializeField] private int baseDroppedCoins;
 
     [Space]
     [SerializeField] private Signal EnemyBorn;
@@ -146,8 +147,8 @@ public class Enemy : MonoBehaviour
 
     public virtual void SpawnCoins()
     {
-        int rand = Random.Range(1, 13);
-        for (int i = 0; i < rand; i++)
+        int rand = Random.Range(-3, 3);
+        for (int i = 0; i < baseDroppedCoins + rand; i++)
         {
             Rigidbody2D temp = Instantiate(GoldenCoin, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
             temp.AddForce(new Vector2(Mathf.Sin(i), Mathf.Cos(i)) * i, ForceMode2D.Impulse);
