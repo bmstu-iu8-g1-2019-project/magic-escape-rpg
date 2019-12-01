@@ -46,7 +46,6 @@ public class ShopSlot : InventorySlot
             {
                 player.Coins -= ThisItem.price;
                 UpdateCoins.Raise();
-                Debug.Log(player.Coins);
                 AddItem();
                 UpdateInventory.Raise();
                 ItemDescription.GetComponent<TextMeshProUGUI>().text = "";
@@ -75,6 +74,7 @@ public class ShopSlot : InventorySlot
                 return;
             }
         }
+        ThisItem.NumberHeld = 1;
         Inventory.MyInventory.Add(ThisItem);
     }
 

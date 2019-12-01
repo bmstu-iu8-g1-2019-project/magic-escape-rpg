@@ -50,7 +50,10 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
 
     public virtual void SetupText()
     {
-        ItemNumberText.text = "" + ThisItem.NumberHeld;
+        if (!ThisItem.Unique)
+        {
+            ItemNumberText.text = "" + ThisItem.NumberHeld;
+        }
     }
     
     public virtual void OnPointerEnter(PointerEventData eventdata)

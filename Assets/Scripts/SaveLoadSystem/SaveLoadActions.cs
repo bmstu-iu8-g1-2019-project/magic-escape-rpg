@@ -105,7 +105,7 @@ public class SaveLoadActions : MonoBehaviour
         Shop = defShop;
         UpdateShop.Raise();
         Inv = defInv;
-        foreach (var item in Inv.MyInventory)
+        foreach (var item in Items.MyInventory)
         {
             item.NumberHeld = 1;
         }
