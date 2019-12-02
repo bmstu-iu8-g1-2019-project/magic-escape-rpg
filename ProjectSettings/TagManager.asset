@@ -7,6 +7,15 @@ TagManager:
   - Decorations
   - MagicDamage
   - Enemy
+  - Description
+  - Equipment
+  - UI main
+  - PlayerDamage
+  - Spawner
+  - Scaner
+  - Destroyable
+  - Damage
+  - HeartContainer
   layers:
   - Default
   - TransparentFX
@@ -16,7 +25,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Minimap
   - 
   - 
   - 

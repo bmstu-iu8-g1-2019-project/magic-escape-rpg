@@ -43,6 +43,10 @@ public class SaveLoadActions : MonoBehaviour
         {
             Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         }
+        if (data == null)
+        {
+            ResetDefaults();
+        }
         Player.Level = data.Level;
         Player.Stars = data.Stars;
         UpdatePlayerLevel.Raise();

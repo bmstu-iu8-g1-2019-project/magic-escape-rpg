@@ -14,14 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ThisEvent:
     m_PersistentCalls:
-      m_Calls: []
-  ItemName: 
-  ItemDescription: 
-  ItemImage: {fileID: 0}
-  NumberHeld: 0
-  Usable: 0
+      m_Calls:
+      - m_Target: {fileID: 1082711073219781737, guid: d3880ea242953684380cff2fa8ad8797,
+          type: 3}
+        m_MethodName: OnUse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ItemName: Big health potion
+  ItemDescription: Restores 100% health points
+  ItemImage: {fileID: -5088558624430498682, guid: c239221d9306a9c46a236f1369cfdcbf,
+    type: 3}
+  NumberHeld: 1
+  Usable: 1
   Unique: 0
-  id: 0
-  price: 0
-  necessaryLevel: 0
+  id: 6
+  price: 750
+  necessaryLevel: 1
   ThisItem: {fileID: 0}

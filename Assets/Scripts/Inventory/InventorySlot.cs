@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("UI to change")]
     [SerializeField] private TextMeshProUGUI ItemNumberText;
@@ -63,6 +63,15 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
             ItemDescription = GameObject.Find("UI Canvas/Inventory/Inventory Panel/Description Panel/Item Description");
         }
         ItemDescription.GetComponent<TextMeshProUGUI>().text = ThisItem.ItemDescription;
+    }
+
+    public virtual void OnPointerExit(PointerEventData eventdata)
+    {
+        if (!ItemDescription)
+        {
+            ItemDescription = GameObject.Find("UI Canvas/Inventory/Inventory Panel/Description Panel/Item Description");
+        }
+        ItemDescription.GetComponent<TextMeshProUGUI>().text = "";
     }
 
     public virtual void OnCLick()

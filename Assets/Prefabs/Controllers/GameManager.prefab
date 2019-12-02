@@ -55,6 +55,9 @@ MonoBehaviour:
   ShopPanel: {fileID: 0}
   levelSlider: {fileID: 0}
   levels_grades: 000000000a0000001e0000003c00000064000000
+  levelText: {fileID: 0}
+  levelUpEffect: {fileID: 8540525339301940144, guid: 5bc148ecc27b80d4faf5120fe422815f,
+    type: 3}
 --- !u!114 &363167767600889532
 MonoBehaviour:
   m_ObjectHideFlags: 0

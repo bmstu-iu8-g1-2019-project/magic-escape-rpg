@@ -14,9 +14,9 @@ public class KnockBack : MonoBehaviour
             if (hit != null)
             {
                 int playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().Level;
-                ThisKnockParams.Damage *= playerLevel;
                 if (collision.CompareTag("Enemy") && !this.CompareTag("Damage"))
                 {
+
                     AddForce(hit);
                     hit.GetComponent<Enemy>().CurrentState = EnemyState.stagger;
                     collision.GetComponent<Enemy>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
@@ -26,7 +26,7 @@ public class KnockBack : MonoBehaviour
                 {
                     AddForce(hit);
                     hit.GetComponent<PlayerManager>().CurrentState = PlayerState.stagger;
-                    collision.GetComponent<PlayerManager>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
+                    collision.GetComponent<PlayerManager>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage * playerLevel / 2);
                 }
             }
         }

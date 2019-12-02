@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,8 @@ public class GameManager : MonoBehaviour
     [Header("Level variables")]
     public Slider levelSlider;
     public List<int> levels_grades;
+    [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private GameObject levelUpEffect;
 
     [Header("Game Pause")]
     private bool GamePaused;
@@ -127,12 +130,22 @@ public class GameManager : MonoBehaviour
             {
                 levelSlider.value = 1f;
             }
+            levelText.text = "" + player.Stars + " / " + levels_grades[player.Level];
         }
+    }
+
+    private IEnumerator levelUpCo(PlayerManager player)
+    {
+        GameObject temp = Instantiate(levelUpEffect, new Vector2(player.transform.position.x, player.transform.position.y - 0.7f), Quaternion.identity);
+        temp.transform.SetParent(player.transform);
+        yield return new WaitForSeconds(1f);
+        temp.SetActive(false);
     }
 
     private void LevelUp(PlayerManager player)
     {
         HeartManager mgr = GameObject.FindGameObjectWithTag("HeartContainer").GetComponent<HeartManager>();
+        StartCoroutine(levelUpCo(player));
         player.Level++;
         player.CurrentHealth.InitialValue += 2;
         mgr.HeartContainers.InitialValue++;
