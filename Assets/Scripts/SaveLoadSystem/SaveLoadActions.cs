@@ -18,10 +18,10 @@ public class SaveLoadActions : MonoBehaviour
     [SerializeField] private PlayerInventory defShop;
     [SerializeField] private PlayerInventory defInv;
     [Header("Signals")]
-    [SerializeField] private Signal UpdateInv;
-    [SerializeField] private Signal UpdateShop;
-    [SerializeField] private Signal UpdateCoins;
-    [SerializeField] private Signal UpdatePlayerLevel;
+    public Signal UpdateInv;
+    public Signal UpdateShop;
+    public Signal UpdateCoins;
+    public Signal UpdatePlayerLevel;
  
     public void SavePlayer()
     {

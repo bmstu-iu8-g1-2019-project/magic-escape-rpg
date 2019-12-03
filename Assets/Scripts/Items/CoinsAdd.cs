@@ -11,6 +11,7 @@ public class CoinsAdd : MonoBehaviour
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        UpdateCoins();
     }
 
     public void UpdateCoins()

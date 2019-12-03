@@ -1215,7 +1215,7 @@ PrefabInstance:
         type: 3}
       propertyPath: sys
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1309707905}
     - target: {fileID: 3852353460700915862, guid: 9ac1a43e736a30c4f94bb1c8b03054c5,
         type: 3}
       propertyPath: m_Interpolate

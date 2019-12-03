@@ -280,6 +280,7 @@ MonoBehaviour:
   Parent: {fileID: 0}
   GoldenCoin: {fileID: 1163990717234091431, guid: b4a6653647bb1304d95cc3fa104c0b54,
     type: 3}
+  baseDroppedCoins: 9
   EnemyBorn: {fileID: 11400000, guid: e6b9e7cf82e9d3248ac68d405595b692, type: 2}
   EnemyDied: {fileID: 11400000, guid: 8b242f9ee6ff41843bad27ac1b3e7a77, type: 2}
   AttackRadius: 4

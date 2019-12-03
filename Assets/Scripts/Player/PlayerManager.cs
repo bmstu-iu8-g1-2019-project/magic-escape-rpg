@@ -67,7 +67,7 @@ public class PlayerManager : MonoBehaviour
         isWalkRotated = !isWalkRotated;
     }
 
-    private void Start()
+    private void Awake()
     {
         if (sys)
         {

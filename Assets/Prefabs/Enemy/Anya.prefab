@@ -330,6 +330,7 @@ MonoBehaviour:
   Parent: {fileID: 0}
   GoldenCoin: {fileID: 1163990717234091431, guid: b4a6653647bb1304d95cc3fa104c0b54,
     type: 3}
+  baseDroppedCoins: 150
   EnemyBorn: {fileID: 0}
   EnemyDied: {fileID: 0}
   MeleeChaseRadius: 5

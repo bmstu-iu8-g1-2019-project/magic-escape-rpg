@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     [Header("Health variables")]
     public FloatValue MaxHealth;
     public float DeadAnimTime;
-    [HideInInspector] public float CurrentHealth;
+    public float CurrentHealth;
     [HideInInspector] public float TimeKd;
     [HideInInspector] public SpriteRenderer Sprite;
     [HideInInspector] public Rigidbody2D Body;
@@ -58,7 +58,9 @@ public class Enemy : MonoBehaviour
         {
             EnemyBorn.Raise();
         }
-        CurrentHealth *= GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().Level;
+        int playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().Level;
+        float healthInc = 1f + 0.35f * (playerLevel - 1f);
+        CurrentHealth *= healthInc;
     }
 
     public bool IsDead()
@@ -151,7 +153,7 @@ public class Enemy : MonoBehaviour
         for (int i = 0; i < baseDroppedCoins + rand; i++)
         {
             Rigidbody2D temp = Instantiate(GoldenCoin, transform.position, Quaternion.identity).GetComponent<Rigidbody2D>();
-            temp.AddForce(new Vector2(Mathf.Sin(i), Mathf.Cos(i)) * i, ForceMode2D.Impulse);
+            temp.AddForce(new Vector2(Mathf.Sin(i), Mathf.Cos(i)) * i / 10f, ForceMode2D.Impulse);
             StartCoroutine(CoinSpawnCo(temp));
         }
     }

@@ -8,7 +8,7 @@ public class KnockBack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Player") && collision.isTrigger)
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Player")) && collision.isTrigger)
         {
             Rigidbody2D hit = collision.GetComponent<Rigidbody2D>();
             if (hit != null)
@@ -16,7 +16,6 @@ public class KnockBack : MonoBehaviour
                 int playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().Level;
                 if (collision.CompareTag("Enemy") && !this.CompareTag("Damage"))
                 {
-
                     AddForce(hit);
                     hit.GetComponent<Enemy>().CurrentState = EnemyState.stagger;
                     collision.GetComponent<Enemy>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
@@ -26,7 +25,7 @@ public class KnockBack : MonoBehaviour
                 {
                     AddForce(hit);
                     hit.GetComponent<PlayerManager>().CurrentState = PlayerState.stagger;
-                    collision.GetComponent<PlayerManager>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage * playerLevel / 2);
+                    collision.GetComponent<PlayerManager>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage * playerLevel / 1.5f);
                 }
             }
         }

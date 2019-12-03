@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c9b0d825992c8348918f361a91f84fd, type: 3}
-  m_Name: GoldenArmor
+  m_Name: DoubleArmor
   m_EditorClassIdentifier: 
   ThisEvent:
     m_PersistentCalls:
@@ -26,14 +26,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ItemName: Golden Armor
-  ItemDescription: Add u 10 armor points
-  ItemImage: {fileID: -6367567858084311082, guid: c239221d9306a9c46a236f1369cfdcbf,
+  ItemName: Upgraded bronze armor
+  ItemDescription: Add 2 armor points
+  ItemImage: {fileID: -7325079378359898665, guid: c239221d9306a9c46a236f1369cfdcbf,
     type: 3}
   NumberHeld: 0
   Usable: 1
   Unique: 1
-  id: 5
-  price: 3000
+  id: 7
+  price: 500
+  necessaryLevel: 1
   ThisItem: {fileID: 0}
-  armorValue: 10
+  armorValue: 2

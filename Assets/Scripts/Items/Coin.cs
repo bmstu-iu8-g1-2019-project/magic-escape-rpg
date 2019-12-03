@@ -21,7 +21,7 @@ public class Coin : MonoBehaviour
         }
         if (IsTriggered)
         {
-            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, 4f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, 8f * Time.deltaTime);
         }
     }
 

@@ -15,5 +15,13 @@ MonoBehaviour:
   MyInventory:
   - {fileID: 11400000, guid: 8a276cfbefe0ffb4a8a3ba23e77eeb56, type: 2}
   - {fileID: 11400000, guid: 5e57d0340d3e6c744a8f022cc9d891ec, type: 2}
-  - {fileID: 11400000, guid: e310a2c98b296044bb28197219645c0d, type: 2}
   - {fileID: 11400000, guid: be9636f36c36d6542b70e5ca810e190b, type: 2}
+  - {fileID: 11400000, guid: d3808d738f17a0e43994a6d1b9ab6dcc, type: 2}
+  - {fileID: 11400000, guid: 4917ff9da4ae6074b8d07ac2ba2bdcc0, type: 2}
+  - {fileID: 11400000, guid: 68b896a47563bd04a803d7fd2c626972, type: 2}
+  - {fileID: 11400000, guid: 149252e7213406f42abf795cb6878af9, type: 2}
+  - {fileID: 11400000, guid: dee90fda6e124464f9a16a4016318b5e, type: 2}
+  - {fileID: 11400000, guid: 27a44da25e4564e498f13d19d3ebd3f0, type: 2}
+  - {fileID: 11400000, guid: 121a45225f7ea8b41af676c8f8d6b15c, type: 2}
+  - {fileID: 11400000, guid: e310a2c98b296044bb28197219645c0d, type: 2}
+  - {fileID: 11400000, guid: 78faa603701964245b64e44551ba38bb, type: 2}

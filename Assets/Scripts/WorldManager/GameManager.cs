@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [Header("Level variables")]
     public Slider levelSlider;
     public List<int> levels_grades;
-    [SerializeField] private TextMeshProUGUI levelText;
+    public TextMeshProUGUI levelText;
     [SerializeField] private GameObject levelUpEffect;
 
     [Header("Game Pause")]
@@ -130,7 +130,7 @@ public class GameManager : MonoBehaviour
             {
                 levelSlider.value = 1f;
             }
-            levelText.text = "" + player.Stars + " / " + levels_grades[player.Level];
+            levelText.text = "" + player.Level + ": " + player.Stars + " / " + levels_grades[player.Level];
         }
     }
 
@@ -142,14 +142,21 @@ public class GameManager : MonoBehaviour
         temp.SetActive(false);
     }
 
-    private void LevelUp(PlayerManager player)
+    public void LevelUp(PlayerManager player)
     {
-        HeartManager mgr = GameObject.FindGameObjectWithTag("HeartContainer").GetComponent<HeartManager>();
-        StartCoroutine(levelUpCo(player));
-        player.Level++;
-        player.CurrentHealth.InitialValue += 2;
-        mgr.HeartContainers.InitialValue++;
-        mgr.InitHearts();
-        mgr.UpdateHearts();
+        if (player.Level < levels_grades.Count)
+        {
+            HeartManager mgr = GameObject.FindGameObjectWithTag("HeartContainer").GetComponent<HeartManager>();
+            StartCoroutine(levelUpCo(player));
+            player.Level++;
+            if (mgr.HeartContainers.InitialValue < 10)
+            {
+                player.CurrentHealth.InitialValue += 2;
+                mgr.HeartContainers.InitialValue++;
+            }
+            levelText.text = "" + player.Level + ": " + player.Stars + " / " + levels_grades[player.Level];
+            mgr.InitHearts();
+            mgr.UpdateHearts();
+        }
     }
 }
