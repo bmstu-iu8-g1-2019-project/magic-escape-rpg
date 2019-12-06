@@ -73,7 +73,7 @@ public class SaveLoadActions : MonoBehaviour
             for (int i = 0; i < data.buffsId.Count; i++)
             {
                 BuffParametrs temp = allBuffs.list[data.buffsId[i]];
-                temp.timer = data.buffsTimeLeft[data.buffsId[i]];
+                temp.timer = data.buffsTimeLeft[i];
                 buffMgr.Buff(temp);
             }
         }

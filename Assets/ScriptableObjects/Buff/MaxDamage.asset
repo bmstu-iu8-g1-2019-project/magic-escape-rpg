@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42a8bbe01a53ae9429f9e2c9b2874580, type: 3}
-  m_Name: SlowBuff
+  m_Name: New buff options
   m_EditorClassIdentifier: 
-  value: 2
-  icon: {fileID: -4790839912641102173, guid: c239221d9306a9c46a236f1369cfdcbf, type: 3}
-  duration: 10
-  timer: 71.56972
-  type: 4
-  id: 1
+  value: 0
+  icon: {fileID: 0}
+  duration: 0
+  timer: 0
+  type: 0
+  id: 0

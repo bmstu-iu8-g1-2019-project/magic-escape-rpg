@@ -30,7 +30,7 @@ MonoBehaviour:
   ItemDescription: Makes you very fast
   ItemImage: {fileID: 774192300151941215, guid: c239221d9306a9c46a236f1369cfdcbf,
     type: 3}
-  NumberHeld: 0
+  NumberHeld: 1
   Usable: 1
   Unique: 0
   id: 16
