@@ -75,7 +75,7 @@ public class DungeonManager : MonoBehaviour
     public void GiveStars()
     {
         PlayerManager Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-        Player.Stars += Stars;
+        Player.Stars += (int)(Stars * (1 + Player.expInc));
         UpdateLevel.Raise();
     }
 }

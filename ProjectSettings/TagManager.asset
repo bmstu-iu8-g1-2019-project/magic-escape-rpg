@@ -16,6 +16,7 @@ TagManager:
   - Destroyable
   - Damage
   - HeartContainer
+  - RoomBorder
   layers:
   - Default
   - TransparentFX

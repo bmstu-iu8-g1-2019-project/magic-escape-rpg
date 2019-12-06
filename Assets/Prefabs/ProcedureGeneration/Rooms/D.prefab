@@ -31,7 +31,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4218961072216584847}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &838359051125235014
 Rigidbody2D:
@@ -122,7 +122,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4218961072216584847}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &9185699846203809717
 Tilemap:
@@ -1365,36 +1365,6 @@ TilemapRenderer:
   m_Mode: 1
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!1 &4020947210489584401
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1845947251712113436}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1845947251712113436
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4020947210489584401}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4218961072216584847}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7191782233627540787
 GameObject:
   m_ObjectHideFlags: 0
@@ -1425,7 +1395,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4218961072216584847}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &1724165665927326818
 Tilemap:
@@ -2227,7 +2197,7 @@ GameObject:
   - component: {fileID: 2305868778678528800}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Decorations
+  m_TagString: RoomBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2244,7 +2214,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4218961072216584847}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6175790320914340891
 MonoBehaviour:
@@ -2261,6 +2231,7 @@ MonoBehaviour:
   IsEnetered: 0
   Gates:
   - {fileID: 7867436869421356316, guid: 1c56431687a87ee44927019e1d0cc48c, type: 3}
+  objectsGenerator: {fileID: 3034359395269530402}
 --- !u!60 &7259423435159384811
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -2288,9 +2259,9 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 0.87466717, y: 0.052170753}
       - {x: -1.5717397, y: -1.1943083}
-      - {x: -1.494338, y: -1.22627}
+      - {x: -4.4859476, y: -2.7220745}
       - {x: 0.00033950806, y: -0.494128}
-      - {x: 0.971395, y: 0.00060391426}
+      - {x: 6.7765565, y: 2.9284248}
 --- !u!114 &2305868778678528800
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2351,7 +2322,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4218961072216584847}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &2985104115648709965
 Tilemap:
@@ -4978,14 +4949,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 6598281438176687607}
+  - {fileID: 2670636288537583721}
   - {fileID: 1514433935735743621}
+  - {fileID: 6598281438176687607}
   - {fileID: 4134148783024553194}
   - {fileID: 8596420281325353438}
   - {fileID: 5049569337121170329}
   - {fileID: 3504219867926098075}
-  - {fileID: 2670636288537583721}
-  - {fileID: 1845947251712113436}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5052,7 +5022,7 @@ PrefabInstance:
     - target: {fileID: 4247562674058595471, guid: b9d8a6ba76e668145a8811c450e3da6e,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4247562674058595471, guid: b9d8a6ba76e668145a8811c450e3da6e,
         type: 3}
@@ -5071,6 +5041,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d8a6ba76e668145a8811c450e3da6e, type: 3}
+--- !u!1 &3034359395269530402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7467800269679240819, guid: b9d8a6ba76e668145a8811c450e3da6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5602127245459387729}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8596420281325353438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4247562674058595471, guid: b9d8a6ba76e668145a8811c450e3da6e,

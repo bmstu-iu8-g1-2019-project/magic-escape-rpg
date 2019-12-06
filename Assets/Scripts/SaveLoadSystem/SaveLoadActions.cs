@@ -5,18 +5,25 @@ using UnityEngine;
 public class SaveLoadActions : MonoBehaviour
 {
     private PlayerManager Player;
+
     [Header("Scriptable objects")]
     [SerializeField] private PlayerInventory Inv;
     [SerializeField] private PlayerInventory Items;
     [SerializeField] private PlayerEquipment Equipment;
     [SerializeField] private PlayerInventory Shop;
-    [Space]
+    [SerializeField] private BuffList allBuffs;
+    [SerializeField] private BuffList currentBuffs;
+
+    [Header("Managers")]
     [SerializeField] private InventoryManager invMgr;
     [SerializeField] private InventoryManager shopMgr;
+    [SerializeField] private BuffManager buffMgr;
+ 
     [Header("Default items/values")]
     [SerializeField] private ArmorItem defArmor;
     [SerializeField] private PlayerInventory defShop;
     [SerializeField] private PlayerInventory defInv;
+
     [Header("Signals")]
     public Signal UpdateInv;
     public Signal UpdateShop;
@@ -29,7 +36,7 @@ public class SaveLoadActions : MonoBehaviour
         {
             Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         }
-        SaveSystem.SavePlayer(Player, Inv, Equipment, Shop);
+        SaveSystem.SavePlayer(Player, Inv, Equipment, Shop, currentBuffs);
     }
 
     public void LoadPlayer()
@@ -59,6 +66,17 @@ public class SaveLoadActions : MonoBehaviour
         Equipment.Armor = (ArmorItem)Items.MyInventory[data.armorId];
         Player.UpdateArmor.Raise();
         Player.PlayerHealthSignal.Raise();
+
+        if (buffMgr)
+        {
+            currentBuffs.list.Clear();
+            for (int i = 0; i < data.buffsId.Count; i++)
+            {
+                BuffParametrs temp = allBuffs.list[data.buffsId[i]];
+                temp.timer = data.buffsTimeLeft[data.buffsId[i]];
+                buffMgr.Buff(temp);
+            }
+        }
         if (invMgr)
         {
             Inv.MyInventory.Clear();
@@ -112,6 +130,11 @@ public class SaveLoadActions : MonoBehaviour
         Shop = defShop;
         UpdateShop.Raise();
         Inv = defInv;
+        currentBuffs.list.Clear();
+        foreach (var item in allBuffs.list)
+        {
+            item.timer = item.duration;
+        }
         foreach (var item in Items.MyInventory)
         {
             item.NumberHeld = 1;

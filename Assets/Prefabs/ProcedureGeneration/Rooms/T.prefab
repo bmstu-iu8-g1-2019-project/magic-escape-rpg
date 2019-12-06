@@ -4426,7 +4426,7 @@ GameObject:
   - component: {fileID: 3656896888779833058}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Decorations
+  m_TagString: RoomBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4460,6 +4460,7 @@ MonoBehaviour:
   IsEnetered: 0
   Gates:
   - {fileID: 6102143877564198630, guid: 0d159332126afa2419ef8d21e9682628, type: 3}
+  objectsGenerator: {fileID: 3589857679153175532}
 --- !u!60 &1908056354991861186
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -4586,6 +4587,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d8a6ba76e668145a8811c450e3da6e, type: 3}
+--- !u!1 &3589857679153175532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7467800269679240819, guid: b9d8a6ba76e668145a8811c450e3da6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 6229402206876876191}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7818556757241147664 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4247562674058595471, guid: b9d8a6ba76e668145a8811c450e3da6e,

@@ -13,6 +13,8 @@ public enum PlayerState
 public class PlayerManager : MonoBehaviour
 {
     [Header("Move and attack variables")]
+    public float damageInc;
+    public float expInc;
     public float MovementSpeed;
     [HideInInspector] public GameObject Target;
     public RigidBodyList Weapons;
@@ -99,6 +101,10 @@ public class PlayerManager : MonoBehaviour
             WeaponCurrentKD = 0f;
             ChangeCurrentItem();
         }
+        else if (ChangeWeaponKD >= WeaponCurrentKD)
+        {
+            WeaponCurrentKD += Time.fixedDeltaTime;
+        }
         if (Weapons.thisList.Count > 0)
         {
             if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack
@@ -115,16 +121,10 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
-       
-        else if (ChangeWeaponKD >= WeaponCurrentKD)
-        {
-            WeaponCurrentKD += Time.fixedDeltaTime;
-        }
         Move.x = Input.GetAxisRaw("Horizontal");
         Move.y = Input.GetAxisRaw("Vertical");
         if (Move != Vector2.zero)
         { 
-
             if (CurrentState != PlayerState.stagger)
             {
                 if (isWalkRotated)

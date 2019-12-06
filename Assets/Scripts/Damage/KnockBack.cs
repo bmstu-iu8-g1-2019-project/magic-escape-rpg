@@ -13,12 +13,13 @@ public class KnockBack : MonoBehaviour
             Rigidbody2D hit = collision.GetComponent<Rigidbody2D>();
             if (hit != null)
             {
-                int playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().Level;
+                PlayerManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+                int playerLevel = player.Level;
                 if (collision.CompareTag("Enemy") && !this.CompareTag("Damage"))
                 {
                     AddForce(hit);
                     hit.GetComponent<Enemy>().CurrentState = EnemyState.stagger;
-                    collision.GetComponent<Enemy>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
+                    collision.GetComponent<Enemy>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage * (1 + player.damageInc));
                 }
                 if (collision.gameObject.CompareTag("Player") 
                     && !this.CompareTag("PlayerDamage") && !this.CompareTag("GameController")) // Prevent dealing damage to yourself

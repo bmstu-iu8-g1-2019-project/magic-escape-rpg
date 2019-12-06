@@ -45,12 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef3b18605aeb324ba9ab17e466e6d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Way: Left
+  CornerRooms: {fileID: 11400000, guid: c8cdc461d631d814489094a8eb599d61, type: 2}
   RoomsList: {fileID: 11400000, guid: 95c7344fb18bc784b904c4b34794f2e6, type: 2}
   BlockedRoom: {fileID: 1083964803436912670, guid: a0878dc8610bb2b43985ccabe99d9332,
     type: 3}
   RoomSpawned: {fileID: 11400000, guid: 3d0f2def0639a3445b47d970ce9209c5, type: 2}
-  Way: Left
-  CornerRooms: {fileID: 11400000, guid: c8cdc461d631d814489094a8eb599d61, type: 2}
 --- !u!50 &4120282143062921419
 Rigidbody2D:
   serializedVersion: 4
@@ -59,7 +59,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8357346961160426179}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

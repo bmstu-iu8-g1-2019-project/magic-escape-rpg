@@ -16,6 +16,7 @@ public class Enemy : MonoBehaviour
     public float MoveSpeed;
     public float AttackKD;
     [SerializeField] private float AttackAnimTime;
+    public bool isActive;
 
     [Header("Health variables")]
     public FloatValue MaxHealth;
@@ -69,6 +70,7 @@ public class Enemy : MonoBehaviour
         int playerLevel = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>().Level;
         float healthInc = 1f + 0.35f * (playerLevel - 1f);
         CurrentHealth *= healthInc;
+        Target = GameObject.FindGameObjectWithTag("Player");
     }
 
     public bool IsDead()

@@ -153,4 +153,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da5c57090e7eb4749ba92b38d1029bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeTime: 3
   UpdateCoins: {fileID: 11400000, guid: e9626e7c7e659f84a818494bc2f30746, type: 2}

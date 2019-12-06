@@ -307,6 +307,67 @@ RectTransform:
   m_AnchoredPosition: {x: -5, y: 0}
   m_SizeDelta: {x: -20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &617818171244139307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4313700410998765764}
+  - component: {fileID: 2771509829788806895}
+  m_Layer: 5
+  m_Name: Buff Holder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4313700410998765764
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617818171244139307}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1465002705913651887}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.08567062, y: 0.7226141}
+  m_AnchorMax: {x: 0.08567062, y: 0.7226141}
+  m_AnchoredPosition: {x: 47.04001, y: -2.850006}
+  m_SizeDelta: {x: 109.88, y: 31.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2771509829788806895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617818171244139307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
 --- !u!1 &1005022074052570282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b45a76b8a5ac3f4e94b665dba7183d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HeartContainers: {fileID: 11400000, guid: a87e629a8ccabda41a7639a183ba69f4, type: 2}
   Hearts:
   - {fileID: 1465002704590543309}
   - {fileID: 1465002704383637281}
@@ -1027,7 +1089,6 @@ MonoBehaviour:
     type: 3}
   EmptyHeart: {fileID: 4537193172801868870, guid: 8b9a76671564cec4caa81874eee2ed25,
     type: 3}
-  HeartContainers: {fileID: 11400000, guid: a87e629a8ccabda41a7639a183ba69f4, type: 2}
   PlayerCurrentHealth: {fileID: 11400000, guid: 4185fb3aa4c96164d993f2e5da3bcd2c,
     type: 2}
 --- !u!1 &1465002705913651875
@@ -1063,6 +1124,7 @@ RectTransform:
   - {fileID: 1465002704325283487}
   - {fileID: 1465002705661691596}
   - {fileID: 8206939317480862468}
+  - {fileID: 4313700410998765764}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -1262,6 +1262,23 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 3562354b202e49541b9bfad31c9aa246,
         type: 2}
+    - target: {fileID: 7541770590412814137, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: currentBuffs
+      value: 
+      objectReference: {fileID: 11400000, guid: 68ecfeacbdab3944e9141eeef642bb8b,
+        type: 2}
+    - target: {fileID: 7541770590412814137, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: allBuffs
+      value: 
+      objectReference: {fileID: 11400000, guid: ee03f3c4b47e27142b6766740219910c,
+        type: 2}
+    - target: {fileID: 7541770590412814137, guid: 167c638ac41b46f4f9136297d64e4d78,
+        type: 3}
+      propertyPath: buffMgr
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 363167767600889533, guid: 167c638ac41b46f4f9136297d64e4d78,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1320,6 +1337,8 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78, type: 3}
     - {fileID: 8179806957139928298, guid: 167c638ac41b46f4f9136297d64e4d78, type: 3}
+    - {fileID: 3757406009273090859, guid: 167c638ac41b46f4f9136297d64e4d78, type: 3}
+    - {fileID: 4438654891858859373, guid: 167c638ac41b46f4f9136297d64e4d78, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 167c638ac41b46f4f9136297d64e4d78, type: 3}
 --- !u!1 &2137980884
 GameObject:

@@ -16,7 +16,7 @@ public class Wizard : Enemy
 
     void Update()
     {
-        if (Time.timeScale == 0 || IsDead())
+        if (Time.timeScale == 0 || IsDead() || !isActive)
         {
             return;
         }
@@ -53,7 +53,6 @@ public class Wizard : Enemy
                             AdditionalWay, Vector3.Distance(transform.position, AdditionalWay));
                         if (!tryHit && AdditionalWay != Vector3.zero)
                         {
-                            TimeKd = AttackKD;
                             transform.position = AdditionalWay;
                             MoveCondition = false;
                         }
@@ -66,8 +65,6 @@ public class Wizard : Enemy
             }
             else
             {
-                WalkToTarget(Vector3.MoveTowards(transform.position, AdditionalWay, MoveSpeed * Time.deltaTime));
-                MoveCondition = false;
                 TimeKd -= Time.deltaTime;
             }
         }

@@ -47,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
 --- !u!114 &8300428944306628453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,7 +78,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8300428944909896900
 Transform:
   m_ObjectHideFlags: 0
@@ -108,7 +108,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.0001
+  m_Radius: 15
 --- !u!114 &8300428944909896901
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,8 +122,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
-  deltaR: 0.5
-  MaxR: 8
 --- !u!1 &8300428944945889592
 GameObject:
   m_ObjectHideFlags: 0
@@ -321,6 +319,7 @@ MonoBehaviour:
   AttackAnimTime: 0.4
   MaxHealth: {fileID: 11400000, guid: 07cba205ebcc2e447b4c5cc9760bfd5a, type: 2}
   DeadAnimTime: 1
+  deffense: 0
   CurrentHealth: 0
   TimeKd: 0
   Sprite: {fileID: 0}
@@ -333,8 +332,8 @@ MonoBehaviour:
   baseDroppedCoins: 150
   EnemyBorn: {fileID: 0}
   EnemyDied: {fileID: 0}
-  MeleeChaseRadius: 5
-  MeleeAttackRadius: 1
+  MeleeChaseRadius: 10
+  MeleeAttackRadius: 0.7
   RangeChaseRadius: 8
   RangeAttackRadius: 4
   ProjectTileDirect: {fileID: 8377802826795781430, guid: 8d6dd1a7deccef04382fb944f8c6ce0e,

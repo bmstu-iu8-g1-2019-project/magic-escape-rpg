@@ -11,12 +11,14 @@ public class PlayerData
     public int armorId;
     public int Level;
     public int bossesProgress;
+    public List<int> buffsId = new List<int>();
+    public List<float> buffsTimeLeft = new List<float>();
     public List<int> weaponsId = new List<int>();
     public List<int> itemsId = new List<int>();
     public List<int> itemsValue = new List<int>();
     public List<int> shopId = new List<int>();
 
-    public PlayerData(PlayerManager Player, PlayerInventory Inv, PlayerEquipment equipment, PlayerInventory Shop)
+    public PlayerData(PlayerManager Player, PlayerInventory Inv, PlayerEquipment equipment, PlayerInventory Shop, BuffList currentBuffs)
     {
         Level = Player.Level;
         CurrentHealth = Player.CurrentHealth.RuntimeValue;
@@ -26,6 +28,11 @@ public class PlayerData
         armorId = equipment.Armor.id;
         Coins = Player.Coins;
         bossesProgress = Player.bossesProgres;
+        foreach (var item in currentBuffs.list)
+        {
+            buffsId.Add(item.id);
+            buffsTimeLeft.Add(item.timer);
+        }
         foreach (var item in Inv.MyInventory)
         {
             itemsId.Add(item.id);

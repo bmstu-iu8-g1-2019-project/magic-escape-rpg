@@ -1537,7 +1537,7 @@ GameObject:
   - component: {fileID: 2346351308663855877}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Decorations
+  m_TagString: RoomBorder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1572,6 +1572,7 @@ MonoBehaviour:
   Gates:
   - {fileID: 6102143877564198630, guid: 0d159332126afa2419ef8d21e9682628, type: 3}
   - {fileID: 7867436869421356316, guid: 1c56431687a87ee44927019e1d0cc48c, type: 3}
+  objectsGenerator: {fileID: 8244974311476840700}
 --- !u!60 &2019896170339319091
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -6298,6 +6299,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d8a6ba76e668145a8811c450e3da6e, type: 3}
+--- !u!1 &8244974311476840700 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7467800269679240819, guid: b9d8a6ba76e668145a8811c450e3da6e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1571471172942458511}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3403774690093228544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4247562674058595471, guid: b9d8a6ba76e668145a8811c450e3da6e,
@@ -6396,6 +6403,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner Down
       objectReference: {fileID: 0}
+    - target: {fileID: 5946636373506631211, guid: b39c87e88075423448cf0dc590a02e6e,
+        type: 3}
+      propertyPath: Parent
+      value: 
+      objectReference: {fileID: 6612871196149863725}
     - target: {fileID: 5946636372287488299, guid: b39c87e88075423448cf0dc590a02e6e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6451,11 +6463,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5946636373506631211, guid: b39c87e88075423448cf0dc590a02e6e,
-        type: 3}
-      propertyPath: Parent
-      value: 
-      objectReference: {fileID: 6612871196149863725}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b39c87e88075423448cf0dc590a02e6e, type: 3}
 --- !u!4 &4400040929372183491 stripped

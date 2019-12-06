@@ -14,7 +14,7 @@ public class Melee : Enemy
 
     private void Update()
     {
-        if (Time.timeScale == 0 || IsDead())
+        if (Time.timeScale == 0 || IsDead() || !isActive)
         {
             return;
         }

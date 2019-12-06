@@ -1,68 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &581621034815959617
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3541825258863961336}
-  - component: {fileID: 2393281705949958357}
-  - component: {fileID: 5444215603015049006}
-  m_Layer: 2
-  m_Name: Scaner
-  m_TagString: Scaner
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3541825258863961336
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581621034815959617}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2316330905732199212}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &2393281705949958357
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581621034815959617}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.0001
---- !u!114 &5444215603015049006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581621034815959617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f663c9436125a742bf0a953b596f36f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Collider: {fileID: 0}
-  deltaR: 1
-  MaxR: 4
 --- !u!1 &841396974304136951
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,7 +47,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.6
+  m_Radius: 1
 --- !u!114 &6195677687321237856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,7 +96,6 @@ Transform:
   m_LocalScale: {x: 0.91, y: 0.88, z: 1}
   m_Children:
   - {fileID: 6377897639771061310}
-  - {fileID: 3541825258863961336}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -331,8 +267,10 @@ MonoBehaviour:
   MoveSpeed: 4
   AttackKD: 0
   AttackAnimTime: 0.517
+  isActive: 0
   MaxHealth: {fileID: 11400000, guid: 7e5f66dbd0a1696428decae1cc231467, type: 2}
   DeadAnimTime: 0.767
+  deffense: 0
   CurrentHealth: 0
   TimeKd: 0
   Sprite: {fileID: 0}
@@ -345,5 +283,5 @@ MonoBehaviour:
   baseDroppedCoins: 5
   EnemyBorn: {fileID: 11400000, guid: e6b9e7cf82e9d3248ac68d405595b692, type: 2}
   EnemyDied: {fileID: 11400000, guid: 8b242f9ee6ff41843bad27ac1b3e7a77, type: 2}
-  ChaseRadius: 4
-  AttackRadius: 0.6
+  ChaseRadius: 6
+  AttackRadius: 1

@@ -11,11 +11,10 @@ public class Range : Enemy
     private bool AttackCondition;
     private bool MoveCondition;
     private Vector3 way;
-    private Vector3 AdditionalWay;
 
     void Update()
     {
-        if (Time.timeScale == 0 || IsDead())
+        if (Time.timeScale == 0 || IsDead() || !isActive)
         {
             return;
         }
@@ -41,8 +40,6 @@ public class Range : Enemy
                 MoveCondition = false;
                 Attack();
                 SpawntProjectTile(way);
-                AdditionalWay = Vector3.Cross(way, new Vector3(0f, 0f, 1f));
-
             }
             else
             {

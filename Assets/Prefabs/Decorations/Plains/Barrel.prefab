@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5862354170507185134}
   - component: {fileID: 8237408141311492918}
   - component: {fileID: 4211127094278231284}
+  - component: {fileID: 4420757324940641145}
   m_Layer: 2
   m_Name: Barrel
   m_TagString: Destroyable
@@ -131,7 +132,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: -0.39}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.6208462, y: 0.62944764}
+    pivot: {x: 0.62048185, y: 0.24146582}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -177,7 +178,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: -0.39}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.6208462, y: 0.62944764}
+    pivot: {x: 0.62048185, y: 0.24146582}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -195,3 +196,24 @@ PolygonCollider2D:
       - {x: 0.09173298, y: -0.008133888}
       - {x: 0.26547694, y: 0.05283749}
       - {x: 0.23487782, y: 0.10889161}
+--- !u!50 &4420757324940641145
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119736676359424531}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

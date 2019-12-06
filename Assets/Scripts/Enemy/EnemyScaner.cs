@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyScaner : Scaner
+public class EnemyScaner : MonoBehaviour
 {
     private GameObject Character; // Unity logic cannot inherit it from scaner
+    [HideInInspector] public CircleCollider2D Collider;
 
-    override public void Start()
+    private void Start()
     {
         Character = transform.parent.gameObject;
         Collider = gameObject.GetComponent<CircleCollider2D>();
     }
 
-    override public void AssignTarget(GameObject target)
+    public void AssignTarget(GameObject target)
     {
-        Character.GetComponent<Enemy>().Target = target;
-        Collider.radius = 0;
+        if (Character)
+        {
+            Character.GetComponent<Enemy>().Target = target;
+        }
     }
 
-    override public void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Decorations"))
         {

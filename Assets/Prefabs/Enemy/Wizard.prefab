@@ -204,7 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CurrentState: 0
   MoveSpeed: 2
-  AttackKD: 0.5
+  AttackKD: 0.15
   AttackAnimTime: 0.517
   MaxHealth: {fileID: 11400000, guid: 6a4c6f4f59a64c34ebf81c88949aa81a, type: 2}
   DeadAnimTime: 0.767
@@ -221,8 +221,8 @@ MonoBehaviour:
   baseDroppedCoins: 20
   EnemyBorn: {fileID: 11400000, guid: e6b9e7cf82e9d3248ac68d405595b692, type: 2}
   EnemyDied: {fileID: 11400000, guid: 8b242f9ee6ff41843bad27ac1b3e7a77, type: 2}
-  AttackRadius: 4
-  ChaseRadius: 7
+  AttackRadius: 6
+  ChaseRadius: 10
   ProjectTile: {fileID: 8828024004599744195, guid: 840f338b0237d3440b6d0de9ca9481f5,
     type: 3}
 --- !u!1 &9144445913630199292
@@ -242,7 +242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8929971888301378276
 Transform:
   m_ObjectHideFlags: 0
@@ -272,7 +272,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.0001
+  m_Radius: 15
 --- !u!114 &3692993868061909117
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,5 +286,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Collider: {fileID: 0}
-  deltaR: 1.5
-  MaxR: 7

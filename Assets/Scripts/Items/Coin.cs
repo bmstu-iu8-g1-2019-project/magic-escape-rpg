@@ -6,15 +6,26 @@ public class Coin : MonoBehaviour
 {
     private bool IsTriggered;
     private GameObject Player;
+    private float timer;
+    [SerializeField] private float lifeTime;
     [SerializeField] private Signal UpdateCoins;
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        timer = lifeTime;
     }
 
     void Update()
     {
+        if (timer <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+        }
         if (!IsTriggered && Vector2.Distance(transform.position, Player.transform.position) < 3)
         {
             IsTriggered = true;
