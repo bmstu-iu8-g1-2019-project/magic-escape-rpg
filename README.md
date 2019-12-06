@@ -27,4 +27,4 @@ to import all the assets.
 
 ## More information
 
-Check out the [Documentation](Documentation/) folder for more information. In particular, the [Getting Started Guide](Documentation/GettingStarted.md) is a good place to, well, start.
+Check out the [Documentation](Documentation/) folder for more information. In particular, the [Getting Started Guide](Documentation/EN/GettingStarted.md) is a good place to, well, start.
