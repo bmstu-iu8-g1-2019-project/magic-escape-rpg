@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Generation : MonoBehaviour
 {
+    public string Way;
+    [SerializeField] private Rooms CornerRooms;
     [SerializeField] private Rooms RoomsList;
     [SerializeField] private GameObject BlockedRoom;
     [SerializeField] private Signal RoomSpawned;
     private GameObject Spawned;
     private GameObject Grid;
-    public string Way;
-    public Rooms CornerRooms;
     private bool IsDrawn = false;
 
     private void Start()
@@ -25,24 +25,26 @@ public class Generation : MonoBehaviour
         if (collision.CompareTag("Spawner") && transform.position != Vector3.zero)
         {
             if (collision.gameObject.GetComponent<Generation>())
-            if (!collision.gameObject.GetComponent<Generation>().IsDrawn && !IsDrawn)
-            { 
-                for (int i = 0; i < CornerRooms.Room.Count; i++)
-                {
-                    List<string> RoomsWays = CornerRooms.Room[i].GetComponent<RoomWays>().Ways;
-                    if ((RoomsWays[0] == Way || RoomsWays[0] == collision.GetComponent<Generation>().Way) 
-                        && (RoomsWays[0] == Way || RoomsWays[0] == collision.GetComponent<Generation>().Way))
-                    {
-                        Spawned = CornerRooms.Room[i];
-                        Spawn();
-                        break;
-                    }
-                }
-                IsDrawn = true;
-            }
-            else
             {
-                Destroy(gameObject);
+                if (!collision.gameObject.GetComponent<Generation>().IsDrawn && !IsDrawn)
+                {
+                    for (int i = 0; i < CornerRooms.Room.Count; i++)
+                    {
+                        List<string> RoomsWays = CornerRooms.Room[i].GetComponent<RoomWays>().Ways;
+                        if ((RoomsWays[0] == Way || RoomsWays[0] == collision.GetComponent<Generation>().Way)
+                            && (RoomsWays[0] == Way || RoomsWays[0] == collision.GetComponent<Generation>().Way))
+                        {
+                            Spawned = CornerRooms.Room[i];
+                            Spawn();
+                            break;
+                        }
+                    }
+                    IsDrawn = true;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

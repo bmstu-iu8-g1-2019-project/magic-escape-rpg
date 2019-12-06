@@ -38,9 +38,7 @@ public class Melee : Enemy
             if (Target)
             {
                 MoveSpeed = Target.GetComponent<PlayerManager>().MovementSpeed - 0.7f;
-                // Some lags with build, really need this division
             }
-            TimeKd = AttackKD;
             WalkToTarget(Vector3.MoveTowards(transform.position,
                             Target.transform.position, MoveSpeed * Time.deltaTime));
         }
@@ -54,7 +52,7 @@ public class Melee : Enemy
     {
         if (!IsDead())
         {
-            CurrentHealth -= Damage;
+            CurrentHealth -= Damage * (1 - deffense);
             if (!IsDead())
             {
                 ChaseRadius = 15f; // After getting Damage melee will chase

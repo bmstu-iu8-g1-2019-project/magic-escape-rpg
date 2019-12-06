@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectsGeneration : MonoBehaviour
 {
-    public GameObject[] Objects;
+    [SerializeField] private GameObject[] Objects;
     private int random;
     void Start()
     {

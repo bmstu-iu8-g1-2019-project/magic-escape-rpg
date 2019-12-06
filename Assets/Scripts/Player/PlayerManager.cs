@@ -23,16 +23,16 @@ public class PlayerManager : MonoBehaviour
     private Vector3 Buf = new Vector3(0f, 1f, 0f);
 
     [Header("Interaction variables")]
+    public int bossesProgres;
     public FloatValue CurrentHealth;
     public FloatValue Armor;
     [HideInInspector]public PlayerState CurrentState;
 
     [Header("UI")]
     public GameObject HurtPanel;
-    [HideInInspector]public Image CurrentWeapon;
+    public Image CurrentWeapon;
     private int WeaponIndex;
     private bool IsInitialized; // Weapon
-
 
     [Header("Signals")]
     public Signal PlayerHealthSignal;
@@ -67,11 +67,11 @@ public class PlayerManager : MonoBehaviour
         isWalkRotated = !isWalkRotated;
     }
 
-    private void Awake()
+    private void Start()
     {
         if (sys)
         {
-            sys.LoadPlayer();
+           sys.LoadPlayer();
         }
         WeaponIndex = 0;
         if (Weapons.thisList.Count > 0 && CurrentWeapon)

@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class HeartManager : MonoBehaviour
 {
+    public FloatValue HeartContainers;
     [SerializeField] private Image[] Hearts;
     [SerializeField] private Sprite FullHeart;
     [SerializeField] private Sprite HalfFullHeart;
     [SerializeField] private Sprite EmptyHeart;
-    public FloatValue HeartContainers;
     [SerializeField] private FloatValue PlayerCurrentHealth;
     private bool isInitialized;
 

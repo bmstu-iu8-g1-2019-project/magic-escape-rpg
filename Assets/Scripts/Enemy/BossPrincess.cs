@@ -33,6 +33,7 @@ public class BossPrincess : Enemy
 
     private void MeleeAction()
     {
+        MoveSpeed = Target.GetComponent<PlayerManager>().MovementSpeed + 1.5f;
         AttackCondition = Vector3.Distance(Target.transform.position, transform.position) < MeleeAttackRadius;
         MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= MeleeChaseRadius
            && CurrentState == EnemyState.walk;

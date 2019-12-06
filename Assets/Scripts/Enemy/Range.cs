@@ -36,32 +36,17 @@ public class Range : Enemy
         if (AttackCondition)
         {
             Anim.SetBool("IsWalking", false);
-            if (TimeKd >= AttackKD)
+            if (TimeKd <= 0)
             {
-                WalkToTarget(Vector3.MoveTowards(transform.position, AdditionalWay, MoveSpeed * Time.deltaTime));
                 MoveCondition = false;
-                RaycastHit2D hit = Physics2D.Raycast(transform.position, way, AttackRadius);
-                if (hit)
-                {
-                    
-                    if (hit.collider.gameObject == Target)
-                    {
-                        Debug.DrawRay(transform.position, way * AttackRadius);
-                        Attack();
-                        SpawntProjectTile(way);
-                        AdditionalWay = Vector3.Cross(way, new Vector3(0f, 0f, 1f));
-                    }
-                    else
-                    {
-                        Debug.DrawRay(transform.position, AdditionalWay * AttackRadius);
-                        WalkToTarget(Vector3.MoveTowards(transform.position, AdditionalWay, MoveSpeed * Time.deltaTime));
-                        MoveCondition = false;
-                    }
-                }
+                Attack();
+                SpawntProjectTile(way);
+                AdditionalWay = Vector3.Cross(way, new Vector3(0f, 0f, 1f));
+
             }
             else
             {
-                TimeKd += Time.deltaTime;
+                TimeKd -= Time.deltaTime;
             }
 
         }

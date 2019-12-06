@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e2627908db29b50418a1decd23c58550, type: 3}
-  m_Name: Feather 1
+  m_Name: Carrot
   m_EditorClassIdentifier: 
   ThisEvent:
     m_PersistentCalls:
@@ -26,15 +26,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ItemName: Feather
-  ItemDescription: Smth strange
-  ItemImage: {fileID: -397208183093943512, guid: c239221d9306a9c46a236f1369cfdcbf,
+  ItemName: Carrot
+  ItemDescription: Deals 13 damage. This is carrot
+  ItemImage: {fileID: -2487794804310676429, guid: c239221d9306a9c46a236f1369cfdcbf,
     type: 3}
   NumberHeld: 1
-  Usable: 0
+  Usable: 1
   Unique: 1
-  id: 3
+  id: 15
   price: 300
-  necessaryLevel: 0
-  ThisItem: {fileID: 1603392920371116, guid: b45a1889b41ca8f4d8ea147d8d705bee, type: 3}
-  KnockParams: {fileID: 11400000, guid: d2d368bb70976fc44b27a27267eab8db, type: 2}
+  necessaryLevel: 2
+  ThisItem: {fileID: 1049234075114562, guid: c7e9268bc510d734e980e1e5b5898911, type: 3}
+  KnockParams: {fileID: 11400000, guid: 2ac9a862fa8bdc343940c420dd2ad1fe, type: 2}

@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CheatWindow : MonoBehaviour
 {
+    [SerializeField] private GameObject panel;
     private PlayerManager player;
     private GameManager mgr;
     private SaveLoadActions signals;
-    [SerializeField] private GameObject panel;
     private bool isActivated;
     void Start()
     {

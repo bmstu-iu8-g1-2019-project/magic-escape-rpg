@@ -47,6 +47,7 @@ public class SaveLoadActions : MonoBehaviour
         {
             ResetDefaults();
         }
+        Player.bossesProgres = data.bossesProgress;
         Player.Level = data.Level;
         Player.Stars = data.Stars;
         UpdatePlayerLevel.Raise();
@@ -65,6 +66,7 @@ public class SaveLoadActions : MonoBehaviour
             for (int i = 0; i < data.itemsId.Count; i++)
             {
                 InventoryItem item = Items.MyInventory[data.itemsId[i]];
+                item.NumberHeld = data.itemsValue[i];
                 Inv.MyInventory.Add(item);
                 invMgr.AddItem(item);
             }
@@ -102,6 +104,7 @@ public class SaveLoadActions : MonoBehaviour
         Player.Level = 1;
         Player.Coins = 1000;
         Player.CurrentHealth.InitialValue = 6;
+        Player.bossesProgres = 0;
         Player.CurrentHealth.RuntimeValue = Player.CurrentHealth.InitialValue;
         Equipment.Armor = new ArmorItem();
         Equipment.Armor = defArmor;

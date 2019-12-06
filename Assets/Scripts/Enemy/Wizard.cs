@@ -7,7 +7,7 @@ public class Wizard : Enemy
 
     [SerializeField] private float AttackRadius;
     [SerializeField] private float ChaseRadius;
-    [SerializeField] private Rigidbody2D Arrow;
+    [SerializeField] private Rigidbody2D ProjectTile;
     private float Angle;
     private bool AttackCondition;
     private bool MoveCondition;
@@ -37,18 +37,14 @@ public class Wizard : Enemy
         if (AttackCondition)
         {
             Anim.SetBool("IsWalking", false);
-            if (TimeKd >= AttackKD)
+            if (TimeKd <= 0)
             {
                 RaycastHit2D hit = Physics2D.Raycast(transform.position, way, AttackRadius);
                 if (hit)
                 {
                     if (hit.collider.gameObject == Target)
                     {
-                        MoveCondition = false;
-                        Debug.DrawRay(transform.position, way * AttackRadius);
-                        Attack();
-                        SpawntProjectTile(way);
-                        AdditionalWay = Vector3.Cross(way, new Vector3(0f, 0f, 1f));
+                        AttackAction();
                     }
                     else
                     {
@@ -63,21 +59,22 @@ public class Wizard : Enemy
                         }
                     }
                 }
+                else
+                {
+                    AttackAction();
+                }
             }
             else
             {
                 WalkToTarget(Vector3.MoveTowards(transform.position, AdditionalWay, MoveSpeed * Time.deltaTime));
                 MoveCondition = false;
-                TimeKd += Time.deltaTime;
+                TimeKd -= Time.deltaTime;
             }
         }
         else
         {
             TimeKd += Time.deltaTime;
-        }
-
-
-        
+        }        
         if (MoveCondition)
         {
             WalkToTarget(Vector3.MoveTowards(transform.position,
@@ -89,7 +86,16 @@ public class Wizard : Enemy
         }
     }
 
-    private void SpawntProjectTile(Vector3 Buf)
+
+    private void AttackAction()
+    {
+        MoveCondition = false;
+        Debug.DrawRay(transform.position, way * AttackRadius);
+        Attack();
+        SpawnProjectTile(way);
+        AdditionalWay = Vector3.Cross(way, new Vector3(0f, 0f, 1f)) - transform.position;
+    }
+    private void SpawnProjectTile(Vector3 Buf)
     {
         Rigidbody2D ArrowClone;
         Angle = Vector3.Angle(new Vector3(1f, 0f, 0f), Buf);
@@ -97,7 +103,7 @@ public class Wizard : Enemy
         {
             Angle *= -1f;
         }
-        ArrowClone = (Rigidbody2D)Instantiate(Arrow, transform.position, Quaternion.Euler(0f, 0f, Angle));
+        ArrowClone = Instantiate(ProjectTile, transform.position, Quaternion.Euler(0f, 0f, Angle));
         ArrowClone.AddForce(Buf.normalized * 5f, ForceMode2D.Impulse);
     
     }

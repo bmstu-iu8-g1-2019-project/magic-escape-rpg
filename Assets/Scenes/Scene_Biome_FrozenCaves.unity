@@ -2018,6 +2018,26 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8053284796852982186, guid: ee7495940eccd5a4c8077be138d59b27,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1564434140}
+    - target: {fileID: 8053284796852982186, guid: ee7495940eccd5a4c8077be138d59b27,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053284796852982186, guid: ee7495940eccd5a4c8077be138d59b27,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8053284796852982186, guid: ee7495940eccd5a4c8077be138d59b27,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: MainMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee7495940eccd5a4c8077be138d59b27, type: 3}
 --- !u!1 &553123006
@@ -2982,7 +3002,7 @@ Tilemap:
       m_ObjectToInstantiate: {fileID: 0}
       m_TileFlags: 1
       m_ColliderType: 1
-  - first: {x: 11, y: -3, z: 0}
+  - first: {x: 12, y: -3, z: 0}
     second:
       m_TileIndex: 5
       m_TileSpriteIndex: 6
@@ -3047,8 +3067,8 @@ Tilemap:
       m_ColliderType: 1
   - first: {x: 11, y: -2, z: 0}
     second:
-      m_TileIndex: 5
-      m_TileSpriteIndex: 6
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_ObjectToInstantiate: {fileID: 0}
@@ -3127,6 +3147,15 @@ Tilemap:
       m_TileFlags: 1
       m_ColliderType: 1
   - first: {x: 11, y: -1, z: 0}
+    second:
+      m_TileIndex: 0
+      m_TileSpriteIndex: 0
+      m_TileMatrixIndex: 0
+      m_TileColorIndex: 0
+      m_ObjectToInstantiate: {fileID: 0}
+      m_TileFlags: 1
+      m_ColliderType: 1
+  - first: {x: 12, y: -1, z: 0}
     second:
       m_TileIndex: 0
       m_TileSpriteIndex: 0
@@ -3812,7 +3841,7 @@ Tilemap:
       m_ColliderType: 1
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 13
+  - m_RefCount: 15
     m_Data: {fileID: 11400000, guid: 65567705a06834642a3a558d4841fb2e, type: 2}
   - m_RefCount: 55
     m_Data: {fileID: 11400000, guid: bbe1039a73cb04a4db7e81501225bb46, type: 2}
@@ -3822,7 +3851,7 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 7fa49cf4a88c04426910476f99b98ed5, type: 2}
   - m_RefCount: 13
     m_Data: {fileID: 11400000, guid: 2655b78189c934c049014795a63848c2, type: 2}
-  - m_RefCount: 23
+  - m_RefCount: 22
     m_Data: {fileID: 11400000, guid: f33ed7eb8e0d94540b49ee40617cac64, type: 2}
   - m_RefCount: 8
     m_Data: {fileID: 11400000, guid: f2a0799670ff8402b921712e57a8baf3, type: 2}
@@ -3835,7 +3864,7 @@ Tilemap:
   - m_RefCount: 4
     m_Data: {fileID: 11400000, guid: a742a29ac60d841d39bf94b399647333, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 13
+  - m_RefCount: 15
     m_Data: {fileID: 21300000, guid: 2abfa0b69193b46c4b7848a29c8a3c6f, type: 3}
   - m_RefCount: 55
     m_Data: {fileID: 21300000, guid: 83b9904c54dbe4b8ba227406b0a259c3, type: 3}
@@ -3847,7 +3876,7 @@ Tilemap:
     m_Data: {fileID: 21300000, guid: 8b08bcd21cb8a42fba868f390b68099b, type: 3}
   - m_RefCount: 8
     m_Data: {fileID: 21300000, guid: cd8a00ab8c9644c449810e6556ee77f8, type: 3}
-  - m_RefCount: 23
+  - m_RefCount: 22
     m_Data: {fileID: 21300000, guid: e308331e58a9f474a89006337eb33d3e, type: 3}
   - m_RefCount: 10
     m_Data: {fileID: 21300000, guid: 6b19fa030e22a4aa7a4ebc2029911cf4, type: 3}
@@ -3858,7 +3887,7 @@ Tilemap:
   - m_RefCount: 5
     m_Data: {fileID: 21300000, guid: 063edbe48872b4ab39d61247bfbc7217, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 151
+  - m_RefCount: 152
     m_Data:
       e00: 1
       e01: 0
@@ -3931,12 +3960,12 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 162
+  - m_RefCount: 163
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Origin: {x: -14, y: -15, z: 0}
-  m_Size: {x: 26, y: 27, z: 1}
+  m_Size: {x: 27, y: 27, z: 1}
   m_TileAnchor: {x: 1, y: 1, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -6329,6 +6358,90 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1284288616}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1296350315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1296350318}
+  - component: {fileID: 1296350317}
+  - component: {fileID: 1296350316}
+  m_Layer: 0
+  m_Name: Bosses Portal
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1296350316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296350315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57b6014c33370946a50edc0584133a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneName: 
+  FadeInPanel: {fileID: 434879900700437451, guid: 5c67550a900a4b4429e2ae9dd2d4f605,
+    type: 3}
+  FadeOutPanel: {fileID: 4273690795000368743, guid: fab7071ac5c2e8a4fbf8c6d5ad24e122,
+    type: 3}
+  FadeWait: 0
+  isSaving: 0
+  bossesScenes:
+  - FirstBoss
+  recommendedLevel: 02000000
+--- !u!60 &1296350317
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296350315}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.030107975, y: 0.623652}
+      - {x: -0.30373764, y: 0.30148983}
+      - {x: -0.27917957, y: 0.07916474}
+      - {x: 0.35444927, y: -0.20685983}
+      - {x: 0.44675064, y: 0.32407117}
+--- !u!4 &1296350318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1296350315}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.94, y: 2.57, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1300198070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7690,6 +7803,31 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &1564434140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 217825373702641466, guid: 167c638ac41b46f4f9136297d64e4d78,
+    type: 3}
+  m_PrefabInstance: {fileID: 2143536568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564434137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d3ac4a124dca249bcac0961a14c8c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1564434145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564434137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a38bc098b0a22164292b1cd66700a02f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  panel: {fileID: 0}
 --- !u!1001 &1572363845
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11606,18 +11744,6 @@ PrefabInstance:
       propertyPath: shopMgr
       value: 
       objectReference: {fileID: 1371682046}
-    - target: {fileID: 7541770590412814137, guid: 167c638ac41b46f4f9136297d64e4d78,
-        type: 3}
-      propertyPath: UpdateShop
-      value: 
-      objectReference: {fileID: 11400000, guid: 3562354b202e49541b9bfad31c9aa246,
-        type: 2}
-    - target: {fileID: 7541770590412814137, guid: 167c638ac41b46f4f9136297d64e4d78,
-        type: 3}
-      propertyPath: UpdateInv
-      value: 
-      objectReference: {fileID: 11400000, guid: 085406e4314312043a0e4a48d9854c76,
-        type: 2}
     - target: {fileID: 363167767600889534, guid: 167c638ac41b46f4f9136297d64e4d78,
         type: 3}
       propertyPath: InventoryPanel

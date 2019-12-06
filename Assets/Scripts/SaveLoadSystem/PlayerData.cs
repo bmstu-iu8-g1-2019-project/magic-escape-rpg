@@ -10,8 +10,10 @@ public class PlayerData
     public float Armor;
     public int armorId;
     public int Level;
+    public int bossesProgress;
     public List<int> weaponsId = new List<int>();
     public List<int> itemsId = new List<int>();
+    public List<int> itemsValue = new List<int>();
     public List<int> shopId = new List<int>();
 
     public PlayerData(PlayerManager Player, PlayerInventory Inv, PlayerEquipment equipment, PlayerInventory Shop)
@@ -23,9 +25,11 @@ public class PlayerData
         Armor = Player.Armor.InitialValue;
         armorId = equipment.Armor.id;
         Coins = Player.Coins;
+        bossesProgress = Player.bossesProgres;
         foreach (var item in Inv.MyInventory)
         {
             itemsId.Add(item.id);
+            itemsValue.Add(item.NumberHeld);
         }
         foreach (var item in Shop.MyInventory)
         {

@@ -10,7 +10,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject MessageBox;
     [SerializeField] private TextMeshProUGUI MessageText;
     private GameManager mgr;
-    private bool IsTriggered;
+    private bool isTriggered;
     void Start()
     {
         mgr = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();;
@@ -18,18 +18,18 @@ public class ShopManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && IsTriggered)
+        if (Input.GetKeyDown(KeyCode.E) && isTriggered)
         {
             if (!ShopPanel.activeSelf)
             {
                 mgr.HideEverything();
                 ShopPanel.SetActive(true);
-                DoSmth(false, "");
+                ShowMessage(false, "");
             }
             else
             {
                 ShopPanel.SetActive(false);
-                DoSmth(true, "Press 'E' to open shop");
+                ShowMessage(true, "Press 'E' to open shop");
             }
         }
     }
@@ -37,8 +37,8 @@ public class ShopManager : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-                IsTriggered = true;
-                DoSmth(true, "Press 'E' to open shop");
+            isTriggered = true;
+            ShowMessage(true, "Press 'E' to open shop");
         }
     }
 
@@ -46,13 +46,13 @@ public class ShopManager : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            IsTriggered = false;
-            DoSmth(false, "");
+            isTriggered = false;
+            ShowMessage(false, "");
             ShopPanel.SetActive(false);
         }
     }
 
-    private void DoSmth(bool flag, string message)
+    private void ShowMessage(bool flag, string message)
     {
         MessageText.text = message;
         MessageBox.SetActive(flag);

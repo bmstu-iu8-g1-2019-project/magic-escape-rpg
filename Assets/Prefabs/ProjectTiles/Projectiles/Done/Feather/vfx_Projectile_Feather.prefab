@@ -9740,7 +9740,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThisItem: {fileID: 11400000, guid: 5cf1dda4287d9b04781897752de27c9d, type: 2}
-  Speed: 3
+  Speed: 9
   muzzlePrefab: {fileID: 1340992293834908, guid: 86bc1d89c0dc3e443ba2c64d79930c2a,
     type: 3}
   hitPrefab: {fileID: 1099692020379546, guid: 5ca1f4da639fd214bb7e49b0360406f7, type: 3}

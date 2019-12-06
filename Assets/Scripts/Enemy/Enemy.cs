@@ -20,7 +20,8 @@ public class Enemy : MonoBehaviour
     [Header("Health variables")]
     public FloatValue MaxHealth;
     public float DeadAnimTime;
-    public float CurrentHealth;
+    public float deffense;
+    [HideInInspector] public float CurrentHealth;
     [HideInInspector] public float TimeKd;
     [HideInInspector] public SpriteRenderer Sprite;
     [HideInInspector] public Rigidbody2D Body;
@@ -32,13 +33,20 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject GoldenCoin;
     [SerializeField] private int baseDroppedCoins;
 
-    [Space]
+    [Header("Sigals")]
     [SerializeField] private Signal EnemyBorn;
     [SerializeField] private Signal EnemyDied;
 
     GameObject GetParent(GameObject obj)
     {
-        return obj.transform.parent.gameObject;
+        if (obj)
+        {
+            if (obj.transform.parent)
+            {
+                return obj.transform.parent.gameObject;
+            }
+        }
+        return null;
     }
 
     private void Start()
@@ -50,7 +58,7 @@ public class Enemy : MonoBehaviour
         CurrentState = EnemyState.walk;
         TimeKd = AttackKD;
         Parent = GetParent(GetParent(gameObject));
-        if (Parent.GetComponent<RoomManager>())
+        if (Parent && Parent.GetComponent<RoomManager>())
         {
             Parent.GetComponent<RoomManager>().EnemyBorn();
         }
@@ -70,12 +78,14 @@ public class Enemy : MonoBehaviour
 
     public void Attack()
     {
-        if (CurrentState != EnemyState.stagger && TimeKd >= AttackKD)
+        if (CurrentState != EnemyState.stagger && TimeKd <= 0)
         {
-            TimeKd = 0;
+            TimeKd = AttackKD;
             StartCoroutine(AttackCo());
-        } else {
-            TimeKd += Time.deltaTime;
+        }
+        else
+        {
+            TimeKd -= Time.deltaTime;
         }
     }
     
@@ -95,7 +105,7 @@ public class Enemy : MonoBehaviour
     {
         if (!IsDead())
         {
-            CurrentHealth -= Damage;
+            CurrentHealth -= Damage * (1 - deffense);
             if (!IsDead())
             {
                 CurrentState = EnemyState.stagger;
@@ -127,12 +137,12 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void Die()
+    public virtual void Die()
     {
         Body.constraints = RigidbodyConstraints2D.FreezeAll;
         SpawnCoins();
         StartCoroutine(DieCo());
-        if (Parent.GetComponent<RoomManager>())
+        if (Parent && Parent.GetComponent<RoomManager>())
         {
             Parent.GetComponent<RoomManager>().EnemyDied();
         }
@@ -172,14 +182,6 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(DeadAnimTime);
         Anim.enabled = false;
         CurrentState = EnemyState.die;
-    }
-
-    private void OnMouseDown()
-    {
-        if (IsDead())
-        {
-            this.gameObject.SetActive(false); // Will introduce loot panel
-        }
     }
 
     public void FlipSprite(bool value)

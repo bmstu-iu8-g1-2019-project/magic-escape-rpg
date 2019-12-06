@@ -202,15 +202,15 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1309707904}
+      - m_Target: {fileID: 1309707907}
         m_MethodName: LoadLevel
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Scene_Biome_FrozenCaves
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &96626215
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.41509432, g: 0.20558916, b: 0.20558916, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -702,15 +702,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1309707904}
+      - m_Target: {fileID: 1309707907}
         m_MethodName: LoadLevel
-        m_Mode: 1
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: Scene_Biome_FrozenCaves
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &732186980
@@ -996,39 +996,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1309707903 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 363167767600889535, guid: 167c638ac41b46f4f9136297d64e4d78,
-    type: 3}
-  m_PrefabInstance: {fileID: 2056647241}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1309707904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309707903}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13d3ac4a124dca249bcac0961a14c8c0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneName: Scene_Biome_FrozenCaves
-  FadeInPanel: {fileID: 0}
-  FadeOutPanel: {fileID: 0}
-  FadeWait: 0
-  isSaving: 0
 --- !u!114 &1309707905 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7541770590412814137, guid: 167c638ac41b46f4f9136297d64e4d78,
     type: 3}
   m_PrefabInstance: {fileID: 2056647241}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309707903}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa48b4d0d5777af4d97e3473e5f3b44e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1309707907 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 217825373702641466, guid: 167c638ac41b46f4f9136297d64e4d78,
+    type: 3}
+  m_PrefabInstance: {fileID: 2056647241}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13d3ac4a124dca249bcac0961a14c8c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1312792982

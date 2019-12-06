@@ -22,6 +22,11 @@ public class GameManager : MonoBehaviour
     [Header("Game Pause")]
     private bool GamePaused;
 
+    private void Start()
+    {
+        UpdateLevelSlider();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -122,15 +127,13 @@ public class GameManager : MonoBehaviour
                 player.Stars -= levels_grades[player.Level];
                 LevelUp(player);
             }
-            if (player.Level < levels_grades.Count)
-            {
-                levelSlider.value = (float)(player.Stars) / (float)(levels_grades[player.Level]);
-            }
-            else
-            {
-                levelSlider.value = 1f;
-            }
+            levelSlider.value = (float)(player.Stars) / (float)(levels_grades[player.Level]);
             levelText.text = "" + player.Level + ": " + player.Stars + " / " + levels_grades[player.Level];
+        }
+        else
+        {
+            levelSlider.value = 1f;
+            levelText.text = "Max level";
         }
     }
 
@@ -146,8 +149,8 @@ public class GameManager : MonoBehaviour
     {
         if (player.Level < levels_grades.Count)
         {
-            HeartManager mgr = GameObject.FindGameObjectWithTag("HeartContainer").GetComponent<HeartManager>();
             StartCoroutine(levelUpCo(player));
+            HeartManager mgr = GameObject.FindGameObjectWithTag("HeartContainer").GetComponent<HeartManager>();
             player.Level++;
             if (mgr.HeartContainers.InitialValue < 10)
             {
