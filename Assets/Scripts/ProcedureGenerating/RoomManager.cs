@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public int EnemiesNum;
-    public Signal OpenGates;
+    [SerializeField] private int EnemiesNum;
+    [SerializeField] private Signal OpenGates;
     public void EnemyBorn()
     {
         EnemiesNum++;

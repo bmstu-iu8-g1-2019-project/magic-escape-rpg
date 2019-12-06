@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5946636373506631211}
   - component: {fileID: 5946636373506631210}
   - component: {fileID: 5946636373506631209}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Spawner Down
   m_TagString: Spawner
   m_Icon: {fileID: 6519382022992737161, guid: 0000000000000000d000000000000000, type: 0}
@@ -45,11 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cef3b18605aeb324ba9ab17e466e6d83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Way: Up
+  CornerRooms: {fileID: 11400000, guid: c8cdc461d631d814489094a8eb599d61, type: 2}
   RoomsList: {fileID: 11400000, guid: 67019df7fb9788149827a3bff8e10dfa, type: 2}
   BlockedRoom: {fileID: 1083964803436912670, guid: a0878dc8610bb2b43985ccabe99d9332,
     type: 3}
-  Way: Up
-  CornerRooms: {fileID: 11400000, guid: c8cdc461d631d814489094a8eb599d61, type: 2}
+  RoomSpawned: {fileID: 11400000, guid: 3d0f2def0639a3445b47d970ce9209c5, type: 2}
 --- !u!50 &5946636373506631210
 Rigidbody2D:
   serializedVersion: 4
@@ -58,7 +59,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5946636373506631208}
-  m_BodyType: 1
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

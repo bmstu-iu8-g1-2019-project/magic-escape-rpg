@@ -6,21 +6,33 @@ public class Coin : MonoBehaviour
 {
     private bool IsTriggered;
     private GameObject Player;
+    private float timer;
+    [SerializeField] private float lifeTime;
+    [SerializeField] private Signal UpdateCoins;
 
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
+        timer = lifeTime;
     }
 
     void Update()
     {
+        if (timer <= 0)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+        }
         if (!IsTriggered && Vector2.Distance(transform.position, Player.transform.position) < 3)
         {
             IsTriggered = true;
         }
         if (IsTriggered)
         {
-            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, 4f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, Player.transform.position, 8f * Time.deltaTime);
         }
     }
 
@@ -29,7 +41,7 @@ public class Coin : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             Player.GetComponent<PlayerManager>().Coins++;
-            Debug.Log(Player.GetComponent<PlayerManager>().Coins);
+            UpdateCoins.Raise();
             Destroy(gameObject);
         }
     }

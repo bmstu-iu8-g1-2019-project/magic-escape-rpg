@@ -11,7 +11,7 @@ public class ArmorItem : InventoryItem
         EquipmentManager mgr = GameObject.FindGameObjectWithTag("Equipment").GetComponent<EquipmentManager>();
         if (mgr)
         {
-            mgr.addArmorItem(this);
+            mgr.AddArmorItem(this);
         }
     }
 }

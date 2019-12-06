@@ -4,8 +4,8 @@ using System.Collections;
 public class BasicCameraFollow : MonoBehaviour
 {
     [SerializeField] private Transform followTarget;
-    private Vector3 targetPos;
     [SerializeField] private float moveSpeed;
+    private Vector3 targetPos;
     void Update()
     {
         if (followTarget != null)

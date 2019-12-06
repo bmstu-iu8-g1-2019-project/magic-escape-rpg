@@ -8,23 +8,25 @@ public class KnockBack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Player") && collision.isTrigger)
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Player")) && collision.isTrigger)
         {
             Rigidbody2D hit = collision.GetComponent<Rigidbody2D>();
             if (hit != null)
             {
+                PlayerManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+                int playerLevel = player.Level;
                 if (collision.CompareTag("Enemy") && !this.CompareTag("Damage"))
                 {
                     AddForce(hit);
                     hit.GetComponent<Enemy>().CurrentState = EnemyState.stagger;
-                    collision.GetComponent<Enemy>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
+                    collision.GetComponent<Enemy>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage * (1 + player.damageInc));
                 }
                 if (collision.gameObject.CompareTag("Player") 
                     && !this.CompareTag("PlayerDamage") && !this.CompareTag("GameController")) // Prevent dealing damage to yourself
                 {
                     AddForce(hit);
                     hit.GetComponent<PlayerManager>().CurrentState = PlayerState.stagger;
-                    collision.GetComponent<PlayerManager>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage);
+                    collision.GetComponent<PlayerManager>().Knock(ThisKnockParams.KnockTime, ThisKnockParams.Damage * playerLevel / 1.5f);
                 }
             }
         }

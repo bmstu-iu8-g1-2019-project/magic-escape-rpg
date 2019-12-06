@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3852353460700915862}
   - component: {fileID: 3559119778806989515}
   - component: {fileID: 8327254848504393675}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: WitchRender
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -137,9 +137,9 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &3559119778806989515
 MonoBehaviour:
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0038be263d74d9b95eb7a5862c9f4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 3
+  MovementSpeed: 5
   Target: {fileID: 0}
   Weapons: {fileID: 11400000, guid: 4ee54c1ed345c214b9d1e211ee77940d, type: 2}
   CurrentHealth: {fileID: 11400000, guid: 4185fb3aa4c96164d993f2e5da3bcd2c, type: 2}
@@ -167,6 +167,8 @@ MonoBehaviour:
   PlayerDeadSignal: {fileID: 11400000, guid: 75a65cb71bf9d0c4b814c640d44679be, type: 2}
   UpdateArmor: {fileID: 11400000, guid: b10b998a1f3c3f341b754b9c0ab784c6, type: 2}
   Coins: 0
+  Stars: 0
+  Level: 1
   sys: {fileID: 0}
 --- !u!61 &8327254848504393675
 BoxCollider2D:

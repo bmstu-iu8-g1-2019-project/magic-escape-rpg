@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class HeartManager : MonoBehaviour
 {
+    public FloatValue HeartContainers;
     [SerializeField] private Image[] Hearts;
     [SerializeField] private Sprite FullHeart;
     [SerializeField] private Sprite HalfFullHeart;
     [SerializeField] private Sprite EmptyHeart;
-    [SerializeField] private FloatValue HeartContainers;
     [SerializeField] private FloatValue PlayerCurrentHealth;
     private bool isInitialized;
 
@@ -22,6 +22,7 @@ public class HeartManager : MonoBehaviour
 
     public void InitHearts()
     {
+        HeartContainers.InitialValue = PlayerCurrentHealth.InitialValue / 2; 
         for (int i = 0; i < HeartContainers.InitialValue; i++)
         {
             Hearts[i].gameObject.SetActive(true);
@@ -35,7 +36,7 @@ public class HeartManager : MonoBehaviour
     public void UpdateHearts()
     {
         float Health = PlayerCurrentHealth.RuntimeValue / 2;
-        for (int i = 0; i < HeartContainers.RuntimeValue; i++)
+        for (int i = 0; i < HeartContainers.InitialValue; i++)
         {
             if (i <= Health - 1f)
             {

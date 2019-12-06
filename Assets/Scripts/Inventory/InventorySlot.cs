@@ -5,12 +5,12 @@ using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerEnterHandler
+public class InventorySlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("UI to change")]
     [SerializeField] private TextMeshProUGUI ItemNumberText;
     [SerializeField] private Image ItemImage;
-    private GameObject ItemDescription;
+    public GameObject ItemDescription;
 
 
     [Header("Variables from the Item")]
@@ -20,30 +20,61 @@ public class InventorySlot : MonoBehaviour, IPointerEnterHandler
     [Space]
     public PlayerInventory Inventory;
 
-    private void Start()
+    public virtual void Start()
     {
         ItemDescription = GameObject.Find("UI Canvas/Inventory Panel/Description Panel/Item Description");
     }
-    public void Setup(InventoryItem NewItem, InventoryManager NewManager)
+
+    public virtual void Setup(InventoryItem NewItem, InventoryManager NewManager)
     {
         ThisItem = NewItem;
         ThisManager = NewManager;
         if (ThisItem)
         {
-            ItemImage.sprite = ThisItem.ItemImage;
-            if (!ThisItem.Unique)
-            {
-                ItemNumberText.text = "" + ThisItem.NumberHeld; // Convertion int to string
-            }
+            SetupText();
+            SetupImage();
+        }
+    }
+
+    private void SetupImage()
+    {
+        ItemImage.sprite = ThisItem.ItemImage;
+        PlayerManager player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        if (ThisItem.necessaryLevel > player.Level)
+        {
+            ItemImage.color = new Vector4(255f, 0f, 0f, 1f);
+            Button but = GetComponent<Button>();
+            but.enabled = false;
+        }
+    }
+
+    public virtual void SetupText()
+    {
+        if (!ThisItem.Unique)
+        {
+            ItemNumberText.text = "" + ThisItem.NumberHeld;
         }
     }
     
-    public void OnPointerEnter(PointerEventData eventdata)
+    public virtual void OnPointerEnter(PointerEventData eventdata)
     {
+        if (!ItemDescription)
+        {
+            ItemDescription = GameObject.Find("UI Canvas/Inventory/Inventory Panel/Description Panel/Item Description");
+        }
         ItemDescription.GetComponent<TextMeshProUGUI>().text = ThisItem.ItemDescription;
     }
 
-    public void OnCLick()
+    public virtual void OnPointerExit(PointerEventData eventdata)
+    {
+        if (!ItemDescription)
+        {
+            ItemDescription = GameObject.Find("UI Canvas/Inventory/Inventory Panel/Description Panel/Item Description");
+        }
+        ItemDescription.GetComponent<TextMeshProUGUI>().text = "";
+    }
+
+    public virtual void OnCLick()
     {
         if (ThisItem)
         {

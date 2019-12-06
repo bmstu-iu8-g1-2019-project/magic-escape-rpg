@@ -7,6 +7,7 @@ public class ArmorManager : MonoBehaviour
     [SerializeField] private List<GameObject> Armor;
     private int ActiveArmor;
     public FloatValue PlayerArmor;
+
     void Start()
     {
         ClearArmor();

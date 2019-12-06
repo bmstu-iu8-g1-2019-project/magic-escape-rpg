@@ -5,44 +5,99 @@ using UnityEngine;
 public class SaveLoadActions : MonoBehaviour
 {
     private PlayerManager Player;
+
     [Header("Scriptable objects")]
     [SerializeField] private PlayerInventory Inv;
     [SerializeField] private PlayerInventory Items;
     [SerializeField] private PlayerEquipment Equipment;
-    [Space]
+    [SerializeField] private PlayerInventory Shop;
+    [SerializeField] private BuffList allBuffs;
+    [SerializeField] private BuffList currentBuffs;
+
+    [Header("Managers")]
     [SerializeField] private InventoryManager invMgr;
+    [SerializeField] private InventoryManager shopMgr;
+    [SerializeField] private BuffManager buffMgr;
+ 
+    [Header("Default items/values")]
+    [SerializeField] private ArmorItem defArmor;
+    [SerializeField] private PlayerInventory defShop;
+    [SerializeField] private PlayerInventory defInv;
 
-    void Start()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
-    }
-
+    [Header("Signals")]
+    public Signal UpdateInv;
+    public Signal UpdateShop;
+    public Signal UpdateCoins;
+    public Signal UpdatePlayerLevel;
+ 
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(Player, Inv, Equipment);
+        if (!Player)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        }
+        SaveSystem.SavePlayer(Player, Inv, Equipment, Shop, currentBuffs);
     }
 
     public void LoadPlayer()
     {
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
         PlayerData data = SaveSystem.LoadPLayer();
         if (!Player)
         {
             Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
         }
+        if (data == null)
+        {
+            ResetDefaults();
+        }
+        Player.bossesProgres = data.bossesProgress;
+        Player.Level = data.Level;
+        Player.Stars = data.Stars;
+        UpdatePlayerLevel.Raise();
         Player.Coins = data.Coins;
+        UpdateCoins.Raise();
         Player.CurrentHealth.RuntimeValue = data.CurrentHealth;
         Player.CurrentHealth.InitialValue = data.MaxHealth;
         Equipment.Armor = new ArmorItem();
         Equipment.Armor = (ArmorItem)Items.MyInventory[data.armorId];
         Player.UpdateArmor.Raise();
         Player.PlayerHealthSignal.Raise();
-        Inv.MyInventory.Clear();
-        invMgr.ClearInventory();
-        for (int i = 0; i < data.itemsId.Count; i++)
+
+        if (buffMgr)
         {
-            InventoryItem item = Items.MyInventory[data.itemsId[i]];
-            Inv.MyInventory.Add(item);
-            invMgr.AddItem(item);
+            currentBuffs.list.Clear();
+            for (int i = 0; i < data.buffsId.Count; i++)
+            {
+                BuffParametrs temp = allBuffs.list[data.buffsId[i]];
+                temp.timer = data.buffsTimeLeft[i];
+                buffMgr.Buff(temp);
+            }
+        }
+        if (invMgr)
+        {
+            Inv.MyInventory.Clear();
+            invMgr.ClearInventory();
+            for (int i = 0; i < data.itemsId.Count; i++)
+            {
+                InventoryItem item = Items.MyInventory[data.itemsId[i]];
+                item.NumberHeld = data.itemsValue[i];
+                Inv.MyInventory.Add(item);
+                invMgr.AddItem(item);
+            }
+        }
+        if (shopMgr)
+        {
+            Shop.MyInventory.Clear();
+            shopMgr.ClearInventory();
+            for (int i = 0; i < data.shopId.Count; i++)
+            {
+                InventoryItem item = Items.MyInventory[data.shopId[i]];
+                Shop.MyInventory.Add(item);
+            }
         }
         Player.Weapons.thisList.Clear();
         Player.SetWeaponAlpha(0);
@@ -53,5 +108,40 @@ public class SaveLoadActions : MonoBehaviour
             Player.Weapons.thisList.Add(temp);
             Player.ChangeCurrentItem();
         }
+        UpdateInv.Raise();
+        UpdateShop.Raise();
+    }
+
+    public void ResetDefaults()
+    {
+        if (!Player)
+        {
+            Player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerManager>();
+        }
+        Player.Stars = 0;
+        Player.Level = 1;
+        Player.Coins = 1000;
+        Player.CurrentHealth.InitialValue = 6;
+        Player.bossesProgres = 0;
+        Player.CurrentHealth.RuntimeValue = Player.CurrentHealth.InitialValue;
+        Equipment.Armor = new ArmorItem();
+        Equipment.Armor = defArmor;
+        Player.UpdateArmor.Raise();
+        Shop = defShop;
+        UpdateShop.Raise();
+        Inv = defInv;
+        currentBuffs.list.Clear();
+        foreach (var item in allBuffs.list)
+        {
+            item.timer = item.duration;
+        }
+        foreach (var item in Items.MyInventory)
+        {
+            item.NumberHeld = 1;
+        }
+        UpdateInv.Raise();
+        Player.Weapons.thisList.Clear();
+        SavePlayer();
+        LoadPlayer();
     }
 }

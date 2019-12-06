@@ -30,9 +30,11 @@ MonoBehaviour:
   ItemDescription: Smth strange
   ItemImage: {fileID: -397208183093943512, guid: c239221d9306a9c46a236f1369cfdcbf,
     type: 3}
-  NumberHeld: 0
+  NumberHeld: 1
   Usable: 0
   Unique: 1
   id: 3
+  price: 300
+  necessaryLevel: 0
   ThisItem: {fileID: 1603392920371116, guid: b45a1889b41ca8f4d8ea147d8d705bee, type: 3}
   KnockParams: {fileID: 11400000, guid: d2d368bb70976fc44b27a27267eab8db, type: 2}

@@ -14,7 +14,7 @@ public class Melee : Enemy
 
     private void Update()
     {
-        if (Time.timeScale == 0 || IsDead())
+        if (Time.timeScale == 0 || IsDead() || !isActive)
         {
             return;
         }
@@ -27,19 +27,23 @@ public class Melee : Enemy
     private void Action()
     {
         AttackCondition = Vector3.Distance(Target.transform.position, transform.position) < AttackRadius;
-        MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
-            && CurrentState == EnemyState.walk;
+        MoveCondition = Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius && CurrentState == EnemyState.walk;
         if (AttackCondition)
         {
             Anim.SetBool("IsWalking", false);
             Attack();
         }
-        else if (MoveCondition)
+        if (MoveCondition)
         {
-            TimeKd = AttackKD;
+            if (Target)
+            {
+                MoveSpeed = Target.GetComponent<PlayerManager>().MovementSpeed - 0.7f;
+            }
             WalkToTarget(Vector3.MoveTowards(transform.position,
                             Target.transform.position, MoveSpeed * Time.deltaTime));
-        } else {
+        }
+        else
+        {
             Anim.SetBool("IsWalking", false);
         }
     }
@@ -48,7 +52,7 @@ public class Melee : Enemy
     {
         if (!IsDead())
         {
-            CurrentHealth -= Damage;
+            CurrentHealth -= Damage * (1 - deffense);
             if (!IsDead())
             {
                 ChaseRadius = 15f; // After getting Damage melee will chase
@@ -64,3 +68,4 @@ public class Melee : Enemy
         }
     }
 }
+

@@ -10,10 +10,11 @@ public class Range : Enemy
     private float Angle;
     private bool AttackCondition;
     private bool MoveCondition;
+    private Vector3 way;
 
     void Update()
     {
-        if (Time.timeScale == 0 || IsDead())
+        if (Time.timeScale == 0 || IsDead() || !isActive)
         {
             return;
         }
@@ -30,22 +31,24 @@ public class Range : Enemy
         MoveCondition = Vector3.Distance(Target.transform.position, transform.position) > AttackRadius
             && Vector3.Distance(Target.transform.position, transform.position) <= ChaseRadius
             && CurrentState == EnemyState.walk;
+        way = Target.transform.position - transform.position;
         if (AttackCondition)
         {
             Anim.SetBool("IsWalking", false);
-            if (TimeKd >= AttackKD)
+            if (TimeKd <= 0)
             {
+                MoveCondition = false;
                 Attack();
-                SpawntProjectTile();
+                SpawntProjectTile(way);
             }
             else
             {
-                TimeKd += Time.deltaTime;
+                TimeKd -= Time.deltaTime;
             }
+
         }
         if (MoveCondition)
         {
-            Anim.SetBool("IsWalking", true);
             WalkToTarget(Vector3.MoveTowards(transform.position,
                  Target.transform.position, MoveSpeed * Time.deltaTime));
         }
@@ -55,10 +58,9 @@ public class Range : Enemy
         }
     }
 
-    private void SpawntProjectTile()
+    private void SpawntProjectTile(Vector3 Buf)
     {
         Rigidbody2D ArrowClone;
-        Vector3 Buf = (Target.transform.position - transform.position);
         Angle = Vector3.Angle(new Vector3(1f, 0f, 0f), Buf);
         if (Buf.y < 0)
         {

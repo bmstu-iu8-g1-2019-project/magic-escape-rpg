@@ -11,7 +11,7 @@ public class InventoryManager : MonoBehaviour
     [SerializeField] private GameObject BlankInventorySlot;
     [SerializeField] private GameObject InventoryPanel;
 
-    void Start()
+    public void Start()
     {
         ClearInventory();
         MakeInventorySlot();

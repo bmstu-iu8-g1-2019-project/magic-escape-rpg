@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class EnemyProjectTile : MonoBehaviour
 {
+    [SerializeField] float destroyTime;
+    private float timer;
+
+    void Start()
+    {
+        timer = destroyTime;
+    }
+
+    void Update()
+    {
+        if (timer <= 0f)
+        {
+            Destroy(this.gameObject, 0.1f);
+        }
+        else
+        {
+            timer -= Time.deltaTime;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (Time.timeScale == 0f)

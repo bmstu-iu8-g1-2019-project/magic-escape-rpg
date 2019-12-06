@@ -9,7 +9,6 @@ public class HealthPotion : MonoBehaviour
 
     public void RestoreHealth()
     {
-        //HeartContainer = GameObject.FindGameObjectWithTag("HeartContainer");
         GameObject Player = GameObject.FindGameObjectWithTag("Player");
         Player.GetComponent<PlayerManager>().CurrentHealth.RuntimeValue += healValue;
         if (Player.GetComponent<PlayerManager>().CurrentHealth.RuntimeValue >
@@ -19,6 +18,5 @@ public class HealthPotion : MonoBehaviour
                 Player.GetComponent<PlayerManager>().CurrentHealth.InitialValue;
         }
         Player.GetComponent<PlayerManager>().PlayerHealthSignal.Raise();
-        //HeartContainer.GetComponent<HeartManager>().IncHeartAmmount(2);
     }
 }

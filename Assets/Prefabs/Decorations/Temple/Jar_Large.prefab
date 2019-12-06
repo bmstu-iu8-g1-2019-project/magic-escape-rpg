@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 1414411816322856733}
   - component: {fileID: 5930903384491197342}
   - component: {fileID: 6908569632253920536}
-  m_Layer: 0
+  - component: {fileID: -4066916132781586365}
+  m_Layer: 2
   m_Name: Jar_Large
   m_TagString: Destroyable
   m_Icon: {fileID: 0}
@@ -143,7 +144,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: -0.15}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.6659707, y: 0.50855726}
+    pivot: {x: 0.67087984, y: 0.2794622}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -161,6 +162,27 @@ PolygonCollider2D:
       - {x: 0.0360291, y: -0.14649642}
       - {x: 0.19120526, y: -0.09953749}
       - {x: 0.19428182, y: -0.0075193644}
+--- !u!50 &-4066916132781586365
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5919186849340046693}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &6455285428589812944
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,7 +193,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1832850223880586714}
   - component: {fileID: 3402623229712919975}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Collider
   m_TagString: Destroyable
   m_Icon: {fileID: 0}

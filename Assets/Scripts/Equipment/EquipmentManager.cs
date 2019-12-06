@@ -26,7 +26,7 @@ public class EquipmentManager : MonoBehaviour
         }
     }
 
-    public void addArmorItem(ArmorItem item)
+    public void AddArmorItem(ArmorItem item)
     {
         Equipment.Armor = item;
         ArmorValue.InitialValue = item.armorValue;

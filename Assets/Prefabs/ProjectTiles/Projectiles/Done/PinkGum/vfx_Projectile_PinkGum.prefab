@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066573019580188}
   - component: {fileID: 96169574126171562}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 8642235993678045792}
   - component: {fileID: 4966945005171099375}
   - component: {fileID: 459678569753154619}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: vfx_Projectile_PinkGum
   m_TagString: PlayerDamage
   m_Icon: {fileID: 0}
@@ -5017,7 +5017,7 @@ GameObject:
   - component: {fileID: 4288735977298148}
   - component: {fileID: 198443278761329148}
   - component: {fileID: 199275921267358136}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}

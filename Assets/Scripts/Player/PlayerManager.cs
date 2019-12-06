@@ -13,26 +13,28 @@ public enum PlayerState
 public class PlayerManager : MonoBehaviour
 {
     [Header("Move and attack variables")]
+    public float damageInc;
+    public float expInc;
     public float MovementSpeed;
     [HideInInspector] public GameObject Target;
     public RigidBodyList Weapons;
     private Vector3 RevertedMove;
-    private Vector3 Move;
+    private Vector2 Move;
     private float Angle;
     private Vector3 Ideal = new Vector3(1f, 0f, 0f);
     private Vector3 Buf = new Vector3(0f, 1f, 0f);
 
     [Header("Interaction variables")]
+    public int bossesProgres;
     public FloatValue CurrentHealth;
     public FloatValue Armor;
-    public PlayerState CurrentState;
+    [HideInInspector]public PlayerState CurrentState;
 
     [Header("UI")]
     public GameObject HurtPanel;
     public Image CurrentWeapon;
     private int WeaponIndex;
     private bool IsInitialized; // Weapon
-
 
     [Header("Signals")]
     public Signal PlayerHealthSignal;
@@ -43,9 +45,11 @@ public class PlayerManager : MonoBehaviour
     [Header("GameComponents")]
     private Animator Animator;
     private Rigidbody2D Body;
-    private float ChangeWeaponKD = 0.1f;
+    private float ChangeWeaponKD = 0.01f;
     private float WeaponCurrentKD = 0.1f;
     [HideInInspector] public int Coins;
+    [HideInInspector]public int Stars;
+    [HideInInspector]public int Level = 1;
 
     [Header("Settings values")]
     private bool isHelpAim = true;
@@ -67,9 +71,12 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
-        sys.LoadPlayer();
+        if (sys)
+        {
+           sys.LoadPlayer();
+        }
         WeaponIndex = 0;
-        if (Weapons.thisList.Count > 0)
+        if (Weapons.thisList.Count > 0 && CurrentWeapon)
         {
             CurrentWeapon.sprite = Weapons.thisList[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
             Vector4 temp = CurrentWeapon.color;
@@ -83,7 +90,7 @@ public class PlayerManager : MonoBehaviour
         PlayerHealthSignal.Raise();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (Time.timeScale == 0f)
         {
@@ -91,18 +98,33 @@ public class PlayerManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Q) && Weapons.thisList.Count > 0 && ChangeWeaponKD <= WeaponCurrentKD)
         {
-            WeaponCurrentKD = 0;
+            WeaponCurrentKD = 0f;
             ChangeCurrentItem();
         }
-        else if (ChangeWeaponKD > WeaponCurrentKD)
+        else if (ChangeWeaponKD >= WeaponCurrentKD)
         {
-            WeaponCurrentKD += Time.deltaTime;
+            WeaponCurrentKD += Time.fixedDeltaTime;
         }
-        Move.x = Input.GetAxisRaw("Horizontal") ;
-        Move.y = Input.GetAxisRaw("Vertical");
-        if (Move != Vector3.zero)
-        { 
+        if (Weapons.thisList.Count > 0)
+        {
+            if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack
+                && CurrentState != PlayerState.stagger)
+            {
+                Attack();
+            }
+        }
+    }
 
+    private void FixedUpdate()
+    {
+        if (Time.timeScale == 0f)
+        {
+            return;
+        }
+        Move.x = Input.GetAxisRaw("Horizontal");
+        Move.y = Input.GetAxisRaw("Vertical");
+        if (Move != Vector2.zero)
+        { 
             if (CurrentState != PlayerState.stagger)
             {
                 if (isWalkRotated)
@@ -124,15 +146,6 @@ public class PlayerManager : MonoBehaviour
         } else{
             Animator.SetBool("IsMove", false);
         }
-        if (Weapons.thisList.Count > 0)
-        {
-            if (Input.GetButtonDown("Attack") && CurrentState != PlayerState.attack
-                && CurrentState != PlayerState.stagger)
-            {
-                Attack();
-            }
-        }
-
     }
 
     private Vector3 Revert()
@@ -153,7 +166,10 @@ public class PlayerManager : MonoBehaviour
 
     public void ChangeCurrentItem()
     {
-        WeaponIndex = (WeaponIndex + 1) % Weapons.thisList.Count;
+        if (CurrentWeapon)
+        {
+            WeaponIndex = (WeaponIndex + 1) % Weapons.thisList.Count;
+        }
         CurrentWeapon.sprite = Weapons.thisList[WeaponIndex].GetComponent<MagicCast>().ThisItem.ItemImage;
         if (!IsInitialized)
         {
@@ -163,9 +179,12 @@ public class PlayerManager : MonoBehaviour
 
     public void SetWeaponAlpha(int value)
     {
-        Vector4 temp = CurrentWeapon.color;
-        temp.w = value;
-        CurrentWeapon.color = temp;
+        if (CurrentWeapon)
+        {
+            Vector4 temp = CurrentWeapon.color;
+            temp.w = value;
+            CurrentWeapon.color = temp;
+        }
     }
 
     private void MovePlayer(Vector3 Way)
@@ -173,7 +192,10 @@ public class PlayerManager : MonoBehaviour
         Animator.SetFloat("MoveX", Move.x);
         Animator.SetFloat("MoveY", Move.y); 
         Animator.SetBool("IsMove", true);
-        Body.MovePosition(transform.position + Way.normalized * MovementSpeed * Time.deltaTime);
+        Vector2 inputVector = Vector2.ClampMagnitude(Way, 1f);
+        Vector2 move = inputVector * MovementSpeed;
+        Vector2 newPos = Body.position + move * Time.fixedDeltaTime;
+        Body.MovePosition(newPos);
     }
 
     private void Attack()
