@@ -83,7 +83,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1992836415184059139
 Transform:
   m_ObjectHideFlags: 0
@@ -267,6 +267,7 @@ MonoBehaviour:
   MoveSpeed: 2
   AttackKD: 0.5
   AttackAnimTime: 0.517
+  isActive: 0
   MaxHealth: {fileID: 11400000, guid: 441c4a24408973c449fac39e2245375b, type: 2}
   DeadAnimTime: 0.467
   deffense: 0

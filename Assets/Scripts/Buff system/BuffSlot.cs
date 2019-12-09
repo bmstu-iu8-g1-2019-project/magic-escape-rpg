@@ -40,4 +40,13 @@ public class BuffSlot : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
+
+    public void OncLick()
+    {
+        if (thisBuff.type == BuffType.dmgInc || thisBuff.type == BuffType.expInc || thisBuff.type == BuffType.speedInc)
+        {
+            ThisManager.Debuff(thisBuff);
+            Destroy(this.gameObject);
+        }
+    }
 }

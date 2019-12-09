@@ -15,3 +15,5 @@ MonoBehaviour:
   MyInventory:
   - {fileID: 11400000, guid: 8a276cfbefe0ffb4a8a3ba23e77eeb56, type: 2}
   - {fileID: 11400000, guid: 706d706b3b10a8448b964d64101e3b21, type: 2}
+  - {fileID: 11400000, guid: 80674c90979167048915a8e59d043149, type: 2}
+  - {fileID: 11400000, guid: 4802c81983a17644ebfd640cd49d9249, type: 2}

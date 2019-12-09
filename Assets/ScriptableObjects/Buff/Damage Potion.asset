@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bf7a88695406cde4c9334d6bf774f787, type: 3}
-  m_Name: SpeedPotion
+  m_Name: Damage Potion
   m_EditorClassIdentifier: 
   ThisEvent:
     m_PersistentCalls:
@@ -26,15 +26,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ItemName: Speed Potion
-  ItemDescription: Makes you very fast
-  ItemImage: {fileID: 774192300151941215, guid: c239221d9306a9c46a236f1369cfdcbf,
+  ItemName: Damage Potion
+  ItemDescription: Maximazes damage
+  ItemImage: {fileID: -8387155709117254515, guid: c239221d9306a9c46a236f1369cfdcbf,
     type: 3}
   NumberHeld: 1
   Usable: 1
   Unique: 0
-  id: 16
-  price: 1000
+  id: 17
+  price: 100000
   necessaryLevel: 0
   ThisItem: {fileID: 0}
-  parametrs: {fileID: 11400000, guid: 2b45ac7c39b79c9479338fa3b2d8a13f, type: 2}
+  parametrs: {fileID: 11400000, guid: 9d44776949903574593e019d10d8724b, type: 2}
