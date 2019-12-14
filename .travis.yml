@@ -4,7 +4,7 @@ rvm:
 - 2.2         
 
 env:
-- TRAVIS_TAG="Deploy-2019.2.13f1" PROJECT_NAME="EnemyAI" UNITY_PROJECT_PATH="UnityExample" DEPLOY_UNITYPACKAGE="path set in deploy script"
+- TRAVIS_TAG="Deploy-2019.2.13f1" PROJECT_NAME="Magic escape" UNITY_PROJECT_PATH="Project" DEPLOY_UNITYPACKAGE="path set in deploy script"
 
 
 cache:
@@ -13,18 +13,18 @@ cache:
 
     
 before_install:
-- chmod a+x ./ci/*.sh
+- chmod a+x ./CI-scripts/*.sh
 
 install:
 - cat /etc/hosts
-- ./ci/install-unity.sh
+- ./CI-scripts/install-unity.sh
 
 script:
-- ./ci/build.sh
-- ./ci/run-tests.sh
+- ./CI-scripts/build.sh
+- ./CI-scripts/run-tests.sh
 
 after_success:
-- ./ci/export-unity-package.sh
+- ./CI-scripts/export-unity-package.sh
 
 before_deploy:
 - DEPLOY_UNITYPACKAGE="$(ls -a release/*.zip | head -n 1)"
