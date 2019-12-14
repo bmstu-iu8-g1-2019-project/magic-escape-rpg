@@ -4,7 +4,7 @@ rvm:
 - 2.2         
 
 env:
-- TRAVIS_TAG="Deploy-2019.2.13f1" PROJECT_NAME="Magic escape" UNITY_PROJECT_PATH="Project" DEPLOY_UNITYPACKAGE="path set in deploy script"
+- TRAVIS_TAG="Deploy2019.2.13f1" PROJECT_NAME="MagicEscape" UNITY_PROJECT_PATH="Project" DEPLOY_UNITYPACKAGE="path set in deploy script"
 
 
 cache:
