@@ -1,0 +1,39 @@
+language: objective-c
+osx_image: xcode9.2
+rvm:
+- 2.2         
+
+env:
+- TRAVIS_TAG="Deploy2019.2.13f1" PROJECT_NAME="MagicEscape" UNITY_PROJECT_PATH="Project" DEPLOY_UNITYPACKAGE="path set in deploy script"
+
+
+cache:
+  directories:
+    - $UNITY_DOWNLOAD_CACHE
+
+    
+before_install:
+- chmod a+x ./CI-scripts/*.sh
+
+install:
+- cat /etc/hosts
+- ./CI-scripts/install-unity.sh
+
+script:
+- ./CI-scripts/build.sh
+- ./CI-scripts/run-tests.sh
+
+after_success:
+- ./CI-scripts/export-unity-package.sh
+
+before_deploy:
+- DEPLOY_UNITYPACKAGE="$(ls -a release/*.zip | head -n 1)"
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: $DEPLOY_UNITYPACKAGE
+  skip_cleanup: true
+  overwrite: true
+  on:
+    tags: true 
